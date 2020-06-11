@@ -1,13 +1,47 @@
-<nav class="container-fluid">
-    <ul class="navbar-dark nav bg-info">
-        <li class="nav-item">
-            <a class="nav-link text-light" href="">Mezek</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-light" href="">Linkek</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-light" href="">Kapcsolat</a>
-        </li>
-    </ul>
+<nav class="navbar navbar-light navbar-expand-lg myNavBar" >
+        <!-- Navbar-header -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+            <a class="nav- link navbar-brand" href="index.php">valami.hu</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav mx-4 px-2">
+            <li class="nav-item">
+                <button class="navbar-toggler hidden-sm-up " type="button" data-toggle="collapse"     
+                data-target="#navSC"  aria-controls="navSC" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span> <!--Ez az ikon-->
+                </button>
+            </li>
+        </ul>
+        <!-- Navbar-strip -->
+        <div> 
+          <div class="collapse navbar-collapse" id="navSC">
+            <ul class="navbar-nav ">
+                <!-- Dropdown -->
+
+                <li clas="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Mezek
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Európai liga</a>
+                        <a class="dropdown-item" href="#">Egyéb ligák</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Nemzeti válogatott mezek</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Egyéb mezek</a>
+                    </div>
+                </li>
+                <!-- Else menu -->
+                <li class="nav-item ">
+                    <a class="nav-link" href="">Linkek</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="">Kapcsolat</a>
+                </li>
+            </ul>
+          </div>
+        </div>
 </nav>
+
