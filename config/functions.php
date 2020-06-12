@@ -9,12 +9,12 @@ function IsLogged(){
     }
 }
 
-
 function PrintMenu(){
     if(IsLogged()){
-        echo file_get_contents("html/menu_in.html");
+        return file_get_contents("html/menu_in.html");
     }
     else{
-        echo file_get_contents("html/menu_out.html");
+        return file_get_contents("html/menu_out.html");
     }
 }
+
