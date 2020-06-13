@@ -6,7 +6,12 @@ $(document).ready(function(){
         window.location="nemzeti.php";
     });
 
-    
+    //fills #nemzetiDiv with content by post
+    $("#nemzetiDiv").ready(function(){
+        $.post('php/nemzetiDiv.php',{nemzeti:1},function(adat){
+            $("#nemzetiDiv").html(adat);
+        });
+    });
 
 
 

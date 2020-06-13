@@ -1,16 +1,18 @@
-<div class=" fullDiv jumbotron" id="bg-pic1" >
-    <div  class="text-center pic1-pos">
-        <h1> Foci mezek</h1>
-        <h3>A gyűjteményem</h3>
-    </div>
+<div class="fullDiv" id="bg-picIndex1" >
+    <!-- //bg -->
 </div>
 
 <div class=" mainDiv">
+    <!-- sticky -->
+    <div  class="text-center sticky">
+        <h4> <strong>Foci mezek</strong> - A&nbspgyűjteményem</h4>
+    </div>
+    <!-- A honlap célja -->
     <div id="aHonlapCelja"></div><br>
     <div class="row" >
-        <div class="col-8 ">
+        <div class="col-8">
             <h2>A honlap célja</h2>
-            <h4>Megosztani Veletek az gyűjteményt, böngésszetek kedvetekre! </h4>
+            <h4>Megosztani Veletek a gyűjteményt, böngésszetek kedvetekre! </h4>
             <p>
                 Sziasztok, Kaiser Rezső vagyok. A mezeket nagyon régóta gyűjtöm, a focizás mellett ez az egyik kedvenc elfoglaltságom.<br>
                 .... <br>
@@ -20,8 +22,8 @@
             <button class="btn btn-secondary pull-left">LIKE</button>
                                 <!-- LÁJKOLJ- adatbázisból kiolvassa, lájkszámláló -->
         </div>
-        <div class="col-4">
-            <img class="img-rounded" src="public/resources/pics/profile_pics/basic.jpg" alt="IT'S ME">
+        <div class="col-3">
+            <img class="img img-rounded" src="public/resources/pics/profile_pics/basic.jpg" alt="IT'S ME">
         </div>
     </div><!--endof #honlapCelja-->
 
@@ -107,7 +109,7 @@
             </div><!--endof ROW-->
     </div><!--endof #linkek-->
 
-     <div class="container-fluid fullDiv jumbotron" id="bg-pic2" >
+     <div class="container-fluid fullDiv jumbotron" id="bg-picIndex2" >
     </div>
     
     <div id="kapcsolat"><br>

@@ -3,40 +3,53 @@
   width:1em;
 }
 
-  #bg-pic1 {
+  #bg-picIndex1 {
     background-image: url('../public/resources/pics/bg_pics/dominik-kuhn.jpg');
     background-size: cover;
     background-attachment: fixed;
-    background-position: center;
+    background-position:top;
     background-repeat: no-repeat;
     position: relative;
     min-height: 100%;
   }
 
-  #bg-pic2 {
+  #bg-picIndex2 {
     background-image: url('../public/resources/pics/bg_pics/thomas-serer.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    /* position: relative; */
     min-height: 20em;
     max-height: 20em;
   }
 
+  #bg-picNemzeti1 {
+    background-image: url('../public/resources/pics/bg_pics/izuddin-helmi-adnan.jpg');
+    background-size:cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100%;
+  }
+
  .fullDiv{
-    /* overflow: visible; */
-    height:600px;
-
+    height:650px;
   }
 
-  .pic1-pos{
-    margin-top:25rem;
-    background-color: rgba(255, 255, 255, 0.6);
-    padding: 20px;
-    transform: translate(0%, -250%);
+  .sticky {
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    top: 3.4rem;
+    background-color: lightcyan;
+    z-index: 10;
+    border-top:solid lightblue;
+    border-bottom: solid lightblue;
+    padding: 7px 15px !important;
   }
 
+  .sticky>h4{
+    white-space: nowrap;
+  }
   .myNavBar{
     background-color: #e3f2fd;
   }
@@ -110,6 +123,10 @@
 
   .baseline{
     align-self: baseline;
+  }
+
+  .dropdown-menu a{
+    text-decoration: none;
   }
 
     
