@@ -1,5 +1,10 @@
 <?php
 
+function dd($var) {
+    var_dump($var);
+    die();
+}
+
 function IsLogged(){
     if(isset($_SESSION['USER'])&&(!empty($_SESSION['USER']))){
         //Someone is logged in

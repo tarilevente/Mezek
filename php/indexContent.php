@@ -1,4 +1,4 @@
-<div class="fullDiv" id="bg-picIndex1" >
+<div class="height650" id="bg-picIndex1" >
     <!-- //bg -->
 </div>
 
@@ -17,7 +17,7 @@
                 Sziasztok, Kaiser Rezső vagyok. A mezeket nagyon régóta gyűjtöm, a focizás mellett ez az egyik kedvenc elfoglaltságom.<br>
                 .... <br>
                 .... <br>
-                .... 
+                ....
             </p>
             <button class="btn btn-secondary pull-left">LIKE</button>
                                 <!-- LÁJKOLJ- adatbázisból kiolvassa, lájkszámláló -->
@@ -109,9 +109,9 @@
             </div><!--endof ROW-->
     </div><!--endof #linkek-->
 
-     <div class="container-fluid fullDiv jumbotron" id="bg-picIndex2" >
+     <div class="container-fluid height650 jumbotron" id="bg-picIndex2" >
     </div>
-    
+
     <div id="kapcsolat"><br>
         <div class="jumbotron">
             <h2>Kapcsolat</h2>
@@ -158,4 +158,3 @@
 
 
 <?php
-

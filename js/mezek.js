@@ -13,6 +13,26 @@ $(document).ready(function(){
         });
     });
 
+    //print selected national data by nemzetiDiv.php
+    $(document).on('click','.data-national',function(){
+        const nId=$(this).attr("data-nationalID");
+        console.log("national "+nId);
+        $.ajax({
+            url:'php/nemzetiTeams.php',
+            method:'POST',
+            dataType:'text',
+            data:{nId:nId},
+            success:
+                function(response){
+                    $("#nationalTeams").html(response);
+                },
+            error:
+                function(){
+                    
+                }
+        });
+
+    });//endof print selected nation
 
 
     
