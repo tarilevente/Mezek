@@ -31,7 +31,7 @@ if (isset($_POST['nemzeti']) && 1 == $_POST['nemzeti']) {
     if ($res) {
         //Result exists
         while ($row = mysqli_fetch_row($res)) {
-            $html .= '<span href="" class=" text-danger text-center data-national" data-nationalID="' . $row[0] . '">' . $row[1] . '</span>';
+            $html .= '<span href="" class="text-danger text-center data-national" data-nationalID="' . $row[0] . '">' . $row[1] . '</span>';
         }
 
         $html .= '  </div>' //endof sidenav

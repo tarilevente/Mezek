@@ -1,14 +1,14 @@
 <?php
 
 class Mez {
-    public $idMez;
-    public $idPic;
-    public $idTeam;
-    public $type;
-    public $uploadUser;
-    public $uploadDate;
-    public $years;
-    public $info;
+    private $idMez;
+    private $idPic;
+    private $idTeam;
+    private $type;
+    private $uploadUser;
+    private $uploadDate;
+    private $years;
+    private $info;
     
     //CONSTRUCTORS
     
