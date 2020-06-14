@@ -1,18 +1,25 @@
-@media screen and (max-width: 768px) {
-   
+@media screen and (max-width: 340px) {
+  .sticky > h4 {
+    white-space: normal;
+    padding: 2px 15px;
   }
-
-/*
-@media  (max-width: 320px) {
-    html {
-        font-size: 60.5%;
-        color:red;
-    }
-
+  * {
+    font-size: 100%;
+  }
 }
-    
-@media (max-width: 275px) {
-    html {
-        font-size: 55%;
-    }
-}*/
+
+@media screen and (max-width: 400px) {
+  * {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+  *:before,
+  *:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+}
+@media screen and (max-width: 760px) {
+}

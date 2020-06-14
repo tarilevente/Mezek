@@ -1,0 +1,21 @@
+{
+  "phpformatter.composer": true,
+  "editor.formatOnSave": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["/myfile"],
+      "url": "schemaURL"
+    }
+  ],
+  "phpfmt.php_bin": "E:/xampp2/php/php.exe",
+  "php.validate.executablePath": "E:/xampp2/php/php.exe",
+  // Set the default
+  // Enable per-language
+  "[php]": {
+    "editor.formatOnSave": true
+},
+"phpfmt.exclude": [],
+"phpfmt.psr1_naming": true,
+"phpfmt.smart_linebreak_after_curly": true,
+"phpfmt.visibility_order": true
+}
