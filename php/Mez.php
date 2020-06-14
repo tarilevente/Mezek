@@ -1,79 +1,97 @@
 <?php
+//class for Mez
+class Mez
+{
+ private $__idMez;
+ private $__idPic;
+ private $__idTeam;
+ private $__type;
+ private $__uploadUser;
+ private $__uploadDate;
+ private $__years;
+ private $__info;
 
-class Mez {
-    private $idMez;
-    private $idPic;
-    private $idTeam;
-    private $type;
-    private $uploadUser;
-    private $uploadDate;
-    private $years;
-    private $info;
-    
-    //CONSTRUCTORS
-    
-     function __construct($idMez, $idPic, $idTeam, $type, $uploadUser, $uploadDate, $years, $info) {
-    $this->idMez = $idMez;
-    $this->idPic = $idPic;
-    $this->idTeam = $idTeam;
-    $this->type = $type;
-    $this->uploadUser = $uploadUser;
-    $this->uploadDate = $uploadDate;
-    $this->years=$years;
-    $this->info=$info;
-  }
-    
-    // SETTERS AND GETTERS
-    function set_idMez($idMez) {
-    $this->idMez = $idMez;
-  }
-    function get_idMez() {
-    return $this->idMez;
-  }
-  
-      function set_idPic($idPic) {
-    $this->idPic = $idPic;
-  }
-    function get_idPic() {
-    return $this->idPic;
-  }      
-  function set_idTeam($idTeam) {
-    $this->idTeam = $idTeam;
-  }
-    function get_idTeam() {
-    return $this->idTeam;
-  }
-  
-  function set_type($type) {
-    $this->type = $type;
-  }
-    function get_type() {
-    return $this->type;
-  }
-  function set_uploadUser($uu) {
-    $this->uploadUser = $uu;
-  }
-    function get_uploadUser() {
-    return $this->uploadUser;
-  }
-  
-    function set_uploadDate($ud) {
-    $this->uploadDate = $ud;
-  }
-    function get_uploadDate() {
-    return $this->uploadDate;
-  }
-    function set_years($y) {
-    $this->years = $y;
-  }
-    function get_years() {
-    return $this->years;
-  }
-    function set_info($info) {
-    $this->info = $info;
-  }
-    function get_info() {
-    return $this->info;
-  }
-  
+ //CONSTRUCTORS
+
+ public function __construct($idMez, $idPic, $idTeam, $type, $uploadUser, $uploadDate, $years, $info)
+ {
+  $this->idMez      = $idMez;
+  $this->idPic      = $idPic;
+  $this->idTeam     = $idTeam;
+  $this->type       = $type;
+  $this->uploadUser = $uploadUser;
+  $this->uploadDate = $uploadDate;
+  $this->years      = $years;
+  $this->info       = $info;
+ }
+
+ // SETTERS AND GETTERS
+ public function setIdmez($idMez)
+ {
+  $this->idMez = $idMez;
+ }
+ public function getIdmez()
+ {
+  return $this->idMez;
+ }
+
+ public function setIdpic($idPic)
+ {
+  $this->idPic = $idPic;
+ }
+ public function getIdpic()
+ {
+  return $this->idPic;
+ }
+ public function setIdteam($idTeam)
+ {
+  $this->idTeam = $idTeam;
+ }
+ public function getIdteam()
+ {
+  return $this->idTeam;
+ }
+
+ public function setType($type)
+ {
+  $this->type = $type;
+ }
+ public function getType()
+ {
+  return $this->type;
+ }
+ public function setUploaduser($uu)
+ {
+  $this->uploadUser = $uu;
+ }
+ public function getUploaduser()
+ {
+  return $this->uploadUser;
+ }
+
+ public function setUploaddate($ud)
+ {
+  $this->uploadDate = $ud;
+ }
+ public function getUploaddate()
+ {
+  return $this->uploadDate;
+ }
+ public function setYears($y)
+ {
+  $this->years = $y;
+ }
+ public function getYears()
+ {
+  return $this->years;
+ }
+ public function setInfo($info)
+ {
+  $this->info = $info;
+ }
+ public function getInfo()
+ {
+  return $this->info;
+ }
+
 }

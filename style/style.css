@@ -32,6 +32,15 @@
   min-height: 100%;
 }
 
+.bg-picNemzeti2 {
+  background-image: url("../public/resources/pics/bg_pics/josiah-day.jpg");
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: top;
+  background-repeat: repeat-y;
+  min-height: 100%;
+}
+
 .height650 {
   height: 650px;
 }
@@ -139,11 +148,14 @@ footer > .flex-container {
 }
 /*Sidenav formatting*/
 .sidenav {
-  width: 150px;
-  z-index: 1;
+  z-index: 5;
   background: #eee;
-  overflow-x: hidden;
-  padding: 5px 10px;
+  overflow-x: scroll;
+  padding: 3px;
+}
+
+.toHover:hover {
+  background-color: lawngreen;
 }
 
 .card p {
