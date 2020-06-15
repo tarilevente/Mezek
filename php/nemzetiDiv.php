@@ -1,5 +1,5 @@
 <?php
-//prints out the DIV of nations, where the database contains Mez,Pic INTO '#NemzetiDiv'
+//prints out the DIV of nations, where the database contains Mez,Pic... INTO '#NemzetiDiv'
 
 session_start();
 
@@ -9,22 +9,21 @@ require_once '../php/Mez.php'; //using Mez Class
 
 if (isset($_POST['nemzeti']) && 1 == $_POST['nemzeti']) {
 //post is arrived
- $html = '<div class="row">' //The row is for position with the Mez (nemzetiTeams.php writes out)
-  . '<div class="sidenav col-lg-2">'; //Simple sidebar for nations where pics exist -- https://www.w3schools.com/howto/howto_js_dropdown_sidenav.asp
-
-//query for select Categories, WHERE exists Any Mez
+ $html = '<div class="row">' //The row is for position with the Mez (nemzetiTeamsShow.php writes out)
+  . '<div class="sidenav col-lg-2">'; //Simple sidebar for nations where pics exist
+ //query for select Categories, WHERE exists Any Mez
  $sql = "SELECT CategoryTable.idCategory, CategoryTable.CatName AS valogatott
             FROM CategoryTable, LeagueTable
             WHERE   LeagueTable.idLeague = CategoryTable.idLeague AND
                     LeagueName LIKE 'Nemzeti válogatottak' AND
-                    categorytable.idCategory
+                    CategoryTable.idCategory
                         IN(
-                          SELECT teamtable.idCategory
-                          from teamtable, categorytable,meztable
-                          WHERE teamtable.idCategory=categorytable.idCategory AND
-                              teamtable.idTeam=meztable.idTeam AND
-                              teamtable.idTeam IN(
-                                SELECT idTeam FROM meztable
+                          SELECT TeamTable.idCategory
+                          from TeamTable, CategoryTable,MezTable
+                          WHERE TeamTable.idCategory = CategoryTable.idCategory AND
+                              TeamTable.idTeam = MezTable.idTeam AND
+                              TeamTable.idTeam IN(
+                                SELECT idTeam FROM MezTable
                               )
                         )
             ORDER BY valogatott";
@@ -43,11 +42,10 @@ if (isset($_POST['nemzeti']) && 1 == $_POST['nemzeti']) {
   echo $html;
 
  } else {
-  die("A lekérdezés nem vezetett eredményre a national.php-n");
+  $html .= 'Nincs adat feltöltve</div>'
+   . '<div class="col-lg-10 min-height500 bg-picNemzeti2" id="nationalTeams"></div>';
  }
-
-//response
-
 } else {
- die('Nincs post a nemzetiPHP-ra');
+ //no post
+ echo '<div class="p2"><h4 class="error text-danger">Hiba, error code = 78691</h4></div>'; //for error messages
 }

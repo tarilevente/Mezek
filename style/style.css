@@ -4,17 +4,17 @@
 }
 
 #bg-picIndex1 {
-  background-image: url("../public/resources/pics/bg_pics/dominik-kuhn.jpg");
+  background-image: url("../public/resources/pics/bg_pics/mario-klassen.jpg");
   background-size: cover;
   background-attachment: fixed;
-  background-position: top;
+  background-position: center;
   background-repeat: no-repeat;
   position: relative;
   min-height: 100%;
 }
 
 #bg-picIndex2 {
-  background-image: url("../public/resources/pics/bg_pics/thomas-serer.jpg");
+  background-image: url("../public/resources/pics/bg_pics/philipp-trubchenko.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -35,7 +35,43 @@
 .bg-picNemzeti2 {
   background-image: url("../public/resources/pics/bg_pics/josiah-day.jpg");
   background-size: cover;
-  background-attachment: scroll;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: repeat-y;
+  min-height: 100%;
+}
+
+#bg-picEgyeb1 {
+  background-image: url("../public/resources/pics/bg_pics/mosa-moseneke.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
+
+.bg-picEgyeb2 {
+  background-image: url("../public/resources/pics/bg_pics/travis-jones.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: repeat-y;
+  min-height: 100%;
+}
+
+#bg-picEULeague1 {
+  background-image: url("../public/resources/pics/bg_pics/martino-pietropoli.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
+
+.bg-picEULeague2 {
+  background-image: url("../public/resources/pics/bg_pics/brandi-ibrao.jpg");
+  background-size: cover;
+  background-attachment: fixed;
   background-position: top;
   background-repeat: repeat-y;
   min-height: 100%;
@@ -84,7 +120,7 @@
 }
 
 .mainDiv > div {
-  padding: 0px 15px;
+  padding: 0px 10px;
 }
 
 .carousel-control.right,
@@ -149,8 +185,8 @@ footer > .flex-container {
 /*Sidenav formatting*/
 .sidenav {
   z-index: 5;
-  background: #eee;
-  overflow-x: scroll;
+  background: #f5f5f5;
+  overflow-x: hidden;
   padding: 3px;
 }
 

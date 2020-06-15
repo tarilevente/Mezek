@@ -7,24 +7,85 @@ $(document).ready(function () {
 
   //fills #nemzetiDiv with content by post
   $("#nemzetiDiv").ready(function () {
-    $.post("php/nemzetiDiv.php", { nemzeti: 1 }, function (adat) {
-      $("#nemzetiDiv").html(adat);
+    $.ajax({
+      url: "php/nemzetiDiv.php",
+      method: "POST",
+      dataType: "text",
+      data: { nemzeti: 1 },
+      success: function (adat) {
+        $("#nemzetiDiv").html(adat);
+      },
+      error: function (adat) {},
     });
   });
 
   //print selected national data by nemzetiDiv.php
   $(document).on("click", ".data-national", function () {
     const nId = $(this).attr("data-nationalID");
-    console.log("national " + nId);
+    const err = document.getElementById("nationalTeams");
+    console.log(nId);
     $.ajax({
-      url: "php/nemzetiTeams.php",
+      url: "php/nemzetiTeamsShow.php",
       method: "POST",
       dataType: "text",
       data: { nId: nId },
       success: function (response) {
         $("#nationalTeams").html(response);
       },
-      error: function () {},
+      error: function (response) {
+        err.innerHTML = response.responseText;
+      },
+    });
+  }); //endof print selected nation
+
+  //fills #egyebMezekDiv with content by post
+  $("#egyebMezekDiv").ready(function () {
+    $.post("php/egyebMezekDiv.php", { egyeb: 1 }, function (adat) {
+      $("#egyebMezekDiv").html(adat);
+    });
+  });
+
+  //print selected egyebMEzek data by egyebMezekDiv.php
+  $(document).on("click", ".data-egyebMezek", function () {
+    const eId = $(this).attr("data-EgyebMezekID");
+    const err = document.getElementById("egyebMezekTeam");
+    $.ajax({
+      url: "php/egyebMezekShow.php",
+      method: "POST",
+      dataType: "text",
+      data: { eId: eId },
+      success: function (response) {
+        $("#egyebMezekTeam").html(response);
+      },
+      error: function (response) {
+        err.innerHTML = response.responseText;
+      },
+    });
+  }); //endof print selected nation
+
+  //európa-liga DIV is filled with data after loading
+  $("#euLigaDiv").ready(function () {
+    $.post("php/euLigaDiv.php", { eu: 1 }, function (adat) {
+      $("#euLigaDiv").html(adat);
+    });
+  });
+
+  //print selected euLigaMEzek data by euLigaDiv.php
+  $(document).on("click", ".data-euLigaMezek", function () {
+    const euId = $(this).attr("data-euLigaMezekID");
+    console.log(euId);
+    const err = document.getElementById("euLigaTeam");
+    $.ajax({
+      url: "php/euLigaShow.php",
+      method: "POST",
+      dataType: "text",
+      data: { euId: euId },
+      success: function (response) {
+        $("#euLigaTeam").html(response);
+      },
+      error: function (response) {
+        err.innerHTML = response.responseText;
+      },
     });
   }); //endof print selected nation
 });
