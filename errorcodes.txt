@@ -1,0 +1,16 @@
+//this document is for find the error messages out
+
+78691:  - 'Nincs post a nemzetiDiv.php-ra'       - php/nemzetiDiv.php           setted
+78692:  - 'Nincs post a nemzetiTeamsShow.php-ra' - php/nemzetiTeamsShow.php     setted
+78693:  - 'Nincs user a MEZhez a nemzetiTeamsShow.php-n' - php/nemzetiTeamsShow.php setted
+
+56456:  - 'Nincs post az egyebMezekDiv.php-ra'   - php/egyebMezekDiv.php        setted
+56457:  - 'Nincs post az egyebMezekShow.php-ra   - php/egyebMezekShow.php       setted
+56458:  - 'Nincs user a MEZhez a egyebMezekShow.php-n' - php/egyebMezekShow.php setted
+
+26481:  - 'Nincs post az euLigaDiv.php-ra'   - php/euLigaDiv.php                setted
+26482:  - 'Nincs post az euLigaShow.php-ra'  - php/euLigaShow.php               setted
+26483:  - 'Nincs user a MEZhez az euLigaDiv.php-n  -php/euLigaShow.php          setted
+
+
+//img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one

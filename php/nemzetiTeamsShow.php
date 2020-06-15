@@ -56,7 +56,8 @@ if (isset($_POST['nId']) && !empty($_POST['nId'])) {
    }
    ;
    if (!$user) {
-    die("nincs user a MEZhez a nemzetiTeams.php-n");
+    http_response_code(404);
+    die('<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code: 78693</h4>');
    }
    //Create the Mez object by datas
    $aktMez = new Mez(
@@ -134,10 +135,10 @@ if (isset($_POST['nId']) && !empty($_POST['nId'])) {
      $tipus = "Kapus";
      break;
     default:
-     $tipus = "ismeretlen";
+     $tipus = "?";
      break;
    }
-   $aktYears = 'ismeretlen';
+   $aktYears = '?';
    if (strlen($aktMez->getYears()) > 2) {
     $aktYears = $aktMez->getYears();
    }
@@ -168,8 +169,10 @@ if (isset($_POST['nId']) && !empty($_POST['nId'])) {
   $html .= '</div></div>';
   echo $html;
  } else {
-  //die("nemzetiTeams.php-n nincs res!");//Not print Anything
+  //die("nemzetiTeamsShow.php-n nincs res!");//Not print Anything
  }
 } else {
- die('Nincs post a nemzetiTeams.php-ra');
+ http_response_code(404);
+ echo '<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code: 78692</h4>';
+ die();
 }

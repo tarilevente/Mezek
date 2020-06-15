@@ -2,7 +2,7 @@
     <!-- //bg -->
 </div>
 
-<div class=" mainDiv">
+<div class=" mainDiv bg-grey">
     <!-- sticky -->
     <div  class="text-center sticky">
         <h4> <strong>Foci mezek</strong> - A&nbspgyűjteményem</h4>
