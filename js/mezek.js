@@ -111,4 +111,24 @@ $(document).ready(function () {
       },
     });
   }); //endof print selected otherLiga
+
+  //this method will show the selected pic in bootstrap "modal"
+  $(document).on("click", ".picToShow", function () {
+    const picId = $(this).attr("data-picid");
+    console.log(picId + " az id");
+    const err = document.getElementsByClassName("error")[0];
+    $.ajax({
+      url: "php/picZoomed.php",
+      method: "POST",
+      dataType: "text",
+      data: { picId: picId },
+      success: function (response) {
+        $("#modalContent").html(response);
+      },
+      error: function (response) {
+        err.innerHTML = response.responseText;
+        console.log(response);
+      },
+    });
+  }); //end of show selected pic
 });
