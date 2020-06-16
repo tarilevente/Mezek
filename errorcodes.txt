@@ -16,10 +16,20 @@
 12675:  - 'Nincs post az otherLigaShow.php-ra'  - php/otherLigaShow.php         setted
 12676:  - 'Nincs user a MEZhez az otherLigaDiv.php-n  -php/otherLigaShow.php    setted
 
+87420:  - 'Nincs ilyen kép-id a picZoomed.php-n  -php/picZoomed.php             setted
+87421:  - 'Mez nem található, a $res üres' -php/picZoomed.php                   setted
+
+
+
+
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
 //megnézem: modal
 //csapatkereső: filter
 //lehet badge is a collapse-nel
 //rezső: media objects
-//collapse
+//aria-hiddenezés akadálymentesítés
+//kép kiválasztásánál rázoomol
+//megnézem-re hover: cursor:zoomin
+
+
