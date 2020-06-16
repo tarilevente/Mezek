@@ -1,12 +1,12 @@
 <?php
-//prints out the DIV of euLiga, where the database contains Mez,Pic INTO '#euLigaDiv'
+//prints out the DIV of otherLiga, where the database contains Mez,Pic INTO '#otherLigaDiv'
 
 session_start();
 require_once '../config/connect.php'; //database connect
 require_once '../config/functions.php'; //using methods
 require_once '../php/Mez.php'; //using Mez Class
 
-if (isset($_POST['eu']) && 1 == $_POST['eu']) {
+if (isset($_POST['other']) && 1 == $_POST['other']) {
  //post is arrived
  $html = '<div class="row">'; //The row is for positioning
  $html .= '<div class="col-lg-2">';
@@ -27,7 +27,7 @@ if (isset($_POST['eu']) && 1 == $_POST['eu']) {
                                     SELECT idcategory
                                     FROM categorytable,leaguetable
                                     WHERE leaguetable.idleague=categorytable.idleague AND
-                                    leaguetable.idleague=1
+                                    leaguetable.idleague=2
                                 )
                         )
         )
@@ -67,7 +67,7 @@ if (isset($_POST['eu']) && 1 == $_POST['eu']) {
                 <div id="collapse' . $colCounter . '" class="collapse" data-parent="#accordion">';
     $aktCategory = $row[0];
    }
-   $html .= '       <div class="card-body toHover data-euLigaMezek" data-euLigaMezekID="' . $row[1] . '">
+   $html .= '       <div class="card-body toHover data-otherLigaMezek" data-otherLigaMezekID="' . $row[1] . '">
                         <span class="text-center">' . $row[2] . '</span>
                     </div>';
   }
@@ -78,7 +78,7 @@ if (isset($_POST['eu']) && 1 == $_POST['eu']) {
   $html .= '</div>'; //endof col-2
 
   $html .= '</div> ' //endof row
-   . '<div class="col-lg-10 min-height500 bg-picEULeague2" id="euLigaTeam"></div>'; //place of Mez-s
+   . '<div class="col-lg-10 min-height500 bg-picOtherLeague2" id="otherLigaTeam"></div>'; //place of Mez-s
   $html .= '<div class="p2"><h2 class="error text-danger"></h2></div>' //error
    . '</div>' //endof row
   ;
@@ -89,5 +89,5 @@ if (isset($_POST['eu']) && 1 == $_POST['eu']) {
  }
 } else {
  //no post
- echo '<div class="p2"><h4 class="error text-danger">Hiba, error code = 26481</h4></div>'; //for error messages
+ echo '<div class="p2"><h4 class="error text-danger">Hiba, error code = 12674</h4></div>'; //for error messages
 }

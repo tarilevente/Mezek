@@ -12,6 +12,10 @@
 26482:  - 'Nincs post az euLigaShow.php-ra'  - php/euLigaShow.php               setted
 26483:  - 'Nincs user a MEZhez az euLigaDiv.php-n  -php/euLigaShow.php          setted
 
+12674:  - 'Nincs post az otherLigaDiv.php-ra'  - php/otherLigaDiv.php           setted
+12675:  - 'Nincs post az otherLigaShow.php-ra'  - php/otherLigaShow.php         setted
+12676:  - 'Nincs user a MEZhez az otherLigaDiv.php-n  -php/otherLigaShow.php    setted
+
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
 //megnézem: modal
