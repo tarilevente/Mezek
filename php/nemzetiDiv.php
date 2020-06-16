@@ -10,7 +10,7 @@ require_once '../php/Mez.php'; //using Mez Class
 if (isset($_POST['nemzeti']) && 1 == $_POST['nemzeti']) {
 //post is arrived
  $html = '<div class="row">' //The row is for position with the Mez (nemzetiTeamsShow.php writes out)
-  . '<div class="sidenav col-lg-2">'; //Simple sidebar for nations where pics exist
+  . '<div class="col-lg-2">'; //Simple sidebar for nations where pics exist
  //query for select Categories, WHERE exists Any Mez
  $sql = "SELECT CategoryTable.idCategory, CategoryTable.CatName AS valogatott
             FROM CategoryTable, LeagueTable
@@ -32,10 +32,17 @@ if (isset($_POST['nemzeti']) && 1 == $_POST['nemzeti']) {
  if ($res) {
   //Category exists
   while ($row = mysqli_fetch_row($res)) {
-   $html .= '<div class="toHover text-center p-1"><span class="text-danger text-center data-national" data-nationalID="' . $row[0] . '">' . $row[1] . '</span></div>';
+   $html .= '<div class="card">
+                <div class="card-header">
+                  <a class="toHover card-link data-national" data-nationalID="' . $row[0] . '">
+                    ' . $row[1] . '
+                  </a>
+                </div>
+             </div>';
   }
 
-  $html .= '  </div>' //endof sidenav
+  $html .= ''
+  . '</div>' //endof col-lg-2
    . '<div class="col-lg-10 min-height500 bg-picNemzeti2" id="nationalTeams"></div>'
   . '</div>' //endof row
   ; //for national teams. js ajax fills with data when it occurs

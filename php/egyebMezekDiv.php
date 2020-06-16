@@ -10,7 +10,7 @@ require_once '../php/Mez.php'; //using Mez Class
 if (isset($_POST['egyeb']) && 1 == $_POST['egyeb']) {
  //post is arrived
  $html = '<div class="row">' //The row is for position with the Mez
-  . '<div class="sidenav col-lg-2">'; //Simple sidebar for navigate
+  . '<div class="col-lg-2">';
  //query for select Categories, WHERE exists Any Mez
  $sql = "   SELECT idTeam, tname AS csapat
             FROM teamtable
@@ -36,7 +36,13 @@ if (isset($_POST['egyeb']) && 1 == $_POST['egyeb']) {
  if ($res) {
 //Team exists
   while ($row = mysqli_fetch_row($res)) {
-   $html .= '<div class="toHover text-center p-1"><span class="text-danger text-center data-egyebMezek" data-EgyebMezekID="' . $row[0] . '">' . $row[1] . '</span></div>';
+   $html .= '<div class="card">
+                <div class="card-header">
+                    <a class="toHover card-link data-egyebMezek" data-EgyebMezekID="' . $row[0] . '">
+                    ' . $row[1] . '
+                    </a>
+                </div>
+            </div>';
   }
 
   $html .= '  </div>' //endof sidenav

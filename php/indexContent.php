@@ -5,7 +5,7 @@
 <div class=" mainDiv bg-grey">
     <!-- sticky -->
     <div  class="text-center sticky">
-        <h4> <strong>Foci mezek</strong> - A&nbspgyűjteményem</h4>
+        <h4> <strong>Focimezek</strong> - A&nbspgyűjteményem</h4>
     </div>
     <!-- A honlap célja -->
     <div id="aHonlapCelja"></div><br>

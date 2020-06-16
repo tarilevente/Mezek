@@ -7,24 +7,25 @@ require_once '../config/functions.php'; //using methods
 require_once '../php/Mez.php'; //using Mez Class
 require_once '../php/Pic.php'; //using Pic Class
 
-if (isset($_POST['eId']) && !empty($_POST['eId'])) {
- $eid = $_POST['eId']; //id of team (in egyebMezek League)
- //intitialize the response
+if (isset($_POST['otherId']) && !empty($_POST['otherId'])) {
+ $OLID = $_POST['otherId'];
  $html = "";
- //query
- $sql = "SELECT meztable.idMez,
-                meztable.idPic,
-                meztable.Type,
-                meztable.UploadUser,
-                meztable.UploadDate,
-                meztable.Years,
-                meztable.Info
-        FROM    meztable, teamtable
-        WHERE   teamtable.idTeam=meztable.idTeam AND
-                teamtable.idteam=3
+ //select the MEZs where category=/selected category/
+ $sql = " SELECT MezTable.idMez,
+            MezTable.idPic,
+            MezTable.idTeam,
+            MezTable.Type,
+            MezTable.UploadUser,
+            MezTable.UploadDate,
+            MezTable.Years,
+            MezTable.Info
+        FROM MezTable, TeamTable
+        WHERE TeamTable.idTeam=MezTable.idTeam AND
+            TeamTable.idTeam=$OLID
         ";
  $res = $con->query($sql);
- if ($res) {
+ if ($res->num_rows > 0) {
+  //result exists (Mez-s)
   $html .= '<div class="container-fluid">
                 <div class="row p-1">';
   $counter = 0;
@@ -33,32 +34,42 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
    if ($counter % 4 == 0) {
     //set the rows
     $html .= '</div>
-                          <div class="row">';
+                  <div class="row">';
    }
    //aktmez to a Mez object
-   $years = "?";
-   if (isset($row['Years'])) {
-    $years = $row['Years'];
-   }
-   $info = "-";
+   $info = "";
    if (isset($row['Info'])) {
     $info = $row['Info'];
    }
+   $years = "";
+   if (strlen($row['Years']) > 0) {
+    $years = $row['Years'];
+   }
    $uploadDate = substr($row['UploadDate'], 0, 9);
-   $aktMez     = new Mez($row['idMez'], $row['idPic'], $eid, $row['Type'], $row['UploadUser'], $uploadDate, $years, $info);
-
    //Find the Upload user of the akt Mez
    $sql2   = "SELECT FirstName, LastName FROM UserTable WHERE idUser=" . $row['UploadUser'];
    $result = $con->query($sql2);
    $user   = array();
-   while ($u = $result->fetch_array()) {
-    $user = $u;
+   while ($a = $result->fetch_array()) {
+    $user = $a;
    }
    ;
+
    if (!$user) {
     http_response_code(404);
-    die('<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code: 56458</h4>');
+    die('<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code: 12676</h4>');
    }
+   //Create the Mez object by datas
+   $aktMez = new Mez(
+    $row['idMez'],
+    $row['idPic'],
+    $row['idTeam'],
+    $row['Type'],
+    $user[1] . ' ' . $user[0],
+    $uploadDate,
+    $years,
+    $info
+   );
 
    //Find the pics of the aktMez by query
    $sql3   = "SELECT * FROM PicsTable WHERE idPic=" . $aktMez->getIdPic();
@@ -106,7 +117,7 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
     $teamName = $u[0];
    }
    ;
-   //the type of the MEZ
+
    $tipus = "";
    switch ($aktMez->getType()) {
     case '0':
@@ -128,16 +139,14 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
      $tipus = "?";
      break;
    }
-
    $aktYears = '?';
    if (strlen($aktMez->getYears()) > 2) {
     $aktYears = $aktMez->getYears();
    }
    $aktInfo = "-";
-   if (($aktMez->getInfo())) {
+   if ($aktMez->getInfo()) {
     $aktInfo = $aktMez->getInfo();
    }
-
    //print out the Pic in a bootstrap "card" element
    $html .= '<div class="card bg-light m-1" style="max-width:270px">'
    . '<div class="card-header"><p>' . $teamName . '</p></div>'
@@ -156,14 +165,15 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
 
    $counter++;
   }
+  ;
 
   $html .= '</div></div>';
   echo $html;
  } else {
-  //no result - only bg appears
+  //Not print Anything
  }
 } else {
  http_response_code(404);
- echo '<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code: 56457</h4>';
+ echo '<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code: 12675</h4>';
  die();
 }

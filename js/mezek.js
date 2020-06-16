@@ -61,7 +61,7 @@ $(document).ready(function () {
         err.innerHTML = response.responseText;
       },
     });
-  }); //endof print selected nation
+  }); //endof print selected egyebMezek
 
   //európa-liga DIV is filled with data after loading
   $("#euLigaDiv").ready(function () {
@@ -73,7 +73,6 @@ $(document).ready(function () {
   //print selected euLigaMEzek data by euLigaDiv.php
   $(document).on("click", ".data-euLigaMezek", function () {
     const euId = $(this).attr("data-euLigaMezekID");
-    console.log(euId);
     const err = document.getElementById("euLigaTeam");
     $.ajax({
       url: "php/euLigaShow.php",
@@ -87,5 +86,29 @@ $(document).ready(function () {
         err.innerHTML = response.responseText;
       },
     });
-  }); //endof print selected nation
+  }); //endof print selected euLiga
+
+  $("#otherLigaDiv").ready(function () {
+    $.post("php/otherLigaDiv.php", { other: 1 }, function (adat) {
+      $("#otherLigaDiv").html(adat);
+    });
+  });
+
+  //print selected otherLigaMEzek data by euLigaDiv.php
+  $(document).on("click", ".data-otherLigaMezek", function () {
+    const otherId = $(this).attr("data-otherLigaMezekID");
+    const err = document.getElementById("otherLigaTeam");
+    $.ajax({
+      url: "php/otherLigaShow.php",
+      method: "POST",
+      dataType: "text",
+      data: { otherId: otherId },
+      success: function (response) {
+        $("#otherLigaTeam").html(response);
+      },
+      error: function (response) {
+        err.innerHTML = response.responseText;
+      },
+    });
+  }); //endof print selected otherLiga
 });
