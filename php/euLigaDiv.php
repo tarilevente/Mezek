@@ -8,11 +8,12 @@ require_once '../php/Mez.php'; //using Mez Class
 
 if (isset($_POST['eu']) && 1 == $_POST['eu']) {
  //post is arrived
- $html = '<div class="row">' //The row is for position with the Mez
-  . '<div class="sidenav col-lg-2">'; //Sidebar for navigate
- //query for select Categories, WHERE exists Any Mez
- $sql = "SELECT idTeam, tname AS csapat
-        FROM teamtable
+ $html = '<div class="row">'; //The row is for positioning
+ $html .= '<div class="col-lg-2">';
+ $html .= '<div id="accordion">';
+ //query for select teams, WHERE exists Any Mez
+ $sql = "SELECT categorytable.CatName as kategoria, idTeam, tname AS csapat
+        FROM teamtable, categorytable
         WHERE idTeam
             IN(
                 SELECT idteam
@@ -30,19 +31,57 @@ if (isset($_POST['eu']) && 1 == $_POST['eu']) {
                                 )
                         )
         )
-        ORDER BY csapat
+        And categorytable.idCategory=teamtable.idCategory
+        ORDER BY kategoria
         ";
  $res = $con->query($sql);
  if ($res) {
   //Team exists
-  while ($row = mysqli_fetch_row($res)) {
-   $html .= '<div class="toHover text-center p-1"><span class="text-danger text-center data-euLigaMezek" data-euLigaMezekID="' . $row[0] . '">' . $row[1] . '</span></div>';
+  $colCounter  = 1;
+  $aktCategory = "";
+  $first       = true;
+  while ($row = mysqli_fetch_array($res)) {
+   if (true == $first) {
+    $first       = false;
+    $aktCategory = $row[0];
+    $html .= '      <div class="card" >
+                        <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href=" #collapse' . $colCounter . ' " >
+                                    ' . $row[0] . '
+                                </a>
+                        </div>
+                    <div id="collapse' . $colCounter . '" class="collapse show" data-parent="#accordion" >';
+   }
+
+   if ($aktCategory != $row[0]) {
+    $colCounter++;
+    $html .= "  </div>" // endof Collapse1
+     . "    </div>"; //endof card
+    //open a new card
+    $html .= '<div class="card">
+                <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapse' . $colCounter . '" >
+                            ' . $row[0] . '
+                        </a>
+                </div>
+                <div id="collapse' . $colCounter . '" class="collapse" data-parent="#accordion">';
+    $aktCategory = $row[0];
+   }
+   $html .= '       <div class="card-body">
+                        <span class="text-danger text-center data-euLigaMezek" data-euLigaMezekID="' . $row[1] . '">' . $row[2] . '</span>
+                    </div>';
   }
 
-  $html .= '  </div>' //endof sidenav
-   . '<div class="col-lg-10 min-height500 bg-picEULeague2" id="euLigaTeam"></div>' //
-   . '<div class="p2"><h2 class="error text-danger"></h2></div>'
-  . '</div>' //endof row
+  $html .= '   </div>'; //endof the last collapse
+  //   $html .= "</div>"; //endof last card
+  $html .= '</div>'; //endof accordion
+  $html .= '</div>'; //endof col-2
+
+  $html .= '</div> ' //endof row
+   . '<div class="col-lg-10 min-height500 bg-picEULeague2" id="euLigaTeam"></div>'; //place of Mez-s
+  $html .= file_get_contents('../html/c.html');
+  $html .= '<div class="p2"><h2 class="error text-danger"></h2></div>' //error
+   . '</div>' //endof row
   ;
   echo $html;
  } else {
