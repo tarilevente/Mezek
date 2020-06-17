@@ -106,8 +106,7 @@ function GetMezFromRow($con, $row)
 {
  //generate aktMez
  $aktMez = null;
-
- $years = "?";
+ $years  = "?";
  if (isset($row['Years'])) {
   $years = $row['Years'];
  }
@@ -115,7 +114,8 @@ function GetMezFromRow($con, $row)
  if (isset($row['Info'])) {
   $info = $row['Info'];
  }
- $uploadDate = substr($row['UploadDate'], 0, 9); //megcsinálni, hogy formailag jó legyen
+ $time       = strtotime($row['UploadDate']);
+ $uploadDate = date("yy.m.d. ", $time); //megcsinálni, hogy formailag jó legyen
 
  //Find the Upload user of the akt Mez
  $sql2   = "SELECT FirstName, LastName FROM UserTable WHERE idUser=" . $row['UploadUser'];
@@ -126,7 +126,7 @@ function GetMezFromRow($con, $row)
  }
  ;
  if (!$user) {
-  // http_response_code(404);
+  // http_response_code(404); //ezmi??
   // die('<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code: 56458</h4>');
  }
 

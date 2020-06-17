@@ -127,18 +127,27 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
                     </a>';
     }
     $html .= '</div>' //endof Carousel
+     . '     </div>' //endof Image-display
+     . '   </div>' //endof Image-GalleryWrapper
+     . '   <div class="container">' //Info Starts here
+     . '        <div class="d-flex justify-content-around">
+                    <div class="p-2 text-muted"><strong class="text-info">Típus:</strong> ' . $aktMez->getType() . '</div>
+                    <div class="p-2 text-muted"><strong class="text-info">Év:</strong> ' . $aktMez->getYears() . '</div>
+                    <div class="p-2 text-muted"><strong class="text-info">Feltöltötte:</strong> ' . $aktMez->getUploaduser() . ', ' . $aktMez->getUploaddate() . '</div>
+                    <div class="p-2 text-muted"><strong class="text-info">Info:</strong> ' . $aktMez->getInfo() . ' </div>
+                </div>'
+    . '    </div>' //endof Info
 
-    . '     </div>' //endof Image-display
-     . '    <div class="image-display-controls"></div>
-            </div>
-        </div>
-    </div>
+    . '   </div>' //endof Row
+     . ' </div>' //endof container
 
-  </div>' . //endof ModalBody
+    . '</div>' . //endof ModalBody
      '
   <!-- Modal footer -->
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezár</button>
+    <div class="float-right">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">&nbspBezár&nbsp</button>
+    </div>
   </div>
   ';
 

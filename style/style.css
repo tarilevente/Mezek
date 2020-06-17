@@ -235,10 +235,10 @@ footer > .flex-container {
   padding: unset !important;
 }
 
-.multimedia-gallery-wrapper img:hover {
+/* .multimedia-gallery-wrapper img:hover { //ezt mellőzöm, fejlesztési lehetőség
   opacity: 60%;
   cursor: pointer;
-}
+} */
 
 .multimedia-gallery-wrapper img {
   z-index: 100;
