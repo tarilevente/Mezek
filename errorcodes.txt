@@ -18,12 +18,15 @@
 
 87420:  - 'Nincs ilyen kép-id a picZoomed.php-n  -php/picZoomed.php             setted
 87421:  - 'Mez nem található, a $res üres' -php/picZoomed.php                   setted
+87422:  - 'Kép nem található, a $res2 üres' -php/picZoomed.php                  setted
+87423:  - 'Csapat nem található, a $res2 üres' -php/picZoomed.php               setted
 
 
 
 
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
+//img optim: https://github.com/artisansweb/image-optimizer, resmush.it
 //megnézem: modal
 //csapatkereső: filter
 //lehet badge is a collapse-nel

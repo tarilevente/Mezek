@@ -112,11 +112,11 @@ $(document).ready(function () {
     });
   }); //endof print selected otherLiga
 
-  //this method will show the selected pic in bootstrap "modal"
+  //this method will show the selected pic in bootstrap "modal" //
   $(document).on("click", ".picToShow", function () {
     const picId = $(this).attr("data-picid");
-    console.log(picId + " az id");
     const err = document.getElementsByClassName("error")[0];
+    console.log(picId);
     $.ajax({
       url: "php/picZoomed.php",
       method: "POST",
@@ -124,10 +124,11 @@ $(document).ready(function () {
       data: { picId: picId },
       success: function (response) {
         $("#modalContent").html(response);
+        console.log("siker");
       },
       error: function (response) {
-        err.innerHTML = response.responseText;
-        console.log(response);
+        $("#modalContent").html(response.responseText);
+        console.log("nem siker");
       },
     });
   }); //end of show selected pic
