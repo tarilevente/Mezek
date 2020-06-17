@@ -34,7 +34,7 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
    if ($counter % 4 == 0) {
     //set the rows
     $html .= '</div>
-                          <div class="row">';
+                          <div class="row d-flex justify-content-around">';
    }
    //aktmez to a Mez object
    $aktMez = GetMezFromRow($con, $row);

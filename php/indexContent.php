@@ -31,13 +31,13 @@
     <div id="kedvencek"></div><br>
     <div class="bg-info" >
         <h2>A kedvenc mezeim</h2>
-                <div id="myCarousel" class="carousel slide mt-1" data-ride="carousel">
+                <div id="carouselIndex" class="carousel slide carousel-fade mt-1 indexCarausel" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                    <li data-target="#carouselIndex" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselIndex" data-slide-to="1"></li>
+                    <li data-target="#carouselIndex" data-slide-to="2"></li>
+                    <li data-target="#carouselIndex" data-slide-to="3"></li>
+                    <li data-target="#carouselIndex" data-slide-to="4"></li>
                 </ol>
 
                 <div class="carousel-inner text-center" role="listbox">
@@ -63,10 +63,10 @@
                     </div>
                 </div>
 
-                <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselIndex" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
-                <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                <a class="carousel-control-next" href="#carouselIndex" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
         </div>

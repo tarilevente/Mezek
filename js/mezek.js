@@ -115,8 +115,6 @@ $(document).ready(function () {
   //this method will show the selected pic in bootstrap "modal" //
   $(document).on("click", ".picToShow", function () {
     const picId = $(this).attr("data-picid");
-    const err = document.getElementsByClassName("error")[0];
-    console.log(picId);
     $.ajax({
       url: "php/picZoomed.php",
       method: "POST",
@@ -124,11 +122,15 @@ $(document).ready(function () {
       data: { picId: picId },
       success: function (response) {
         $("#modalContent").html(response);
-        console.log("siker");
+        // const imgFirst = document.getElementById("img-car-first");
+        // const arany = imgFirst.width / imgFirst.height;
+        // const wrapper = document.getElementById("");
+        // alert(imgFirst.width + " " + imgFirst.height + " " + arany);
+        // if (arany > 1) {
+        // }
       },
       error: function (response) {
         $("#modalContent").html(response.responseText);
-        console.log("nem siker");
       },
     });
   }); //end of show selected pic

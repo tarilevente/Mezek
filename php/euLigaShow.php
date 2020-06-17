@@ -26,14 +26,14 @@ if (isset($_POST['euId']) && !empty($_POST['euId'])) {
  $res = $con->query($sql);
  if ($res->num_rows > 0) {
   //result exists (Mez-s)
-  $html .= '<div class="container-fluid"><div class="row p-1">';
+  $html .= '<div><div class="row p-1">';
   $counter = 0;
   while ($row = $res->fetch_assoc()) {
    //Loop for the result, Mez by Mez
    if ($counter % 4 == 0) {
     //set the rows
     $html .= '</div>
-                         <div class="row">';
+                         <div class="row d-flex justify-content-around">';
    }
    //aktmez to a Mez object
    $aktMez = GetMezFromRow($con, $row);

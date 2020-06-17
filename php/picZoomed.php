@@ -39,7 +39,7 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
 
     $pic1 = $aktPic->getPath1() . $aktPic->getP1();
     $pic2 = null;
-    if (strpos("basicMez.jpg", $aktPic->getP1()) == 0) {
+    if ($aktPic->getP2() == "basicMez.jpg") {
      //the name of the pic is "basicMez.jpg"
      $pic2 = null;
     } else {
@@ -67,23 +67,69 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
         <div class="row min-height500">
             <div class="col-sm-2 multimedia-gallery-wrapper" style="border:1px solid black">
                 <div class="m-1">
-                    <img src="' . $pic1 . '" alt="mez_1" style="width: 100%;">
-                </div >';
+                    <img src="' . $pic1 . '" alt="mez_1" >
+                </div>';
     if (null !== $pic2) {
      $html .= '<div class="m-1">
-                    <img src="' . $pic2 . '" alt="mez_1" style="width: 100%;">
+                    <img src="' . $pic2 . '" alt="mez_2" >
                 </div>';
     }
-    if (null != $picWeared) {
+    if (null !== $picWeared) {
      $html .= '<div class="m-1">
-                    <img src="' . $picWeared . '" alt="mez_1" style="width: 100%;">
+                    <img src="' . $picWeared . '" alt="mez_weared" >
                 </div>';
     }
     $html .= '
             </div>
-            <div class="col-sm-10 image-gallery-wrapper" style="border:1px solid black">
-                <div class="image-display"></div>
-                <div class="image-display-controls"></div>
+            <div class="col-sm-10 image-gallery-wrapper text-center max-height500 min-height500" style="border:1px solid black">
+                <div class="image-display">
+
+                <!-- Carousel -->
+                <div id="carouselZoom" class="carousel slide carousel-fade" data-ride="carousel">
+
+                    <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#carouselZoom" data-slide-to="0" class="active"></li>';
+    if (null !== $pic2) {
+     $html .= '<li data-target="#carouselZoom" data-slide-to="1"></li>';
+    }
+    if (null !== $picWeared) {
+     $html .= '<li data-target="#carouselZoom" data-slide-to="2"></li>';
+    }
+    $html .= '
+                </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                                <img src="' . $pic1 . '" alt="mez_1" style="max-height:100px">
+                        </div>';
+    if (null !== $pic2) {
+     $html .= '
+                        <div class="carousel-item">
+                                <img src="' . $pic2 . '" alt="mez_2">
+                        </div>';
+    }
+    if (null !== $picWeared) {
+     $html .= '
+                        <div class="carousel-item">
+                                <img src="' . $picWeared . '" alt="mez_weared">
+                        </div>';
+    }
+    $html .= '  </div>'; //endof slideShow
+    if ($pic2 || $picWeared) {
+     $html .= '  <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#carouselZoom" data-slide="prev">
+                        <span class="carousel-control-prev-icon bg-info p-3"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselZoom" data-slide="next">
+                        <span class="carousel-control-next-icon bg-info p-3"></span>
+                    </a>';
+    }
+    $html .= '</div>' //endof Carousel
+
+    . '     </div>' //endof Image-display
+     . '    <div class="image-display-controls"></div>
             </div>
         </div>
     </div>

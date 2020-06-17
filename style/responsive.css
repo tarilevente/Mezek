@@ -21,5 +21,20 @@
     box-sizing: content-box;
   }
 }
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 400px) {
+  .multimedia-gallery-wrapper {
+    display: none;
+  }
+
+  .carousel-item > img {
+    max-width: 320px !important;
+  }
+
+  .image-gallery-wrapper {
+    max-width: 330px !important;
+  }
+
+  .media-center {
+    margin: auto !important;
+  }
 }

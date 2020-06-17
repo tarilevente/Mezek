@@ -198,17 +198,16 @@ footer > .flex-container {
 }
 
 .min-height500 {
-  min-height: 500px;
+  min-height: 500px !important;
+}
+
+.max-height500 {
+  max-height: 500px !important;
 }
 
 .toHover:hover {
   background-color: lawngreen;
 }
-/* 
-.card-footer.toHover:hover {
-  cursor: zoom-in;
-  font-variant: small-caps;
-} */
 
 .card {
   color: darkred;
@@ -234,4 +233,28 @@ footer > .flex-container {
 
 .no-padding.card-footer {
   padding: unset !important;
+}
+
+.multimedia-gallery-wrapper img:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.multimedia-gallery-wrapper img {
+  z-index: 100;
+  max-width: 100%;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(230, 230, 230, 0.9);
+}
+
+.indexCarausel {
+  max-height: 350px;
+  min-height: 350px;
+}
+
+.carousel-item > img {
+  max-height: 480px !important;
 }
