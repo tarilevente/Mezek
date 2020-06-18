@@ -7,9 +7,14 @@ require_once '../config/connect.php'; //database connect
 require_once '../config/functions.php'; //using methods
 require_once '../php/Mez.php'; //using Mez Class
 
+$response              = array();
+$response['html']      = "";
+$response['error']     = false;
+$response['errorCode'] = "";
+$response['errMsg']    = '';
 if (isset($_POST['nemzeti']) && 1 == $_POST['nemzeti']) {
 //post is arrived
- $html = '<div class="row">' //The row is for position with the Mez (nemzetiTeamsShow.php writes out)
+ $response['html'] = '<div class="row">' //The row is for position with the Mez (nemzetiTeamsShow.php writes out)
   . '<div class="col-lg-2">'; //Simple sidebar for nations where pics exist
  //query for select Categories, WHERE exists Any Mez
  $sql = "SELECT CategoryTable.idCategory, CategoryTable.CatName AS valogatott
@@ -32,7 +37,8 @@ if (isset($_POST['nemzeti']) && 1 == $_POST['nemzeti']) {
  if ($res) {
   //Category exists
   while ($row = mysqli_fetch_row($res)) {
-   $html .= '<div class="card">
+   $response['html'] .=
+    '       <div class="card">
                 <div class="card-header">
                   <a class="toHover card-link data-national" data-nationalID="' . $row[0] . '">
                     ' . $row[1] . '
@@ -41,18 +47,34 @@ if (isset($_POST['nemzeti']) && 1 == $_POST['nemzeti']) {
              </div>';
   }
 
-  $html .= ''
-  . '</div>' //endof col-lg-2
+  $response['html'] .=
+  '  </div>' //endof col-lg-2
    . '<div class="col-lg-10 min-height500 bg-picNemzeti2" id="nationalTeams"></div>'
   . '</div>' //endof row
   ; //for national teams. js ajax fills with data when it occurs
-  echo $html;
-
+  $response['error'] = false;
  } else {
-  $html .= 'Nincs adat feltöltve</div>'
-   . '<div class="col-lg-10 min-height500 bg-picNemzeti2" id="nationalTeams"></div>';
+  $response['error'] = true;
+  $response['errMsg'] .= '
+      <div class="row">'
+   . '   <div class="col-2">Nincs adat feltöltve, a tábla üres. </div>'
+   . '<div class="col-10 min-height500 bg-picNemzeti2" id="nationalTeams"></div>';
+  http_response_code(512);
+  $response['errorCode'] = 78694;
  }
 } else {
  //no post
- echo '<div class="p2"><h4 class="error text-danger">Hiba, error code = 78691</h4></div>'; //for error messages
+ $response['error'] = true;
+ $response['errMsg'] .= '
+    <div class="row">
+         <div class="col-2">
+            <h4 class="text-danger">Hiba, error code = 78691</h4>
+         </div>
+         <div class="col-10 min-height500 bg-picNemzeti2" id="nationalTeams"></div>
+    </div>'; //for error messages
+ http_response_code(512);
+ $response['errorCode'] = 78691;
 }
+
+//response
+echo json_encode($response, JSON_UNESCAPED_UNICODE);

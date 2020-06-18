@@ -75,7 +75,6 @@ function PrintModal()
       </div>
     </div>
   </div>
-
 </div>';
  return $html;
 }
@@ -126,7 +125,7 @@ function GetMezFromRow($con, $row)
  ;
  if (!$user) {
   // http_response_code(404); //ezmi??
-  // die('<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code: 56458</h4>');
+  // die('<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code:  89660</h4>');
  }
 
 //the type of the MEZ

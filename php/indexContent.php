@@ -147,14 +147,6 @@
             </div>
         </div><!--endof jumbotron -->
     </div><!--endof kapcsolat-->
-
-
 </div> <!--endof Maindiv-->
-
-
-
-
-
-
 
 <?php
