@@ -22,10 +22,6 @@
   }
 }
 @media screen and (max-width: 400px) {
-  .multimedia-gallery-wrapper {
-    display: none;
-  }
-
   .carousel-item > img {
     max-width: 320px !important;
   }
@@ -36,5 +32,30 @@
 
   .media-center {
     margin: auto !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .multimedia-gallery-wrapper {
+    display: none;
+  }
+
+  .min-height500 {
+    min-height: 350px !important;
+  }
+
+  .modal-dialog {
+    margin: unset;
+    margin: auto !important;
+  }
+
+  .modal {
+    width: 98% !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .toColumn1000 {
+    flex-direction: column;
   }
 }

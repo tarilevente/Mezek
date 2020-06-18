@@ -28,7 +28,8 @@ if (isset($_POST['nId']) && !empty($_POST['nId'])) {
  $res = $con->query($sql);
  if ($res->num_rows > 0) {
   //result exists (Mez-s)
-  $html .= '<div class="container-fluid"><div class="row p-1">';
+  $html .= '<div>
+                <div class="row p-1">';
   $counter = 0;
   while ($row = $res->fetch_assoc()) {
    //Loop for the result, Mez by Mez

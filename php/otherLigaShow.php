@@ -26,7 +26,7 @@ if (isset($_POST['otherId']) && !empty($_POST['otherId'])) {
  $res = $con->query($sql);
  if ($res->num_rows > 0) {
   //result exists (Mez-s)
-  $html .= '<div class="container-fluid">
+  $html .= '<div>
                 <div class="row p-1">';
   $counter = 0;
   while ($row = $res->fetch_assoc()) {

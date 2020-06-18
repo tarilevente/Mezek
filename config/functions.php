@@ -53,7 +53,6 @@ function GeneratePicCard(
       </div>'
  . '</div>' //endof row
   . '<img class="card-img-top" src="' . $aktPicPath1 . '' . $aktPicP1 . '" alt="Mez_KÉP" style="max-width:265px">'
- . ' <p class="card-text"><strong>Info</strong><br>' . $aktInfo . '</p>'
  . '</div>' //endof card-body
   . '<div class="card-footer text-center no-padding toHover picToShow" data-picid="' . $aktPicID . '">'
  . '   <button type="button" class="btn" data-toggle="modal" data-target="#myModal">

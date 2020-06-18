@@ -64,8 +64,8 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
   </div>' //endof modalHeader
      . '<!-- Modal body -->
      <div class="container">
-        <div class="row min-height500">
-            <div class="col-sm-2 multimedia-gallery-wrapper" style="border:1px solid black">
+        <div class="row min-height500 p-2">
+            <div class="col-sm-2 multimedia-gallery-wrapper" >
                 <div class="m-1">
                     <img src="' . $pic1 . '" alt="mez_1" >
                 </div>';
@@ -81,7 +81,7 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
     }
     $html .= '
             </div>
-            <div class="col-sm-10 image-gallery-wrapper text-center max-height500 min-height500" style="border:1px solid black">
+            <div class="col-sm-10 image-gallery-wrapper text-center max-height500 min-height500 p-2" >
                 <div class="image-display">
 
                 <!-- Carousel -->
@@ -102,7 +102,7 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
                     <!-- The slideshow -->
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                                <img src="' . $pic1 . '" alt="mez_1" style="max-height:100px">
+                                <img src="' . $pic1 . '" alt="mez_1">
                         </div>';
     if (null !== $pic2) {
      $html .= '
@@ -130,11 +130,11 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
      . '     </div>' //endof Image-display
      . '   </div>' //endof Image-GalleryWrapper
      . '   <div class="container">' //Info Starts here
-     . '        <div class="d-flex justify-content-around">
-                    <div class="p-2 text-muted"><strong class="text-info">Típus:</strong> ' . $aktMez->getType() . '</div>
-                    <div class="p-2 text-muted"><strong class="text-info">Év:</strong> ' . $aktMez->getYears() . '</div>
-                    <div class="p-2 text-muted"><strong class="text-info">Feltöltötte:</strong> ' . $aktMez->getUploaduser() . ', ' . $aktMez->getUploaddate() . '</div>
-                    <div class="p-2 text-muted"><strong class="text-info">Info:</strong> ' . $aktMez->getInfo() . ' </div>
+     . '        <div class="d-flex justify-content-around toColumn1000">
+                    <div class="p-2 text-muted "><strong class="text-info">Típus:</strong> ' . $aktMez->getType() . '</div>
+                    <div class="p-2 text-muted "><strong class="text-info">Év:</strong> ' . $aktMez->getYears() . '</div>
+                    <div class="p-2 text-muted "><strong class="text-info">Feltöltötte:</strong> ' . $aktMez->getUploaduser() . ', ' . $aktMez->getUploaddate() . '</div>
+                    <div class="p-2 text-muted "><strong class="text-info">Info:</strong> ' . $aktMez->getInfo() . ' </div>
                 </div>'
     . '    </div>' //endof Info
 

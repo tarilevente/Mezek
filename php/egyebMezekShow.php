@@ -26,7 +26,7 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
         ";
  $res = $con->query($sql);
  if ($res) {
-  $html .= '<div class="container-fluid">
+  $html .= '<div>
                 <div class="row p-1">';
   $counter = 0;
   while ($row = $res->fetch_assoc()) {
