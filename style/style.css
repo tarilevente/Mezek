@@ -260,3 +260,7 @@ footer > .flex-container {
 .carousel-item > img {
   max-height: 480px !important;
 }
+
+.form-group button {
+  margin-top: 0.5rem;
+}

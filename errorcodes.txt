@@ -34,5 +34,6 @@
 //aria-hiddenezés akadálymentesítés
 //kép kiválasztásánál rázoomol
 //megnézem-re hover: cursor:zoomin
+//im not a robot (recaptcha GOOGLE - need a domain)
 
 
