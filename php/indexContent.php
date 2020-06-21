@@ -125,6 +125,7 @@
                             <p><span class="fa fa-envelope fa-2x"></span>&nbsp&nbsp&nbsp myemail@something.com</p>
                         </div><!--endof myContact-->
                         <!--Message me-->
+<<<<<<< Updated upstream
                         <div class="col-sm-7 py-2">
                             <form method="" action="">
                                 <div class="row">
@@ -139,6 +140,34 @@
                                 <div class="row">
                                     <div class="col-sm-12 form-group">
                                          <button class="btn btn-secondary pull-right" type="submit">Küldés</button>
+=======
+                        <div class="col-xl-9 py-2">
+                            <form method="POST" action="#" id="emailForm">
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-6 form-group">
+                                        <label for="email">Email címed: </label>
+                                        <input class="form-control" id="name" name="name" placeholder="Vezetéknév Keresztnév" type="text" >
+                                    </div>
+                                    <div class="col-sm-6 col-lg-6 form-group">
+                                        <label for="email">Neved: </label>
+                                        <input class="form-control" id="email" name="email" placeholder="example@example.com" type="email">
+                                    </div>
+                                    </div>
+                                    <div class="row ">
+                                    <div class="col-sm-12 form-group">
+                                        <label for="email">Tárgy: </label>
+                                        <input class="form-control" id="subject" name="subject" placeholder=" " type="text">
+                                    </div>
+                                </div>
+                                    <label for="email">Üzenet: </label>
+                                    <textarea class="form-control" id="content" name="content" placeholder="Üzenj nekem!" rows="5"></textarea>
+                                <div class="row ">
+                                    <div class="col-6 form-group">
+                                         <button class="btn btn-secondary pull-left" type="button">Tartalom törlése</button>
+                                    </div>
+                                    <div class="col-6 form-group ">
+                                         <button class="btn btn-secondary pull-right" type="submit" name="submit">Üzenet küldése </button>
+>>>>>>> Stashed changes
                                     </div>
                                 </div>
                             </form><!--endof form-->
@@ -150,11 +179,3 @@
 
 
 </div> <!--endof Maindiv-->
-
-
-
-
-
-
-
-<?php

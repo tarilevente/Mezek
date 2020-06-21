@@ -134,4 +134,29 @@ $(document).ready(function () {
       },
     });
   }); //end of show selected pic
-});
+
+  //email function
+  $(document).on("submit", "#emailForm", function (e) {
+    e.preventDefault();
+    //js gets the data from platform //egyelőre nem.
+    //validation of data //egyelőre nem.
+
+    //send data to a php file to validation toward,
+    //and send an email
+    $.ajax({
+      url: "sendmail.php",
+      method: "POST",
+      dataType: "text",
+      data: { emailRequest: 1 },
+      success: function (res) {
+        console.log("(js ok) " + res);
+      },
+      error: function (res) {
+        console.log("(js failed) " + res);
+      },
+    });
+    //if occurs a problem, we'll have a message back, with error
+
+    //i'll use ajax
+  });
+}); //endof ready()

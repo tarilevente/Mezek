@@ -34,5 +34,10 @@
 //aria-hiddenezés akadálymentesítés
 //kép kiválasztásánál rázoomol
 //megnézem-re hover: cursor:zoomin
+<<<<<<< Updated upstream
+=======
+//im not a robot (recaptcha GOOGLE - need a domain)
+//lekérdezéseket átírni param-ra
+>>>>>>> Stashed changes
 
 
