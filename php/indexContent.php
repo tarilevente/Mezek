@@ -125,22 +125,6 @@
                             <p><span class="fa fa-envelope fa-2x"></span>&nbsp&nbsp&nbsp myemail@something.com</p>
                         </div><!--endof myContact-->
                         <!--Message me-->
-<<<<<<< Updated upstream
-                        <div class="col-sm-7 py-2">
-                            <form method="" action="">
-                                <div class="row">
-                                    <div class="col-sm-6 form-group">
-                                        <input class="form-control" id="name" name="name" placeholder="Név" type="text" required>
-                                    </div>
-                                    <div class="col-sm-6 form-group">
-                                        <input class="form-control" id="email" name="email" placeholder="Email" type="email"      required>
-                                    </div>
-                                </div>
-                                    <textarea class="form-control" id="comments" name="comments" placeholder="Üzenet" rows="5"></textarea><br>
-                                <div class="row">
-                                    <div class="col-sm-12 form-group">
-                                         <button class="btn btn-secondary pull-right" type="submit">Küldés</button>
-=======
                         <div class="col-xl-9 py-2">
                             <form method="POST" action="#" id="emailForm">
                                 <div class="row">
@@ -167,7 +151,6 @@
                                     </div>
                                     <div class="col-6 form-group ">
                                          <button class="btn btn-secondary pull-right" type="submit" name="submit">Üzenet küldése </button>
->>>>>>> Stashed changes
                                     </div>
                                 </div>
                             </form><!--endof form-->
@@ -176,6 +159,6 @@
             </div>
         </div><!--endof jumbotron -->
     </div><!--endof kapcsolat-->
-
-
 </div> <!--endof Maindiv-->
+
+<?php

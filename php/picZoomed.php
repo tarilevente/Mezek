@@ -7,6 +7,13 @@ require_once '../config/functions.php'; //using methods
 require_once '../php/Mez.php'; //using Mez Class
 require_once '../php/Pic.php'; //using Pic Class
 
+//Initialize the response
+$response              = array();
+$response['html']      = '';
+$response['error']     = false;
+$response['errorCode'] = '';
+$response['errMsg']    = '';
+
 if (isset($_POST['picId']) && !empty($_POST['picId'])) {
  $picId = $_POST['picId'];
 
@@ -52,7 +59,7 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
     } else {
      $picWeared = $aktPic->getPathWeared() . $aktPic->getWeared();
     }
-    $html = '
+    $response['html'] = '
   <!-- Modal Header -->
   <div class="modal-header">
     <div class="container modal-title">
@@ -70,16 +77,16 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
                     <img src="' . $pic1 . '" alt="mez_1" >
                 </div>';
     if (null !== $pic2) {
-     $html .= '<div class="m-1">
+     $response['html'] .= '<div class="m-1">
                     <img src="' . $pic2 . '" alt="mez_2" >
                 </div>';
     }
     if (null !== $picWeared) {
-     $html .= '<div class="m-1">
+     $response['html'] .= '<div class="m-1">
                     <img src="' . $picWeared . '" alt="mez_weared" >
                 </div>';
     }
-    $html .= '
+    $response['html'] .= '
             </div>
             <div class="col-sm-10 image-gallery-wrapper text-center max-height500 min-height500 p-2" >
                 <div class="image-display">
@@ -91,12 +98,12 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
                 <ul class="carousel-indicators">
                     <li data-target="#carouselZoom" data-slide-to="0" class="active"></li>';
     if (null !== $pic2) {
-     $html .= '<li data-target="#carouselZoom" data-slide-to="1"></li>';
+     $response['html'] .= '<li data-target="#carouselZoom" data-slide-to="1"></li>';
     }
     if (null !== $picWeared) {
-     $html .= '<li data-target="#carouselZoom" data-slide-to="2"></li>';
+     $response['html'] .= '<li data-target="#carouselZoom" data-slide-to="2"></li>';
     }
-    $html .= '
+    $response['html'] .= '
                 </ul>
 
                     <!-- The slideshow -->
@@ -105,20 +112,20 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
                                 <img src="' . $pic1 . '" alt="mez_1">
                         </div>';
     if (null !== $pic2) {
-     $html .= '
+     $response['html'] .= '
                         <div class="carousel-item">
                                 <img src="' . $pic2 . '" alt="mez_2">
                         </div>';
     }
     if (null !== $picWeared) {
-     $html .= '
+     $response['html'] .= '
                         <div class="carousel-item">
                                 <img src="' . $picWeared . '" alt="mez_weared">
                         </div>';
     }
-    $html .= '  </div>'; //endof slideShow
+    $response['html'] .= '  </div>'; //endof slideShow
     if ($pic2 || $picWeared) {
-     $html .= '  <!-- Left and right controls -->
+     $response['html'] .= '  <!-- Left and right controls -->
                     <a class="carousel-control-prev" href="#carouselZoom" data-slide="prev">
                         <span class="carousel-control-prev-icon bg-info p-3"></span>
                     </a>
@@ -126,7 +133,7 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
                         <span class="carousel-control-next-icon bg-info p-3"></span>
                     </a>';
     }
-    $html .= '</div>' //endof Carousel
+    $response['html'] .= '</div>' //endof Carousel
      . '     </div>' //endof Image-display
      . '   </div>' //endof Image-GalleryWrapper
      . '   <div class="container">' //Info Starts here
@@ -148,28 +155,34 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
     <div class="float-right">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">&nbspBezár&nbsp</button>
     </div>
-  </div>
-  ';
-
-    echo $html;
-
+  </div>';
    } else {
     //Missing $res3 -> NO Team FOUND
-    http_response_code(307);
-    echo printModalError("Csapat nem található! " . $aktMez->getTeam(), "87423");
+    http_response_code(513);
+    $response['error'] = true;
+    $response['errMsg'] .= PrintModalError('Kép nem található', 87423);
+    $response['errorCode'] = 87423;
    }
   } else {
 //Missing $res2 -> NO PIC FOUND
-   http_response_code(306);
-   echo printModalError("Kép nem található! " . $aktPic->getidPic(), "87422");
+   http_response_code(513);
+   $response['error'] = true;
+   $response['errMsg'] .= PrintModalError('Csapat nem található', 87422);
+   $response['errorCode'] = 87422;
   }
  } else {
   //Missing $res -> NO MEZ FOUND
-  http_response_code(305);
-  echo printModalError("Mez nem található! " . $res->num_rows, "87421");
+  http_response_code(513);
+  $response['error'] = true;
+  $response['errMsg'] .= PrintModalError('Mez nem található', 87421);
+  $response['errorCode'] = 87421;
  }
 } else {
  //$_post['picId'] is Missing
- http_response_code(305);
- echo printModalError('Ismeretlen hiba! ' . $picId, "87420");
+ http_response_code(513);
+ $response['error'] = true;
+ $response['errMsg'] .= PrintModalError('Hiba a megjelenítésnél!', 87420);
+ $response['errorCode'] = 87420;
 }
+
+echo json_encode($response, JSON_UNESCAPED_UNICODE);

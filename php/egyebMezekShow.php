@@ -7,10 +7,15 @@ require_once '../config/functions.php'; //using methods
 require_once '../php/Mez.php'; //using Mez Class
 require_once '../php/Pic.php'; //using Pic Class
 
+//Initialize the response
+$response              = array();
+$response['html']      = '';
+$response['error']     = false;
+$response['errorCode'] = '';
+$response['errMsg']    = '';
+
 if (isset($_POST['eId']) && !empty($_POST['eId'])) {
  $eid = $_POST['eId']; //id of team (in egyebMezek League)
- //intitialize the response
- $html = "";
  //query
  $sql = "SELECT meztable.idMez,
                 meztable.idPic,
@@ -26,14 +31,15 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
         ";
  $res = $con->query($sql);
  if ($res) {
-  $html .= '<div>
-                <div class="row p-1">';
+  $response['html'] .=
+   '<div>
+        <div class="row p-1">';
   $counter = 0;
   while ($row = $res->fetch_assoc()) {
    //Loop for the result, Mez by Mez
    if ($counter % 4 == 0) {
     //set the rows
-    $html .= '</div>
+    $response['html'] .= '</div>
                           <div class="row d-flex justify-content-around">';
    }
    //aktmez to a Mez object
@@ -52,7 +58,8 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
    ;
 
 //print out the Pic in a bootstrap "card" element
-   $html .= GeneratePicCard(
+   $response['html'] .=
+   GeneratePicCard(
     $teamName,
     $aktMez->getYears(),
     $aktMez->getType(),
@@ -63,15 +70,29 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
    );
    $counter++;
   }
-  $html .= '</div>' //endof row
-   . '</div>'; //endof container
-  $html .= PrintModal();
-  echo $html;
+  $response['html'] .=
+  '     </div>' //endof row
+   . '</div>'; //endof wrapper
+  $response['html'] .= PrintModal();
+
  } else {
   //no result - only bg appears
+  http_response_code(513);
+  $response['error'] = true;
+  $response['errMsg'] .=
+   '<h4 class="bg-warning text-danger m-1 p-5 text-center">
+      Nincs megjelenítendő adat.
+   </h4>';
+  $response['errorCode'] = 56457;
  }
 } else {
- http_response_code(404);
- echo '<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code: 56457</h4>';
- die();
+ http_response_code(513);
+ $response['error'] = true;
+ $response['errMsg'] .=
+  '<h4 class="bg-danger text-light p-5 text-center">
+      Hiba a megjelenítésnél! error code: 56457
+   </h4>';
+ $response['errorCode'] = 56457;
 }
+
+echo json_encode($response, JSON_UNESCAPED_UNICODE);

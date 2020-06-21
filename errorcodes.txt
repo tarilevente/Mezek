@@ -1,25 +1,29 @@
 //this document is for find the error messages out
 
-78691:  - 'Nincs post a nemzetiDiv.php-ra'       - php/nemzetiDiv.php           setted
-78692:  - 'Nincs post a nemzetiTeamsShow.php-ra' - php/nemzetiTeamsShow.php     setted
-78693:  - 'Nincs user a MEZhez a nemzetiTeamsShow.php-n' - php/nemzetiTeamsShow.php setted
+78691:  - 'Nincs post a nemzetiDiv.php-ra'       - php/nemzetiDiv.php                   setted
+78694:  - 'Az adatbázis üres, nincs megjelenítendő adat' - php/nemzetiDiv.php           setted
+78692:  - 'Nincs post a nemzetiTeamsShow.php-ra' - php/nemzetiTeamsShow.php             setted
 
-56456:  - 'Nincs post az egyebMezekDiv.php-ra'   - php/egyebMezekDiv.php        setted
-56457:  - 'Nincs post az egyebMezekShow.php-ra   - php/egyebMezekShow.php       setted
-56458:  - 'Nincs user a MEZhez a egyebMezekShow.php-n' - php/egyebMezekShow.php setted
+56456:  - 'Nincs post az egyebMezekDiv.php-ra'   - php/egyebMezekDiv.php                setted
+56459:  - 'Az adatbázis üres, nincs megjelenítendő adat' - php/egyebMezekDiv.php        setted
+56457:  - 'Nincs post az egyebMezekShow.php-ra   - php/egyebMezekShow.php               setted
 
-26481:  - 'Nincs post az euLigaDiv.php-ra'   - php/euLigaDiv.php                setted
-26482:  - 'Nincs post az euLigaShow.php-ra'  - php/euLigaShow.php               setted
-26483:  - 'Nincs user a MEZhez az euLigaDiv.php-n  -php/euLigaShow.php          setted
+89660:  - 'Nincs user a MEZhez a egyebMezekShow.php-n' - php/functions.php         not setted
 
-12674:  - 'Nincs post az otherLigaDiv.php-ra'  - php/otherLigaDiv.php           setted
-12675:  - 'Nincs post az otherLigaShow.php-ra'  - php/otherLigaShow.php         setted
-12676:  - 'Nincs user a MEZhez az otherLigaDiv.php-n  -php/otherLigaShow.php    setted
+26481:  - 'Nincs post az euLigaDiv.php-ra'   - php/euLigaDiv.php                        setted
+26484:  - 'Nincs megjelenítendő adat az adatbázisban.'   - php/euLigaDiv.php            setted
+26482:  - 'Nincs post az euLigaShow.php-ra'  - php/euLigaShow.php                       setted
+26483:  - 'Nincs pic a csapathoz az euLigaDiv.php-n  -php/euLigaShow.php                setted
 
-87420:  - 'Nincs ilyen kép-id a picZoomed.php-n  -php/picZoomed.php             setted
-87421:  - 'Mez nem található, a $res üres' -php/picZoomed.php                   setted
-87422:  - 'Kép nem található, a $res2 üres' -php/picZoomed.php                  setted
-87423:  - 'Csapat nem található, a $res2 üres' -php/picZoomed.php               setted
+12674:  - 'Nincs post az otherLigaDiv.php-ra'  - php/otherLigaDiv.php                   setted
+12677:  - 'Nincs megjelenítendő adat az adatbázisban.'   - php/otherLigaDiv.php         setted
+12675:  - 'Nincs post az otherLigaShow.php-ra'  - php/otherLigaShow.php                 setted
+12676:  - 'Nincs pic a csapathoz otherLigaDiv.php-n  -php/otherLigaShow.php             setted
+
+87420:  - 'Nincs ilyen kép-id a picZoomed.php-n  -php/picZoomed.php                     setted
+87421:  - 'Mez nem található, a $res üres' -php/picZoomed.php                           setted
+87422:  - 'Csapat nem található, a $res2 üres' -php/picZoomed.php                          setted
+87423:  - 'Kép nem található, a $res2 üres' -php/picZoomed.php                       setted
 
 
 
@@ -34,6 +38,7 @@
 //aria-hiddenezés akadálymentesítés
 //kép kiválasztásánál rázoomol
 //megnézem-re hover: cursor:zoomin
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 //im not a robot (recaptcha GOOGLE - need a domain)
@@ -41,3 +46,24 @@
 >>>>>>> Stashed changes
 
 
+=======
+//loading counter az index.php-n
+//euligashow.php-nál az error valamiért hibát észlel, nem működik, pedig ua., mint a többi
+/*
+Felhasznált technológiák
+php
+mysql
+JS
+JQuery
+Ajax
+JSON
+Html
+css
+Bootstrap 4
+hibakezelés hibakód kiírásával
+responsive design
+
+
+
+*/
+>>>>>>> json
