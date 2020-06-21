@@ -228,39 +228,116 @@ $(document).ready(function () {
     });
   }); //end of show selected pic
 
+  //email validation method
+  function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  function makeid(length) {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+  const err = document.getElementsByClassName("error")[0];
+  const succ = document.getElementsByClassName("success")[0];
+
+  err.innerHTML = "";
+  succ.innerHTML = "";
+  err.style.display = "none";
+  succ.style.display = "none";
   //email function
   $(document).on("submit", "#emailForm", function (e) {
     e.preventDefault();
     //js gets the data from platform //egyelőre nem.
+    const fromName = document.getElementById("name").value;
+    const fromEmail = document.getElementById("email").value;
+    const subject = document.getElementById("subject").value;
+    const content = document.getElementById("content").value;
+
+    var errMsg = "";
+    var succMsg = "";
+
+    var mehet = true;
+    //validation of data
+    if (fromName.length < 3) {
+      errMsg += "Név: minimum 3 karakter! <br>";
+      mehet = false;
+    }
+    if (subject.length < 3) {
+      errMsg += "Tárgy: minimum 3 karakter! <br>";
+      mehet = false;
+    }
+    if (content.length < 5) {
+      errMsg += "Üzenet: minimum 5 karakter! <br>";
+      mehet = false;
+    }
+    if (!validateEmail(fromEmail)) {
+      errMsg += "Az email cím nem megfelelő formátumú! ";
+      mehet = false;
+    }
+
+    //send data to a php file to validation toward,
+    //and send an email
+    if (mehet) {
+      $.ajax({
+        url: "sendmail.php",
+        method: "POST",
+        dataType: "text",
+        data: {
+          fromName: fromName,
+          fromEmail: fromEmail,
+          subject: subject,
+          content: content,
+        },
+        success: function (res) {
+          console.log("js success");
+          const resJSON = JSON.parse(res);
+          console.log(resJSON.html);
+          err.style.display = "none";
+          err.innerHTML = "";
+          succ.innerHTML = "Az email-t sikeresen elküldtem! :)";
+          succ.style.display = "block";
+        },
+        error: function (res) {
+          console.log("errorág " + res.responseText);
+          const resJSON = JSON.parse(res.responseText);
+          succ.style.display = "none";
+          succ.innerHTML = "";
+          //for developers
+          console.log("(Error, no post, code is: " + resJSON.errorCode + " )");
+          //for users
+          err.innerHTML = resJSON.errorMsg;
+          err.style.display = "block";
+        },
+      });
+    } else {
+      //if occurs a problem, we'll have a message back, with error
+      err.style.display = "block";
+      err.innerHTML = errMsg;
+    }
+  });
+
+  //Delete the content of the email
+  $(document).on("click", "#tartalomTorlese", function () {
+    err.innerHTML = "";
+    succ.innerHTML = "";
+    err.style.display = "none";
+    succ.style.display = "none";
+
     const fromName = document.getElementById("name");
     const fromEmail = document.getElementById("email");
     const subject = document.getElementById("subject");
     const content = document.getElementById("content");
-
-    console.log(fromName, fromEmail, subject, content);
-    //validation of data //egyelőre nem.
-
-    //send data to a php file to validation toward,
-    //and send an email
-    $.ajax({
-      url: "sendmail.php",
-      method: "POST",
-      dataType: "JSON",
-      data: {
-        fromName: fromName,
-        fromEmail: fromEmail,
-        subject: subject,
-        content: content,
-      },
-      success: function (res) {
-        console.log("(js success ág)"+);
-      },
-      error: function (res) {
-        console.log("(js failed) " + res);
-      },
-    });
-    //if occurs a problem, we'll have a message back, with error
-
-    //i'll use ajax
-  });
+    fromName.value = "";
+    fromEmail.value = "";
+    subject.value = "";
+    content.value = "";
+  }); //endof deletin the content of the email form
 }); //endof ready()

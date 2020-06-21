@@ -22,10 +22,13 @@
 
 87420:  - 'Nincs ilyen kép-id a picZoomed.php-n  -php/picZoomed.php                     setted
 87421:  - 'Mez nem található, a $res üres' -php/picZoomed.php                           setted
-87422:  - 'Csapat nem található, a $res2 üres' -php/picZoomed.php                          setted
-87423:  - 'Kép nem található, a $res2 üres' -php/picZoomed.php                       setted
+87422:  - 'Csapat nem található, a $res2 üres' -php/picZoomed.php                       setted
+87423:  - 'Kép nem található, a $res2 üres' -php/picZoomed.php                          setted
 
-
+65520:  - 'Email-t nem lehet elküldeni, nincs post. ' - sendmail.php                    setted
+65521:  - 'felhasználónév túl rövid. ' - sendmail.php                                   setted 
+65522:  - 'Az email cím helytelen formátumú . ' - sendmail.php                          setted 
+65523:  - 'A tárgy mező túl rövid . ' - sendmail.php                                    setted 
 
 
 
@@ -45,6 +48,7 @@
 //lekérdezéseket átírni param-ra
 >>>>>>> Stashed changes
 
+//átellenőrizni a működést, vannak bajok. pl megnézem: basicKep.jpg, responsive emailform
 
 =======
 //loading counter az index.php-n

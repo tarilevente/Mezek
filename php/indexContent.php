@@ -129,11 +129,11 @@
                             <form method="POST" action="#" id="emailForm">
                                 <div class="row">
                                     <div class="col-sm-6 col-lg-6 form-group">
-                                        <label for="email">Email címed: </label>
-                                        <input class="form-control" id="name" name="name" placeholder="Vezetéknév Keresztnév" type="text" >
+                                        <label for="email">Neved: </label>
+                                        <input class="form-control" id="name" name="name" placeholder="Vezetéknév Keresztnév" type="text">
                                     </div>
                                     <div class="col-sm-6 col-lg-6 form-group">
-                                        <label for="email">Neved: </label>
+                                        <label for="email">Email címed: </label>
                                         <input class="form-control" id="email" name="email" placeholder="example@example.com" type="email">
                                     </div>
                                     </div>
@@ -146,15 +146,17 @@
                                     <label for="email">Üzenet: </label>
                                     <textarea class="form-control" id="content" name="content" placeholder="Üzenj nekem!" rows="5"></textarea>
                                 <div class="row ">
-                                    <div class="col-6 form-group">
-                                         <button class="btn btn-secondary pull-left" type="button">Tartalom törlése</button>
+                                    <div class="col-4 form-group">
+                                         <button class="btn btn-secondary pull-left" id="tartalomTorlese" type="button">Tartalom törlése</button>
                                     </div>
-                                    <div class="col-6 form-group ">
+                                    <div class="col-4 form-group ">
                                          <button class="btn btn-secondary pull-right" type="submit" name="submit">Üzenet küldése </button>
                                     </div>
                                 </div>
+                                <div class="error bg-danger p-2 text-light"></div>
+                                <div class="success bg-success p-2 text-light "></div>
                             </form><!--endof form-->
-                        </div><!--endof sendMe-->
+                        </><!--endof sendMe-->
                     </div><!--endof row-->
             </div>
         </div><!--endof jumbotron -->
