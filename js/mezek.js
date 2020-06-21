@@ -297,7 +297,7 @@ $(document).ready(function () {
           content: content,
         },
         success: function (res) {
-          console.log("js success");
+          console.log("js success" + res);
           const resJSON = JSON.parse(res);
           console.log(resJSON.html);
           err.style.display = "none";
@@ -339,5 +339,5 @@ $(document).ready(function () {
     fromEmail.value = "";
     subject.value = "";
     content.value = "";
-  }); //endof deletin the content of the email form
+  }); //endof deleting the content of the email form
 }); //endof ready()
