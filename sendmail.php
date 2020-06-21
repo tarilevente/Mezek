@@ -3,21 +3,18 @@
 // require 'vendor/autoload.php';
 require 'public/vendors/php/sendgrid/sendgrid-php.php';
 require 'config/functions.php';
+require 'php/apikey.php';
 
 class SendEmail
 {
  public static function SendMail($fromName, $fromEmail, $subject, $content)
  {
-  $keyFreemail     = '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';
-  $keyGmail        = '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';
-  $Mezek_Template2 = 'd-083c5482339b401f8c5392dc8ca2fe42';
 
   $email = new SendGrid\Mail\Mail();
-  $email->setFrom("tarilevente599@freemail.hu", "Mezes oldal");
-  $email->setSubject("testSubject");
+  $email->setFrom("tarilevente599@citromail.hu", "Mezes oldal");
+  $email->setSubject($subject);
   $email->addTo("taril88@gmail.com", "Kaiser Rezső"); //kaiserr79@gmail.com
-  $email->addContent("text/plain", "test content"); //or text/html
-  $email->setTemplateId($Mezek_Template2);
+  $email->setTemplateId(getTemplateID());
   $email->addDynamicTemplateData('fromName', $fromName);
   $email->addDynamicTemplateData('fromEmail', $fromEmail);
   $email->addDynamicTemplateData('subject', $subject);
@@ -25,7 +22,7 @@ class SendEmail
   $email->addContent(
    "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
   );
-  $sendgrid = new SendGrid($keyGmail);
+  $sendgrid = new SendGrid(getApikey());
 
   try {
    $response = $sendgrid->send($email);
