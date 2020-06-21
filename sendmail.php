@@ -9,18 +9,25 @@ class SendEmail
 {
  public static function SendMail($fromName, $fromEmail, $subject, $content)
  {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90174275bccca1de6d599af1eef761b15517366e
   $email = new SendGrid\Mail\Mail();
   $email->setFrom("tarilevente599@citromail.hu", "Mezes oldal");
   $email->setSubject($subject);
   $email->addTo("taril88@gmail.com", "Kaiser Rezső"); //kaiserr79@gmail.com
+<<<<<<< HEAD
+=======
+  $email->addContent("text/plain", "test content"); //or text/html
+>>>>>>> 90174275bccca1de6d599af1eef761b15517366e
   $email->setTemplateId(getTemplateID());
   $email->addDynamicTemplateData('fromName', $fromName);
   $email->addDynamicTemplateData('fromEmail', $fromEmail);
   $email->addDynamicTemplateData('subject', $subject);
   $email->addDynamicTemplateData('content', $content);
   $email->addContent(
-   "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
+   "text/html", "content"
   );
   $sendgrid = new SendGrid(getApikey());
 
