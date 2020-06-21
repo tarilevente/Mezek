@@ -195,3 +195,21 @@ function GetPicFromRow($con, $aktMez)
  }
  return $aktPic;
 }
+
+function testInput($data)
+{
+ $data = trim($data);
+ $data = stripslashes($data);
+ $data = htmlspecialchars($data);
+ return $data;
+}
+//validation of email address
+function emailIsValid($data)
+{
+ $email = testInput($data);
+ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  return false;
+ } else {
+  return true;
+ }
+}
