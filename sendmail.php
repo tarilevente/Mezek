@@ -9,9 +9,6 @@ class SendEmail
 {
  public static function SendMail($fromName, $fromEmail, $subject, $content)
  {
-
-  $keyGmail = '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';
-
   $email = new SendGrid\Mail\Mail();
   $email->setFrom("tarilevente599@freemail.hu", "Mezes oldal");
   $email->setSubject("testSubject");
@@ -25,7 +22,7 @@ class SendEmail
   $email->addContent(
    "text/html", "content"
   );
-  $sendgrid = new SendGrid($keyGmail);
+  $sendgrid = new SendGrid(getApikey());
 
   try {
    $response = $sendgrid->send($email);
