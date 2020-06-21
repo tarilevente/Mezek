@@ -232,6 +232,12 @@ $(document).ready(function () {
   $(document).on("submit", "#emailForm", function (e) {
     e.preventDefault();
     //js gets the data from platform //egyelőre nem.
+    const fromName = document.getElementById("name");
+    const fromEmail = document.getElementById("email");
+    const subject = document.getElementById("subject");
+    const content = document.getElementById("content");
+
+    console.log(fromName, fromEmail, subject, content);
     //validation of data //egyelőre nem.
 
     //send data to a php file to validation toward,
@@ -239,10 +245,15 @@ $(document).ready(function () {
     $.ajax({
       url: "sendmail.php",
       method: "POST",
-      dataType: "text",
-      data: { emailRequest: 1 },
+      dataType: "JSON",
+      data: {
+        fromName: fromName,
+        fromEmail: fromEmail,
+        subject: subject,
+        content: content,
+      },
       success: function (res) {
-        console.log("(js ok) " + res);
+        console.log("(js success ág)"+);
       },
       error: function (res) {
         console.log("(js failed) " + res);
