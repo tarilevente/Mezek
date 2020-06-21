@@ -256,10 +256,10 @@ $(document).ready(function () {
   $(document).on("submit", "#emailForm", function (e) {
     e.preventDefault();
     //js gets the data from platform //egyelőre nem.
-    const fromName = document.getElementById("name").value;
-    const fromEmail = document.getElementById("email").value;
-    const subject = document.getElementById("subject").value;
-    const content = document.getElementById("content").value;
+    const fromName = document.getElementById("name").value.trim();
+    const fromEmail = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const content = document.getElementById("content").value.trim();
 
     var errMsg = "";
     var succMsg = "";
