@@ -303,6 +303,7 @@ $(document).ready(function () {
           err.style.display = "none";
           err.innerHTML = "";
           succ.innerHTML = "Az email-t sikeresen elküldtem! :)";
+          succ.style.backgroundColor = "green";
           succ.style.display = "block";
         },
         error: function (res) {
@@ -317,11 +318,13 @@ $(document).ready(function () {
           );
           //for users
           err.innerHTML = resJSON.errorMsg;
+          err.style.backgroundColor = "red";
           err.style.display = "block";
         },
       });
     } else {
       //if occurs a problem, we'll have a message back, with error
+      err.style.backgroundColor = "red";
       err.style.display = "block";
       err.innerHTML = errMsg;
     }

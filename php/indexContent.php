@@ -146,15 +146,15 @@
                                     <label for="email">Üzenet: </label>
                                     <textarea class="form-control" id="content" name="content" placeholder="Üzenj nekem!" rows="5"></textarea>
                                 <div class="row ">
-                                    <div class="col-4 form-group">
+                                    <div class="col-6 form-group">
                                          <button class="btn btn-secondary pull-left" id="tartalomTorlese" type="button">Tartalom törlése</button>
                                     </div>
-                                    <div class="col-4 form-group ">
+                                    <div class="col-6 form-group ">
                                          <button class="btn btn-secondary pull-right" type="submit" name="submit">Üzenet küldése </button>
                                     </div>
                                 </div>
-                                <div class="error bg-danger p-2 text-light"></div>
-                                <div class="success bg-success p-2 text-light "></div>
+                                <div class="error p-2 text-light"></div>
+                                <div class="success p-2 text-light "></div>
                             </form><!--endof form-->
                         </><!--endof sendMe-->
                     </div><!--endof row-->

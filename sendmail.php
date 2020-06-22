@@ -1,7 +1,7 @@
 
 <?php
-// require 'vendor/autoload.php';
-// require 'public/vendors/php/sendgrid/sendgrid-php.php';
+
+require 'public/vendors/php/sendgrid/sendgrid-php.php';
 require 'config/functions.php';
 require 'php/apikey.php';
 

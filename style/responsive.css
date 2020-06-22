@@ -35,7 +35,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
   .multimedia-gallery-wrapper {
     display: none;
   }
