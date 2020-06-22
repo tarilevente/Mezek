@@ -285,3 +285,18 @@ footer > .flex-container {
 #login-form {
   display: none;
 }
+
+.toMenuButton {
+  width: 60px;
+  height: 60px;
+  border: 0;
+}
+
+.fixedDIV {
+  z-index: 500;
+  position: fixed;
+  left: 85%;
+  top: 90%;
+  opacity: 0.9;
+  cursor: url;
+}

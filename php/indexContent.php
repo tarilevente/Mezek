@@ -1,3 +1,4 @@
+<div id="navUP"></div>
 <div class="height650" id="bg-picIndex1" >
     <!-- //bg -->
 </div>
@@ -23,7 +24,7 @@
                                 <!-- LÁJKOLJ- adatbázisból kiolvassa, lájkszámláló -->
         </div>
         <div class="col-3">
-            <img class="img img-rounded" src="public/resources/pics/profile_pics/basic.jpg" alt="IT'S ME">
+            <img class="img img-rounded" src="public/resources/pics/profile_pics/basic.jpg" alt="IT'S ME" id="itsme">
         </div>
     </div><!--endof #honlapCelja-->
 

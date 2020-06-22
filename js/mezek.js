@@ -350,8 +350,29 @@ $(document).ready(function () {
     content.value = "";
   }); //endof deleting the content of the email form
 
-  //login-form appears
+  var loginCheck = 0;
+  //login-form appears, if logincheck is ok
   $(document).on("click", "#login", function () {
-    $("#login-form").fadeToggle(3000);
+    if (loginCheck == 1) {
+      $("#login-form").fadeToggle(3000);
+    }
+  });
+  //logincheck=
+  $(document).on("click", "#itsme", function () {
+    loginCheck = 1;
+  });
+
+  //if you scroll down, back to navbar icon shows, navigate to the top
+  $(window).scroll(function () {
+    console.log(loginCheck);
+    var scrollVal = $(window).scrollTop();
+    if (scrollVal >= 200) {
+      // console.log("show");
+      $("#buttonShowHide").fadeIn();
+    }
+    if (scrollVal < 80) {
+      $("#buttonShowHide").fadeOut();
+      // console.log("hide");
+    }
   });
 }); //endof ready()
