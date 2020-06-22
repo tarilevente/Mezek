@@ -146,10 +146,10 @@
                                     <label for="email">Üzenet: </label>
                                     <textarea class="form-control" id="content" name="content" placeholder="Üzenj nekem!" rows="5"></textarea>
                                 <div class="row ">
-                                    <div class="col-6 form-group">
+                                    <div class="col form-group">
                                          <button class="btn btn-secondary pull-left" id="tartalomTorlese" type="button">Tartalom törlése</button>
                                     </div>
-                                    <div class="col-6 form-group ">
+                                    <div class="col form-group ">
                                          <button class="btn btn-secondary pull-right" type="submit" name="submit">Üzenet küldése </button>
                                     </div>
                                 </div>

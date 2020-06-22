@@ -248,10 +248,13 @@ $(document).ready(function () {
   const err = document.getElementsByClassName("error")[0];
   const succ = document.getElementsByClassName("success")[0];
 
-  err.innerHTML = "";
-  succ.innerHTML = "";
-  err.style.display = "none";
-  succ.style.display = "none";
+  if (err || succ) {
+    err.innerHTML = "";
+    succ.innerHTML = "";
+    err.style.display = "none";
+    succ.style.display = "none";
+  }
+
   //email function
   $(document).on("submit", "#emailForm", function (e) {
     e.preventDefault();
@@ -297,7 +300,7 @@ $(document).ready(function () {
           content: content,
         },
         success: function (res) {
-          console.log("js success " + res);
+          // console.log("js success " + res);
           const resJSON = JSON.parse(res);
           console.log(resJSON.html);
           err.style.display = "none";
