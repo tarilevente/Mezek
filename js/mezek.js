@@ -297,11 +297,7 @@ $(document).ready(function () {
           content: content,
         },
         success: function (res) {
-<<<<<<< HEAD
           console.log("js success " + res);
-=======
-          console.log("js success" + res);
->>>>>>> 90174275bccca1de6d599af1eef761b15517366e
           const resJSON = JSON.parse(res);
           console.log(resJSON.html);
           err.style.display = "none";
