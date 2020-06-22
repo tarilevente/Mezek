@@ -119,7 +119,7 @@
             <div class="">
                     <div class="row">
                         <!--myContact-->
-                        <div class="col-sm-5 py-2">
+                        <div class="col-xl-3 py-2">
                             <p>Add meg az adataidat, hogy tudjak válaszolni. </p>
                             <p><span class="fa fa-car fa-2x"></span>&nbsp&nbsp&nbsp Szeged, Magyarország</p>
                             <p><span class="fa fa-envelope fa-2x"></span>&nbsp&nbsp&nbsp myemail@something.com</p>

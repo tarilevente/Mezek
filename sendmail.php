@@ -1,7 +1,7 @@
 
 <?php
 // require 'vendor/autoload.php';
-require 'public/vendors/php/sendgrid/sendgrid-php.php';
+// require 'public/vendors/php/sendgrid/sendgrid-php.php';
 require 'config/functions.php';
 require 'php/apikey.php';
 
@@ -19,7 +19,7 @@ class SendEmail
   $email->addDynamicTemplateData('subject', $subject);
   $email->addDynamicTemplateData('content', $content);
   $email->addContent(
-   "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
+   "text/html", "content"
   );
   $sendgrid = new SendGrid(getApikey());
 

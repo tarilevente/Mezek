@@ -43,11 +43,16 @@
 //kép kiválasztásánál rázoomol
 //megnézem-re hover: cursor:zoomin
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 //im not a robot (recaptcha GOOGLE - need a domain)
 //lekérdezéseket átírni param-ra
 >>>>>>> Stashed changes
+=======
+//im not a robot (recaptcha GOOGLE - need a domain)
+//lekérdezéseket átírni param-ra
+>>>>>>> uzenofal
 
 //átellenőrizni a működést, vannak bajok. pl megnézem: basicKep.jpg, responsive emailform
 
