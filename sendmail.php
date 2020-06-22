@@ -74,12 +74,18 @@ if (
  //esetleg üres post-ra is visszajelzést adni
 
  $respEmail        = SendEmail::SendMail($fromName, $fromEmail, $subject, $content);
- $response['html'] = "\n" . $respEmail->statusCode();
+ $response['html'] = $respEmail->statusCode();
  foreach ($respEmail->headers() as $headers) {
-  $response['html'] .= "\nheaders: " . $headers . "\n";
+  $response['html'] .= "headers: " . $headers;
  }
- $response['html'] .= "\n Body:" . $respEmail->body();
+ $response['html'] .= "Body:" . $respEmail->body();
 
+ if ($respEmail->statusCode() > 299) {
+  http_response_code(404);
+  $response['error']     = "true";
+  $response['errorMsg']  = "Valami hiba történt. error code: 65524";
+  $response['errorCode'] = "65524";
+ }
 } //endof emailRequest
 else {
  //no post

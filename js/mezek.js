@@ -306,12 +306,15 @@ $(document).ready(function () {
           succ.style.display = "block";
         },
         error: function (res) {
-          console.log("errorág " + res.responseText);
           const resJSON = JSON.parse(res.responseText);
           succ.style.display = "none";
           succ.innerHTML = "";
           //for developers
-          console.log("(Error, no post, code is: " + resJSON.errorCode + " )");
+          console.log(
+            "(Error, no post or restricted by sendgrid: " +
+              resJSON.errorCode +
+              " )"
+          );
           //for users
           err.innerHTML = resJSON.errorMsg;
           err.style.display = "block";

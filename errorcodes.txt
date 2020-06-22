@@ -29,6 +29,7 @@
 65521:  - 'felhasználónév túl rövid. ' - sendmail.php                                   setted 
 65522:  - 'Az email cím helytelen formátumú . ' - sendmail.php                          setted 
 65523:  - 'A tárgy mező túl rövid . ' - sendmail.php                                    setted 
+65524:  - 'valami hiba történt, sendgrid statuscode>299 ' - sendmail.php                 setted 
 
 
 
@@ -66,8 +67,6 @@ css
 Bootstrap 4
 hibakezelés hibakód kiírásával
 responsive design
-
-
 
 */
 >>>>>>> json
