@@ -95,8 +95,21 @@
   min-height: 100%;
 }
 
+.bg-construction {
+  background-image: url("../public/resources/pics/bg_pics/contruction.png");
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* min-height: 100%; */
+}
+
 .height650 {
   height: 650px;
+}
+
+.height250 {
+  height: 250px;
 }
 
 .sticky {
@@ -263,4 +276,12 @@ footer > .flex-container {
 
 .form-group button {
   margin-top: 0.5rem;
+}
+
+#login:hover {
+  cursor: pointer;
+}
+
+#login-form {
+  display: none;
 }

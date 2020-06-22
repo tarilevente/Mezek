@@ -156,11 +156,40 @@
                                 <div class="error p-2 text-light"></div>
                                 <div class="success p-2 text-light "></div>
                             </form><!--endof form-->
-                        </><!--endof sendMe-->
+                        </div><!--endof messageMe-->
                     </div><!--endof row-->
             </div>
         </div><!--endof jumbotron -->
     </div><!--endof kapcsolat-->
-</div> <!--endof Maindiv-->
 
 <?php
+//loginform appears, when click on icon in footer
+if (isset($_POST['login-form']) && !empty($_POST['login-form'])) {
+ echo file_get_contents('html/login-form.html');
+} else {
+ //no post for log in, shows nothing
+}
+
+; ?>
+    <div class="jumbotron bg-grey" id="login-form"><!--loginForm-->
+        <div class="row">
+            <div class="col bg-construction height250">
+                    <h2>Belépés</h2>
+                    <h4>Csak jogosultsággal lehetséges. :(</h4>
+            </div>
+        </div>
+        <div class="container">
+            <form method="post" action="login.php">
+                <div class="">
+                    <label for="felhNev">Felhasználónév: </label>
+                    <input type="text" id="felhNev" name="felhNev" placeholder="-- Username --" class="form-control">
+                </div>
+                <div class="">
+                    <label for="felhNev">Jelszó: </label>
+                    <input type="text" id="felhNev" name="felhNev" placeholder="-- Password--" class="form-control">
+                </div>
+            </form>
+        </div><!--endof container-->
+    </div><!--endof Loginform-->
+    </div> <!--endof Maindiv-->
+

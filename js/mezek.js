@@ -349,4 +349,9 @@ $(document).ready(function () {
     subject.value = "";
     content.value = "";
   }); //endof deleting the content of the email form
+
+  //login-form appears
+  $(document).on("click", "#login", function () {
+    $("#login-form").fadeToggle(3000);
+  });
 }); //endof ready()
