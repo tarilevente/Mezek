@@ -228,7 +228,6 @@ $(document).ready(function () {
     });
   }); //end of show selected pic
 
-<<<<<<< HEAD
   //email validation method
   function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -253,13 +252,10 @@ $(document).ready(function () {
   succ.innerHTML = "";
   err.style.display = "none";
   succ.style.display = "none";
-=======
->>>>>>> uzenofal
   //email function
   $(document).on("submit", "#emailForm", function (e) {
     e.preventDefault();
     //js gets the data from platform //egyelőre nem.
-<<<<<<< HEAD
     const fromName = document.getElementById("name").value.trim();
     const fromEmail = document.getElementById("email").value.trim();
     const subject = document.getElementById("subject").value.trim();
@@ -347,26 +343,4 @@ $(document).ready(function () {
     subject.value = "";
     content.value = "";
   }); //endof deleting the content of the email form
-=======
-    //validation of data //egyelőre nem.
-
-    //send data to a php file to validation toward,
-    //and send an email
-    $.ajax({
-      url: "sendmail.php",
-      method: "POST",
-      dataType: "text",
-      data: { emailRequest: 1 },
-      success: function (res) {
-        console.log("(js ok) " + res);
-      },
-      error: function (res) {
-        console.log("(js failed) " + res);
-      },
-    });
-    //if occurs a problem, we'll have a message back, with error
-
-    //i'll use ajax
-  });
->>>>>>> uzenofal
 }); //endof ready()
