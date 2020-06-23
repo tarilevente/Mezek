@@ -405,6 +405,8 @@ $(document).ready(function () {
           if (resJSON.error == false) {
             //login is successful
             console.log("login is successful");
+            window.location.replace("upload.php");
+            // window.open("upload.php");
           }
         },
         error: function (res) {
