@@ -104,6 +104,15 @@
   /* min-height: 100%; */
 }
 
+.bg_not_logged_in {
+  background-image: url("../public/resources/pics/bg_pics/matthew-henry-dog.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
+
 .height650 {
   height: 650px;
 }
@@ -204,6 +213,10 @@ footer > .flex-container {
 
 .dropdown-menu a {
   text-decoration: none;
+}
+
+.dropdown-menu {
+  width: 300px !important;
 }
 
 .pointer {

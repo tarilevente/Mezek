@@ -1,247 +1,65 @@
-<nav class="navbar navbar-light navbar-expand-lg myNavBar fixed-top">
-  <!-- Navbar-header -->
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav- link navbar-brand" href="#">valami.hu</a>
-    </li>
-  </ul>
-  <!--endof valami.hu-->
-  <!-- toggleMen -->
-  <ul class="navbar-nav mx-4 px-2">
-    <li class="nav-item">
-      <button
-        class="navbar-toggler hidden-sm-up"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navSC"
-        aria-controls="navSC"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-        <!--Ez az ikon-->
-      </button>
-    </li>
-  </ul>
-  <!-- endof togglemenu -->
+<nav class="navbar navbar-expand-lg navbar-light myNavBar fixed-top">
+  <!-- navbar-brand -->
+  <a class="navbar-brand" href="upload.php">valami.hu</a>
 
-  <!-- Navbar-strip_Létrehozás -->
-  <div class="collapse navbar-collapse" style="flex-grow: 0;" id="navSC">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavbar"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       <!-- Dropdown -->
-      <li clas="nav-item dropdown">
+      <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
           href="#"
-          id="navbarDropdown"
-          role="button"
+          id="navbardrop"
           data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
         >
           Létrehozás
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-right"
-          aria-labelledby="navbarDropdown"
-        >
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-trophy" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#newM">Új Mez</a>
-              </div>
-            </div>
-          </li>
-          <!--devider-->
-          <div class="dropdown-divider"></div>
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-globe" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#newT">Új Csapat</a>
-              </div>
-            </div>
-          </li>
-          <div class="dropdown-divider"></div>
-          <!--devider-->
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-flag" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#newC">Új Kategória</a>
-              </div>
-            </div>
-          </li>
-          <div class="dropdown-divider"></div>
-          <!--devider-->
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#newL">Új Liga</a>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Új Mez</a>
+          <a class="dropdown-item" href="#">Új Csapat</a>
+          <a class="dropdown-item" href="#">Új Kategória</a>
+          <a class="dropdown-item disabled" href="#">Új Liga</a>
+        </div>
       </li>
-      <!--endof Dropdown-->
-    </ul>
-  </div>
-  <!--endof Létrehozás_collapsing Navbar-->
-  <!-- =========================================================================================== -->
-  <!-- Navbar-strip_Törlés -->
-  <div class="collapse navbar-collapse" style="flex-grow: 0;" id="navSC">
-    <ul class="navbar-nav">
-      <!-- Dropdown -->
-      <li clas="nav-item dropdown">
+      <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
           href="#"
-          id="navbarDropdown"
-          role="button"
+          id="navbardrop"
           data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
         >
           Törlés
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-right"
-          aria-labelledby="navbarDropdown"
-        >
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-trophy" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#dM">Mez törlése</a>
-              </div>
-            </div>
-          </li>
-          <!--devider-->
-          <div class="dropdown-divider"></div>
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-globe" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#dT">Csapat törlése</a>
-              </div>
-            </div>
-          </li>
-          <div class="dropdown-divider"></div>
-          <!--devider-->
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-flag" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#dC">Kategória törlése</a>
-              </div>
-            </div>
-          </li>
-          <div class="dropdown-divider"></div>
-          <!--devider-->
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#dL">Liga törlése</a>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <div class="dropdown-menu">
+          <a class="dropdown-item disabled" href="#">Mez törlése</a>
+          <a class="dropdown-item disabled" href="#">Csapat törlése</a>
+        </div>
       </li>
-      <!--endof Dropdown-->
-    </ul>
-  </div>
-  <!--endof Torles_collapsing Navbar-->
-  <!-- ================================================================================ -->
-  <!-- Navbar-strip_Módosítás -->
-  <div class="collapse navbar-collapse" style="flex-grow: 0;" id="navSC">
-    <ul class="navbar-nav">
-      <!-- Dropdown -->
-      <li clas="nav-item dropdown">
+      <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
           href="#"
-          id="navbarDropdown"
-          role="button"
+          id="navbardrop"
           data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
         >
           Módosítás
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-right"
-          aria-labelledby="navbarDropdown"
-        >
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-trophy" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#mM">Mez módosítása</a>
-              </div>
-            </div>
-          </li>
-          <!--devider-->
-          <div class="dropdown-divider"></div>
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-globe" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#mT">Csapat módosítása</a>
-              </div>
-            </div>
-          </li>
-          <div class="dropdown-divider"></div>
-          <!--devider-->
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-flag" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#mC">Kategória módosítása</a>
-              </div>
-            </div>
-          </li>
-          <div class="dropdown-divider"></div>
-          <!--devider-->
-          <li class="dropdown-item text-center">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </div>
-              <div class="col-7">
-                <a href="#mL">Liga módosítása</a>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <div class="dropdown-menu">
+          <a class="dropdown-item disabled" href="#">Mez módosítása</a>
+          <a class="dropdown-item disabled" href="#">Csapat módosítása</a>
+          <a class="dropdown-item disabled" href="#">Kategória módosítása</a>
+          <a class="dropdown-item disabled" href="#">Liga módosítása</a>
+        </div>
       </li>
-      <!--endof Dropdown-->
     </ul>
   </div>
-  <!--endof Modositas_collapsing Navbar-->
 </nav>
-<!--endof Navbar-->
