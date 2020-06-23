@@ -29,8 +29,13 @@
 65521:  - 'felhasználónév túl rövid. ' - sendmail.php                                   setted 
 65522:  - 'Az email cím helytelen formátumú . ' - sendmail.php                          setted 
 65523:  - 'A tárgy mező túl rövid . ' - sendmail.php                                    setted 
-65524:  - 'valami hiba történt, sendgrid statuscode>299 ' - sendmail.php                 setted 
+65524:  - 'valami hiba történt, sendgrid statuscode>299 ' - sendmail.php                setted 
 
+65600:  - 'nincs post a login-form-ra' - login.php                                      setted
+65601:  - 'túl rövid a felhasználónév' - login.php                                      setted
+65602:  - 'túl rövid a jelszó' - login.php                                              setted
+65603:  - 'pwd regex is not valid' - login.php                                          setted
+65604:  - '$res->sql: helytelen felh,jelsz' - login.php setted
 
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
@@ -42,23 +47,12 @@
 //aria-hiddenezés akadálymentesítés
 //kép kiválasztásánál rázoomol
 //megnézem-re hover: cursor:zoomin
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 //im not a robot (recaptcha GOOGLE - need a domain)
 //lekérdezéseket átírni param-ra
->>>>>>> Stashed changes
-=======
-//im not a robot (recaptcha GOOGLE - need a domain)
-//lekérdezéseket átírni param-ra
->>>>>>> uzenofal
-
 //átellenőrizni a működést, vannak bajok. pl megnézem: basicKep.jpg, responsive emailform
-
-=======
 //loading counter az index.php-n
 //euligashow.php-nál az error valamiért hibát észlel, nem működik, pedig ua., mint a többi
+
 /*
 Felhasznált technológiák
 php

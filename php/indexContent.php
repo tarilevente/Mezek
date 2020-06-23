@@ -172,22 +172,30 @@ if (isset($_POST['login-form']) && !empty($_POST['login-form'])) {
 }
 
 ; ?>
-    <div class="jumbotron bg-grey" id="login-form"><!--loginForm-->
+    <div class="jumbotron bg-grey"><!--loginForm-->
         <div class="row">
-            <div class="col bg-construction height250">
+            <div class="col bg-construction height250 p-2">
                     <h2>Belépés</h2>
                     <h4>Csak jogosultsággal lehetséges. :(</h4>
             </div>
         </div>
         <div class="container">
-            <form method="post" action="login.php">
-                <div class="">
-                    <label for="felhNev">Felhasználónév: </label>
-                    <input type="text" id="felhNev" name="felhNev" placeholder="-- Username --" class="form-control">
+            <form id="loginForm">
+                <div class="p-2">
+                    <label for="felhNev"><code>Felhasználónév: </code></label>
+                    <input type="text" id="felhNev" name="felhNev" placeholder="-- Username --" class="form-control" required>
                 </div>
-                <div class="">
-                    <label for="felhNev">Jelszó: </label>
-                    <input type="text" id="felhNev" name="felhNev" placeholder="-- Password--" class="form-control">
+                <div class="p-2">
+                    <label for="jelszo"><code>Jelszó: </code></label>
+                    <input type="password" id="jelszo" name="jelszo" placeholder="-- Password--" class="form-control" required>
+                </div>
+                <div class="row p-2">
+                        <div class="col form-group ">
+                            <button class="btn btn-secondary pull-left" type="button" name="reg">Regisztráció</button>
+                        </div>
+                        <div class="col form-group ">
+                            <button class="btn btn-secondary pull-right" id="belepes" type="submit">Belépek</button>
+                        </div>
                 </div>
             </form>
         </div><!--endof container-->
