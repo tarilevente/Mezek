@@ -9,7 +9,7 @@ function dd($var)
 
 function IsLogged()
 {
- if (isset($_SESSION['USER']) && (!empty($_SESSION['USER']))) {
+ if (isset($_SESSION['user']) && (!empty($_SESSION['user']))) {
   //Someone is logged in
   return true;
  } else {

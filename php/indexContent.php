@@ -163,16 +163,7 @@
         </div><!--endof jumbotron -->
     </div><!--endof kapcsolat-->
 
-<?php
-//loginform appears, when click on icon in footer
-if (isset($_POST['login-form']) && !empty($_POST['login-form'])) {
- echo file_get_contents('html/login-form.html');
-} else {
- //no post for log in, shows nothing
-}
-
-; ?>
-    <div class="jumbotron bg-grey"><!--loginForm-->
+    <div class="jumbotron bg-grey" id="login-form"><!--loginForm-->
         <div class="row">
             <div class="col bg-construction height250 p-2">
                     <h2>Belépés</h2>
@@ -201,4 +192,3 @@ if (isset($_POST['login-form']) && !empty($_POST['login-form'])) {
         </div><!--endof container-->
     </div><!--endof Loginform-->
     </div> <!--endof Maindiv-->
-

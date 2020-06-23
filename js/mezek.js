@@ -351,7 +351,7 @@ $(document).ready(function () {
   }); //endof deleting the content of the email form
 
   //you have to click to the pic, after the user icon on footer, to log in
-  var loginCheck = 1; //loginCheck=0;
+  var loginCheck = 0;
   //login-form appears, if logincheck is ok
   $(document).on("click", "#login", function () {
     if (loginCheck == 1) {
