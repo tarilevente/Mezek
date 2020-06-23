@@ -349,4 +349,107 @@ $(document).ready(function () {
     subject.value = "";
     content.value = "";
   }); //endof deleting the content of the email form
+
+  //you have to click to the pic, after the user icon on footer, to log in
+  var loginCheck = 1; //loginCheck=0;
+  //login-form appears, if logincheck is ok
+  $(document).on("click", "#login", function () {
+    if (loginCheck == 1) {
+      $("#login-form").fadeToggle(3000);
+    }
+  });
+  //click to the picture to activate the loginform
+  $(document).on("click", "#itsme", function () {
+    loginCheck = 1;
+  });
+
+  //pwd regex
+  const pwdREGEX = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
+  //   ^	The password string will start this way
+  // (?=.*[a-z])	The string must contain at least 1 lowercase alphabetical character
+  // (?=.*[A-Z])	The string must contain at least 1 uppercase alphabetical character
+  // (?=.*[0-9])	The string must contain at least 1 numeric character
+  // (?=.{8,})	The string must be eight characters or longer
+
+  //login
+  $(document).on("click", "#belepes", function (e) {
+    e.preventDefault();
+
+    const unameInput = document.getElementById("felhNev");
+    var uname = document.getElementById("felhNev").value.trim();
+    const pwdInput = document.getElementById("jelszo");
+    var pwd = document.getElementById("jelszo").value.trim();
+    var errorMsgUname = "";
+    var errorMsgPwd = "";
+    var errorExists = false;
+    if (uname.length < 5) {
+      errorMsgUname += "A felhasználónév nem megfelelő!";
+      errorExists = true;
+    }
+    if (pwd.length < 8) {
+      errorMsgPwd += "A jelszó nem megfelelő! ";
+      errorExists = true;
+    } else if (!pwdREGEX.test(pwd)) {
+      errorMsgPwd += "A jelszó nem megfelelő!";
+      errorExists = true;
+    }
+    if (!errorExists) {
+      //pre-validation is ok
+      $.ajax({
+        url: "php/login.php",
+        method: "POST",
+        dataType: "text",
+        data: { uname: uname, pwd: pwd },
+        success: function (res) {
+          const resJSON = JSON.parse(res);
+          if (resJSON.error == false) {
+            //login is successful
+            console.log("login is successful");
+          }
+        },
+        error: function (res) {
+          //http_response_code is setted
+          const resJSON = JSON.parse(res.responseText);
+          if (resJSON.errorCode == 65600) {
+            console.log("no post for login.php, error code: 65600");
+          }
+          if (resJSON.errorCode == 65601) {
+            console.log("username is too short, error code: 65601");
+          }
+          if (resJSON.errorCode == 65602) {
+            console.log("password is too short, error code: 65602");
+          }
+          if (resJSON.errorCode == 65603) {
+            console.log("password regex is not valid, error code: 65603");
+          }
+          if (resJSON.errorCode == 65604) {
+            console.log("no result for query, error code: 65604");
+          }
+          unameInput.setCustomValidity(resJSON.errorMsg);
+          unameInput.reportValidity();
+        },
+      });
+    } else {
+      //set the pre-validation to errorMessage
+      unameInput.setCustomValidity(errorMsgUname);
+      unameInput.reportValidity();
+      pwdInput.setCustomValidity(errorMsgPwd);
+      pwdInput.reportValidity();
+    }
+  });
+
+  //registration
+
+  // //if you scroll down, back to navbar icon shows, navigate to the top
+  // $(window).scroll(function () {
+  //   var scrollVal = $(window).scrollTop();
+  //   if (scrollVal >= 200) {
+  //     // console.log("show");
+  //     $("#buttonShowHide").fadeIn();
+  //   }
+  //   if (scrollVal < 80) {
+  //     $("#buttonShowHide").fadeOut();
+  //     // console.log("hide");
+  //   }
+  // });
 }); //endof ready()

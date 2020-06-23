@@ -1,3 +1,4 @@
+<div id="navUP"></div>
 <div class="height650" id="bg-picIndex1" >
     <!-- //bg -->
 </div>
@@ -23,7 +24,7 @@
                                 <!-- LÁJKOLJ- adatbázisból kiolvassa, lájkszámláló -->
         </div>
         <div class="col-3">
-            <img class="img img-rounded" src="public/resources/pics/profile_pics/basic.jpg" alt="IT'S ME">
+            <img class="img img-rounded" src="public/resources/pics/profile_pics/basic.jpg" alt="IT'S ME" id="itsme">
         </div>
     </div><!--endof #honlapCelja-->
 
@@ -156,11 +157,48 @@
                                 <div class="error p-2 text-light"></div>
                                 <div class="success p-2 text-light "></div>
                             </form><!--endof form-->
-                        </><!--endof sendMe-->
+                        </div><!--endof messageMe-->
                     </div><!--endof row-->
             </div>
         </div><!--endof jumbotron -->
     </div><!--endof kapcsolat-->
-</div> <!--endof Maindiv-->
 
 <?php
+//loginform appears, when click on icon in footer
+if (isset($_POST['login-form']) && !empty($_POST['login-form'])) {
+ echo file_get_contents('html/login-form.html');
+} else {
+ //no post for log in, shows nothing
+}
+
+; ?>
+    <div class="jumbotron bg-grey"><!--loginForm-->
+        <div class="row">
+            <div class="col bg-construction height250 p-2">
+                    <h2>Belépés</h2>
+                    <h4>Csak jogosultsággal lehetséges. :(</h4>
+            </div>
+        </div>
+        <div class="container">
+            <form id="loginForm">
+                <div class="p-2">
+                    <label for="felhNev"><code>Felhasználónév: </code></label>
+                    <input type="text" id="felhNev" name="felhNev" placeholder="-- Username --" class="form-control" required>
+                </div>
+                <div class="p-2">
+                    <label for="jelszo"><code>Jelszó: </code></label>
+                    <input type="password" id="jelszo" name="jelszo" placeholder="-- Password--" class="form-control" required>
+                </div>
+                <div class="row p-2">
+                        <div class="col form-group ">
+                            <button class="btn btn-secondary pull-left" type="button" name="reg">Regisztráció</button>
+                        </div>
+                        <div class="col form-group ">
+                            <button class="btn btn-secondary pull-right" id="belepes" type="submit">Belépek</button>
+                        </div>
+                </div>
+            </form>
+        </div><!--endof container-->
+    </div><!--endof Loginform-->
+    </div> <!--endof Maindiv-->
+
