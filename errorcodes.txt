@@ -46,7 +46,11 @@
 75204:  - 'városnév túl hosszú' - newT.php                                              setted
 75205:  - 'a csapatnév már létezik' - newT.php                                          setted
 
-76100:  - ''
+76100:  - 'no post' - newC.php                                                          setted
+76101:  - 'valamelyik érték nem létezik' - newC.php                                     setted
+76102:  - 'a liga nem létezik' - newC.php                                     setted
+76103:  - 'kategórianév túl rövid vagy túl hosszú' - newC.php                                     setted
+76104:  - 'a ketegória már az adatbázisban van' - newC.php                                     setted
 
 
 
