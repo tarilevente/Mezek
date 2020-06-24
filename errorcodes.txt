@@ -35,7 +35,10 @@
 65601:  - 'túl rövid a felhasználónév' - login.php                                      setted
 65602:  - 'túl rövid a jelszó' - login.php                                              setted
 65603:  - 'pwd regex is not valid' - login.php                                          setted
-65604:  - '$res->sql: helytelen felh,jelsz' - login.php setted
+65604:  - '$res->sql: helytelen felh,jelsz' - login.php                                 setted
+
+75110:  - 'nincs $res, nincs kategória az ab-ban' - newT-form.php                      NOT setted
+
 
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
@@ -52,6 +55,9 @@
 //átellenőrizni a működést, vannak bajok. pl megnézem: basicKep.jpg, responsive emailform
 //loading counter az index.php-n
 //euligashow.php-nál az error valamiért hibát észlel, nem működik, pedig ua., mint a többi
+//message formázása
+//reszponzivitás javítása/design
+//felvitelnél segítségek (pl: mez<-team<-cat<-liga)
 
 /*
 Felhasznált technológiák

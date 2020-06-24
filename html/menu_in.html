@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light myNavBar fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light myNavBar">
   <!-- navbar-brand -->
   <a class="navbar-brand" href="upload.php">valami.hu</a>
 
@@ -24,9 +24,9 @@
           Létrehozás
         </a>
         <div class="dropdown-menu dropdown-menu-right text-center">
-          <a class="dropdown-item" href="#">Új Mez</a>
-          <a class="dropdown-item" href="#">Új Csapat</a>
-          <a class="dropdown-item" href="#">Új Kategória</a>
+          <a class="dropdown-item" href="#" id="">Új Mez</a>
+          <a class="dropdown-item" href="newTC-form.php" id="">Új Csapat</a>
+          <a class="dropdown-item" href="newTC-form.php" id="">Új Kategória</a>
           <a class="dropdown-item disabled" href="#">Új Liga</a>
         </div>
       </li>
@@ -40,8 +40,8 @@
           Törlés
         </a>
         <div class="dropdown-menu dropdown-menu-right text-center">
-          <a class="dropdown-item disabled" href="#">Mez törlése</a>
-          <a class="dropdown-item disabled" href="#">Csapat törlése</a>
+          <a class="dropdown-item disabled" href="#" id="dM">Mez törlése</a>
+          <a class="dropdown-item disabled" href="#" id="dT">Csapat törlése</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -60,6 +60,10 @@
           <a class="dropdown-item disabled" href="#">Liga módosítása</a>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="php/logout.php">Kilépés</a>
+      </li>
     </ul>
+    <!---->
   </div>
 </nav>

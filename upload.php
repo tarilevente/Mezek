@@ -8,7 +8,7 @@ if (!isLogged()) {
 echo file_get_contents("html/header.html");
 $menu = PrintMenu(); //menu_in.html will appears
 echo $menu;
-require_once 'php/uploadContent.php';
+//valamit azért írjunk ki ide
 
 $con->close();
 echo file_get_contents("html/footer.html");

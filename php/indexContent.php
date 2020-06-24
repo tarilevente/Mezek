@@ -30,7 +30,7 @@
 
 
     <div id="kedvencek"></div><br>
-    <div class="bg-info" >
+    <div class="bg-info py-4" >
         <h2>A kedvenc mezeim</h2>
                 <div id="carouselIndex" class="carousel slide carousel-fade mt-1 indexCarausel" data-ride="carousel">
                 <ol class="carousel-indicators">
