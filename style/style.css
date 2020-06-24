@@ -316,6 +316,13 @@ footer > .flex-container {
 #successVanT {
   display: none;
 }
+#errorVanC {
+  display: none;
+}
+
+#successVanC {
+  display: none;
+}
 
 /* .fixedDIV {
   z-index: 500;

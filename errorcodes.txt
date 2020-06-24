@@ -39,6 +39,16 @@
 
 75110:  - 'nincs $res, nincs kategória az ab-ban' - newT-form.php                      NOT setted
 
+75200:  - 'nincs post' - newT.php                                                       setted
+75201:  - 'kategória < 0 || kategória >10' - newT.php                                   setted
+75202:  - 'csapatnév: strlen($Tname) < 2 || strlen($Tname) > 100)' - newT.php           setted
+75203:  - 'valamelyik érték nem létezik ($cat || $Tname)' - newT.php                    setted
+75204:  - 'városnév túl hosszú' - newT.php                                              setted
+75205:  - 'a csapatnév már létezik' - newT.php                                          setted
+
+76100:  - ''
+
+
 
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
