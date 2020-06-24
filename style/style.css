@@ -104,6 +104,15 @@
   /* min-height: 100%; */
 }
 
+.bg_not_logged_in {
+  background-image: url("../public/resources/pics/bg_pics/matthew-henry-dog.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
+
 .height650 {
   height: 650px;
 }
@@ -206,12 +215,20 @@ footer > .flex-container {
   text-decoration: none;
 }
 
+.dropdown-menu {
+  width: 300px !important;
+}
+
 .pointer {
   cursor: pointer;
 }
 
 .min-height500 {
   min-height: 500px !important;
+}
+
+.min-height550 {
+  min-height: 540px !important;
 }
 
 .max-height500 {
@@ -290,6 +307,14 @@ footer > .flex-container {
   width: 40px;
   height: 40px;
   border: 0;
+}
+
+#errorVanT {
+  display: none;
+}
+
+#successVanT {
+  display: none;
 }
 
 /* .fixedDIV {

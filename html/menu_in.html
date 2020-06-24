@@ -1,12 +1,69 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <ul class="navbar-dark nav bg-info">
-            <li class="nav-item">
-                <a class="nav-link text-light" href="" >Feltöltés</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="logout.php">Kilépés</a>
-            </li>
-        </ul>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light myNavBar">
+  <!-- navbar-brand -->
+  <a class="navbar-brand" href="upload.php">valami.hu</a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavbar"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbardrop"
+          data-toggle="dropdown"
+        >
+          Létrehozás
+        </a>
+        <div class="dropdown-menu dropdown-menu-right text-center">
+          <a class="dropdown-item" href="#" id="">Új Mez</a>
+          <a class="dropdown-item" href="newTC-form.php" id="">Új Csapat</a>
+          <a class="dropdown-item" href="newTC-form.php" id="">Új Kategória</a>
+          <a class="dropdown-item disabled" href="#">Új Liga</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbardrop"
+          data-toggle="dropdown"
+        >
+          Törlés
+        </a>
+        <div class="dropdown-menu dropdown-menu-right text-center">
+          <a class="dropdown-item disabled" href="#" id="dM">Mez törlése</a>
+          <a class="dropdown-item disabled" href="#" id="dT">Csapat törlése</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbardrop"
+          data-toggle="dropdown"
+        >
+          Módosítás
+        </a>
+        <div class="dropdown-menu dropdown-menu-right text-center">
+          <a class="dropdown-item disabled" href="#">Mez módosítása</a>
+          <a class="dropdown-item disabled" href="#">Csapat módosítása</a>
+          <a class="dropdown-item disabled" href="#">Kategória módosítása</a>
+          <a class="dropdown-item disabled" href="#">Liga módosítása</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="php/logout.php">Kilépés</a>
+      </li>
+    </ul>
+    <!---->
+  </div>
 </nav>

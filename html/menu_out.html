@@ -1,53 +1,33 @@
-<nav class="navbar navbar-light navbar-expand-lg myNavBar fixed-top">
-  <!-- Navbar-header -->
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav- link navbar-brand" href="index.php">valami.hu</a>
-    </li>
-  </ul>
-  <!--endof valami.hu-->
-  <ul class="navbar-nav mx-4 px-2">
-    <li class="nav-item">
-      <button
-        class="navbar-toggler hidden-sm-up"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navSC"
-        aria-controls="navSC"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-        <!--Ez az ikon-->
-      </button>
-    </li>
-  </ul>
-  <!--endof toggleMenu-->
-  <!-- Navbar-strip -->
-  <div class="collapse navbar-collapse" id="navSC">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top myNavBar">
+  <a class="navbar-brand" href="index.php">valami.hu</a>
+  <!-- menu in small screens -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavbar"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- endof small screens -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       <!-- Else menu -->
       ::extraForIndex
       <!-- Fooldal menupont-->
       ::extraForOthers
       <!-- Dropdown -->
-      <li clas="nav-item dropdown">
+      <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
           href="#"
-          id="navbarDropdown"
-          role="button"
+          id="navbardrop"
           data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
         >
           Mezek
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-right"
-          aria-labelledby="navbarDropdown"
-        >
-          <li class="dropdown-item text-center">
+        <ul class="dropdown-menu dropdown-menu-right text-center">
+          <li class="dropdown-item text-center" href="#">
             <div class="row">
               <div class="col-2">
                 <i class="fa fa-trophy" aria-hidden="true"></i>
@@ -57,7 +37,7 @@
               </div>
             </div>
           </li>
-          <li class="dropdown-item text-center">
+          <li class="dropdown-item text-center" href="#">
             <div class="row">
               <div class="col-2">
                 <i class="fa fa-globe" aria-hidden="true"></i>
@@ -68,8 +48,7 @@
             </div>
           </li>
           <div class="dropdown-divider"></div>
-          <!--devider-->
-          <li class="dropdown-item text-center">
+          <li class="dropdown-item text-center" href="#">
             <div class="row" id="nemzetiSelect">
               <div class="col-2">
                 <i class="fa fa-flag" aria-hidden="true"></i>
@@ -80,8 +59,7 @@
             </div>
           </li>
           <div class="dropdown-divider"></div>
-          <!--devider-->
-          <li class="dropdown-item text-center">
+          <li class="dropdown-item text-center" href="#">
             <div class="row">
               <div class="col-2">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -93,9 +71,9 @@
           </li>
         </ul>
       </li>
-      <!--endof Dropdown-->
+      <!-- endof dropdown -->
     </ul>
   </div>
-  <!--endof collapsing Navbar-->
+  <!-- endof collapsing navbar -->
 </nav>
-<!--endof Navbar-->
+<!-- endof navbar -->

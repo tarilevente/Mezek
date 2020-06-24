@@ -61,6 +61,14 @@
   textarea {
     max-width: 92%;
   }
+  .not_logged_in_resp {
+    font-size: 130%;
+  }
+
+  .dropdown-menu {
+    width: 100% !important;
+    /*not realy working, but beller*/
+  }
 }
 
 @media screen and (max-width: 1000px) {
