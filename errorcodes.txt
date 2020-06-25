@@ -72,6 +72,8 @@
 //message formázása
 //reszponzivitás javítása/design
 //felvitelnél segítségek (pl: mez<-team<-cat<-liga)
+//px-eket rem-re átírni
+//like funkció az indexContent-en?
 
 /*
 Felhasznált technológiák

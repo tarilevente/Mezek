@@ -1,4 +1,3 @@
-<div id="navUP"></div>
 <div class="height650" id="bg-picIndex1" >
     <!-- //bg -->
 </div>
@@ -10,8 +9,8 @@
     </div>
     <!-- A honlap célja -->
     <div id="aHonlapCelja"></div><br>
-    <div class="row" >
-        <div class="col-8">
+    <div class="media border p-3 row" >
+        <div class="media-body col-sm-7">
             <h2>A honlap célja</h2>
             <h4>Megosztani Veletek a gyűjteményt, böngésszetek kedvetekre! </h4>
             <p>
@@ -23,8 +22,8 @@
             <button class="btn btn-secondary pull-left">LIKE</button>
                                 <!-- LÁJKOLJ- adatbázisból kiolvassa, lájkszámláló -->
         </div>
-        <div class="col-3">
-            <img class="img img-rounded" src="public/resources/pics/profile_pics/basic.jpg" alt="IT'S ME" id="itsme">
+        <div class="col-sm-5 text-center">
+            <img class="rounded-circle align-self-center" src="public/resources/pics/profile_pics/basic.jpg" alt="IT'S ME" id="itsme">
         </div>
     </div><!--endof #honlapCelja-->
 

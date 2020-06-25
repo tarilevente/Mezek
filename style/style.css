@@ -3,6 +3,20 @@
   width: 1em;
 }
 
+button.navbar-toggler {
+  position: relative;
+  width: 50px;
+  height: 38px;
+}
+
+button.navar-toggler > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
 #bg-picIndex1 {
   background-image: url("../public/resources/pics/bg_pics/mario-klassen.jpg");
   background-size: cover;
