@@ -58,6 +58,13 @@ if (
  if (false === $response['error']) {
   $sql = "INSERT INTO `CategoryTable` (`idCategory`, `idLeague`, `catName`) VALUES (NULL, '$liga', '$Cname');";
   $res = $con->query($sql);
+  if (!res) {
+   //unsuccessful upload
+   http_response_code(405);
+   $response['error']     = true;
+   $response['errorMsg']  = "Valami hiba történt! error code: 76105";
+   $response['errorCode'] = 76105;
+  }
  }
 } else {
  //no post exist

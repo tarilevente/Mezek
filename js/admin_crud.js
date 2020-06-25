@@ -93,6 +93,13 @@ $(document).ready(function () {
             succ.innerHTML = "";
             succ.style.display = "none";
           }
+          if (resJSON.errorCode == 75206) {
+            console.log("not succesful upload, error code: 75206");
+            err.innerHTML = resJSON.errorMsg;
+            err.style.display = "block";
+            succ.innerHTML = "";
+            succ.style.display = "none";
+          }
         },
       });
     } else {
@@ -188,6 +195,13 @@ $(document).ready(function () {
             succ.innerHTML = "";
             succ.style.display = "none";
           }
+          if (resJSON.errorCode == 76105) {
+            console.log("upload is not success, error code: 76105");
+            err.innerHTML = resJSON.errorMsg;
+            err.style.display = "block";
+            succ.innerHTML = "";
+            succ.style.display = "none";
+          }
         },
       });
     } else {
@@ -207,4 +221,40 @@ $(document).ready(function () {
     document.getElementById("newC-Liga-select").value = "2";
     document.getElementById("catName").value = "";
   }); //endof reset
+
+  //https://jsfiddle.net/bootstrapious/8w7a50n2/
+  /*  =============================================== vendor==============================================
+    SHOW UPLOADED IMAGE
+* ========================================== */
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $("#imageResult").attr("src", e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $(function () {
+    $("#upload").on("change", function () {
+      readURL(input);
+    });
+  });
+
+  /*  ==========================================
+  SHOW UPLOADED IMAGE NAME
+* ========================================== */
+  var input = document.getElementById("upload");
+  var infoArea = document.getElementById("upload-label");
+
+  input.addEventListener("change", showFileName);
+  function showFileName(event) {
+    var input = event.srcElement;
+    var fileName = input.files[0].name;
+    infoArea.textContent = "File name: " + fileName;
+  }
+
+  //=======================================endof vendor=============================================7
 }); //endof ready()

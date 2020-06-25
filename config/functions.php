@@ -227,3 +227,9 @@ function pwdIsValidRegex($password)
   return true;
  }
 }
+
+//create a dir for pics (group by team) if not exists
+function makeDir($path)
+{
+ return is_dir($path) || mkdir($path);
+}

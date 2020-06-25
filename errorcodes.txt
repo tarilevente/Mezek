@@ -45,12 +45,14 @@
 75203:  - 'valamelyik érték nem létezik ($cat || $Tname)' - newT.php                    setted
 75204:  - 'városnév túl hosszú' - newT.php                                              setted
 75205:  - 'a csapatnév már létezik' - newT.php                                          setted
+75206:  - 'upload nem sikerült valamiért' - newT.php                                    setted
 
 76100:  - 'no post' - newC.php                                                          setted
 76101:  - 'valamelyik érték nem létezik' - newC.php                                     setted
-76102:  - 'a liga nem létezik' - newC.php                                     setted
-76103:  - 'kategórianév túl rövid vagy túl hosszú' - newC.php                                     setted
-76104:  - 'a ketegória már az adatbázisban van' - newC.php                                     setted
+76102:  - 'a liga nem létezik' - newC.php                                               setted
+76103:  - 'kategórianév túl rövid vagy túl hosszú' - newC.php                           setted
+76104:  - 'a ketegória már az adatbázisban van' - newC.php                              setted
+76105:  - 'upload nem sikerült valamiért' - newC.php                                    setted
 
 
 
@@ -74,6 +76,11 @@
 //felvitelnél segítségek (pl: mez<-team<-cat<-liga)
 //px-eket rem-re átírni
 //like funkció az indexContent-en?
+//scriptes szarságot átrakni newTC-form.php-ról
+//shadow-hozzáadás // rounded-pill
+//design: bootstrap ideas??
+//hasonlót írja ki: ékezet, különleges karakter, kis-nagybetű. mellé: erre gondoltál? az új csapat felvitelénél
+
 
 /*
 Felhasznált technológiák

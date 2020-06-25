@@ -10,7 +10,7 @@ $menu = PrintMenu(); //menu_in.html will appears
 echo $menu;
 ?>
 
-<div class="row">
+<div class="row min-height550">
 <!-- left: csapat létrehozása -->
     <div class="col-lg-6">
       <div class="container">
