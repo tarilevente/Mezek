@@ -80,7 +80,7 @@
 //shadow-hozzáadás // rounded-pill
 //design: bootstrap ideas??
 //hasonlót írja ki: ékezet, különleges karakter, kis-nagybetű. mellé: erre gondoltál? az új csapat felvitelénél
-
+//átellenőrizni a mezeknél a felvitelnél az errorokat
 
 /*
 Felhasznált technológiák

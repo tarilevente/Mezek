@@ -223,38 +223,96 @@ $(document).ready(function () {
   }); //endof reset
 
   //https://jsfiddle.net/bootstrapious/8w7a50n2/
-  /*  =============================================== vendor==============================================
-    SHOW UPLOADED IMAGE
-* ========================================== */
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
 
-      reader.onload = function (e) {
-        $("#imageResult").attr("src", e.target.result);
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-
-  $(function () {
-    $("#upload").on("change", function () {
-      readURL(input);
-    });
-  });
-
-  /*  ==========================================
-  SHOW UPLOADED IMAGE NAME
-* ========================================== */
   var input = document.getElementById("upload");
   var infoArea = document.getElementById("upload-label");
+  var input2 = document.getElementById("upload2");
+  var infoArea2 = document.getElementById("upload-label2");
+  var input3 = document.getElementById("upload3");
+  var infoArea3 = document.getElementById("upload-label3");
 
-  input.addEventListener("change", showFileName);
-  function showFileName(event) {
+  input.addEventListener("change", showFileName1);
+  function showFileName1(event) {
+    console.log("1");
     var input = event.srcElement;
     var fileName = input.files[0].name;
-    infoArea.textContent = "File name: " + fileName;
+    infoArea.textContent = "Fájl: " + fileName;
+  }
+  input2.addEventListener("change", showFileName2);
+  function showFileName2(event) {
+    console.log("2");
+    var input2 = event.srcElement;
+    var fileName = input2.files[0].name;
+    infoArea2.textContent = "Fájl: " + fileName;
+  }
+  input3.addEventListener("change", showFileName3);
+  function showFileName3(event) {
+    console.log("3");
+    var input3 = event.srcElement;
+    var fileName = input3.files[0].name;
+    infoArea3.textContent = "Fájl: " + fileName;
   }
 
-  //=======================================endof vendor=============================================7
+  $(document).on("change", ".kepFeltoltes", function () {
+    const target = $(this).attr("name");
+
+    if (target == "#imageResult") {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $(target).attr("src", e.target.result);
+        };
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+    if (target == "#imageResult2") {
+      if (input2.files && input2.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $(target).attr("src", e.target.result);
+        };
+      }
+      reader.readAsDataURL(input2.files[0]);
+    }
+    if (target == "#imageResult3") {
+      if (input3.files && input3.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $(target).attr("src", e.target.result);
+        };
+      }
+      reader.readAsDataURL(input3.files[0]);
+    }
+  }); //endof kepfeltoltes
+
+  //prints out newM-league-select
+  $(document).on("change", "#newM-league-select", function () {
+    const valLeague = $(this).val();
+    console.log(valLeague + " valleague");
+    const categorySelect = document.getElementById("categorySelect");
+    $.post(
+      "php/admin_crud/printCategorySelect.php",
+      { valLeague: valLeague },
+      function (res) {
+        categorySelect.innerHTML = res;
+      }
+    );
+    $.post("php/admin_crud/printTeamSelect.php", { reset: "reset" }, function (
+      res
+    ) {
+      teamSelect.innerHTML = res;
+    });
+  }); //endof newM-league-select
+
+  //prints out newM-Category-select
+  $(document).on("change", "#newM-cat-select", function () {
+    const valCat = $(this).val();
+    console.log(valCat + " valcat");
+    const teamSelect = document.getElementById("teamSelect");
+    $.post("php/admin_crud/printTeamSelect.php", { valCat: valCat }, function (
+      res
+    ) {
+      teamSelect.innerHTML = res;
+    });
+  }); //endof newM-league-select
 }); //endof ready()

@@ -15,30 +15,175 @@ echo $menu;
         <h4>Új Mez létrehozása</h4>
     </div>
     <div class="container-fluid">
-      <form id="newM-form" class="needs-validation" novalidate>
-            <!-- upload pics -->
-            <div class="media border">
-                <div class="media-body">
-                        <div class="input-group mb-3 px-2 rounded-pill bg-white shadow-sm">
-                            <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-                            <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
-                            <div class="input-group-append">
-                                <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
-                                    <i class="fa fa-cloud-upload mr-2 text-muted"></i>
-                                    <small class="text-uppercase font-weight-bold text-muted">Choose file</small>
-                                </label>
-                            </div>
-                        </div>
-                </div>
-                <div class="image-area">
-                    <img id="imageResult" src="#" alt="" class="img-fluid rounded mx-auto d-block align-self-center" style="max-height:150px">
+        <div class="row height250">
+            <div class="col-lg-4">
+                <div class="image-area height250 border">
+                    <img id="imageResult" src="#" alt="" class="img-fluid rounded mx-auto d-block align-self-center" >
                 </div>
             </div>
-      </form>
-    </div>
+            <div class="col-lg-4">
+                <div class="image-area height250 border">
+                    <img id="imageResult2" src="#" alt="" class="img-fluid rounded mx-auto d-block align-self-center" >
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="image-area height250 border">
+                    <img id="imageResult3" src="#" alt="" class="img-fluid rounded mx-auto d-block align-self-center">
+                </div>
+            </div>
+        </div>
+        <form id="newM-form" class="needs-validation" novalidate>
+            <!-- upload pics -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
+                        <input id="upload" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult">
+                        <label id="upload-label" for="upload" class="font-weight-light text-muted">Kép1 - kötelező</label>
+                        <div class="input-group-append">
+                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
+                                <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+                                <small class="text-uppercase font-weight-bold text-muted">Kép1</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
+                        <input id="upload2" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult2">
+                        <label id="upload-label2" for="upload2" class="font-weight-light text-muted">Kép2 - nem kötelező</label>
+                        <div class="input-group-append">
+                            <label for="upload2" class="btn btn-light m-0 rounded-pill px-4">
+                                <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+                                <small class="text-uppercase font-weight-bold text-muted">Kép2</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
+                        <input id="upload3" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult3">
+                        <label id="upload-label3" for="upload3" class="font-weight-light text-muted">Kép3 - nem kötelező</label>
+                        <div class="input-group-append">
+                            <label for="upload3" class="btn btn-light m-0 rounded-pill px-4">
+                                <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+                                <small class="text-uppercase font-weight-bold text-muted">Kép3</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div><!--endof row, endof pic upload-->
+            <div class="border-bottom "></div>
+
+            <!-- start of inputs -->
+            <div class="row">
+                <!-- left column -->
+                <div class="col-xl-6 border height250">
+                    <!-- league select -->
+                    <div class="form-group row container">
+                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Liga:</label>
+                        <div class="col-lg-10">
+                            <select class="form-control custom-select" id="newM-league-select">
+<?php
+$sql1 = 'SELECT idLeague, LeagueName FROM LeagueTable ORDER BY LeagueName';
+$res1 = $con->query($sql1);
+if (!$res1) {
+ //something
+ //error, nincs adatbázis pl
+} else {
+ echo '<option selected value="-">Válassz!</option>';
+ while ($row1 = mysqli_fetch_row($res1)) {
+  echo '<option value=' . $row1[0] . '>' . $row1[1] . '</option>';
+ }
+}
+?>
+                            </select>
+                            <div class="valid-feedback">
+                                 Rendben!
+                            </div>
+                            <div class="invalid-feedback">
+                                 Válassz!
+                            </div>
+                        </div>
+                    </div><!--endof category select-->
+
+                    <!-- category select -->
+                    <div class="form-group row container">
+                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Kategória:</label>
+                        <div class="col-lg-10">
+                            <div id="categorySelect">Válassz ligát!</div>
+                        </div>
+                    </div><!--endof category select-->
+
+
+                    <!-- team select -->
+                    <div class="form-group row container">
+                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Csapat:</label>
+                        <div class="col-lg-10">
+                            <div id="teamSelect">Válassz kategóriát!</div>
+                        </div>
+                    </div><!--endof team select-->
+
+                    <!-- years -->
+                    <div class="form-group row container">
+                        <label class="col-lg-2 col-form-label" for="newM-years">Év:</label>
+                        <div class="col-lg-10">
+                            <input type="text" placeholder="Ezekben az években hordták a mezt" class="form-control" name="newM-years" id="years" maxlength="100">
+                            <small id="passwordHelpBlock" class="form-text text-muted">
+                                <strong>Nem</strong> kötelező mező
+                            </small>
+                            <div class="valid-feedback">
+                                Rendben!
+                            </div>
+                            <div class="invalid-feedback">
+                                Max. 100 karakter lehet!
+                            </div>
+                        </div>
+                    </div> <!--endof years-->
+                </div><!--endof left column-->
+
+                <!-- right column -->
+
+                <div class="col-xl-6 border height250">
+                    <!-- type -->
+                    <div class="form-group row container">
+                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Típus:</label>
+                        <div class="col-lg-10">
+                            <select class="form-control custom-select" id="newM-type-select">
+                                <option value="0">Egyéb típusú mez</option>
+                                <option value="1" selected>Hazai mez</option>
+                                <option value="0">Vendég mez</option>
+                                <option value="0">Harmadik számú mez</option>
+                                <option value="0">Kapus mez</option>
+                            </select>
+                            <div class="valid-feedback">
+                                Rendben!
+                            </div>
+                            <div class="invalid-feedback">
+                                Válassz!
+                            </div>
+                        </div>
+                    </div><!--endof type-->
+                    <!-- info -->
+                    <div class="form-group row container">
+                        <label class="col-lg-2 col-form-label" for="newM-years">Info:</label>
+                        <div class="col-lg-10">
+                            <textarea rows="6" cols="25" class="form-control" name="newM-info" id="info" name="info" maxlength="255"></textarea>
+                            <small id="passwordHelpBlock" class="form-text text-muted">
+                                <strong>Nem</strong> kötelező mező
+                            </small>
+                            <div class="valid-feedback">
+                                Rendben!
+                            </div>
+                            <div class="invalid-feedback">
+                                Max. 255 karakter lehet!
+                            </div>
+                        </div>
+                    </div> <!--endof info-->
+                </div><!--endof right column-->
+            </div><!--endof row-->
+        </form>
+    </div><!--endof container-fluid-->
 </div> <!--endof min-height550-->
-
-
 
 <?php
 $con->close();
