@@ -51,22 +51,18 @@ if (
 
  //validáció
  if (strlen($fromName) < 3) {
-  http_response_code(404);
   $response['errorMsg'] .= "A Név túl rövid, vagy sok a szóköz! (min. 3 karakter)php<br>" . $fromName;
   $response['errorCode'] = "65521";
  }
  if (!emailIsValid($fromEmail)) {
-  http_response_code(404);
   $response['errorMsg'] .= "Az e-mail cím helytelen formátumú! php<br>" . $fromEmail;
   $response['errorCode'] = "65522";
  }
  if (strlen($subject) < 3) {
-  http_response_code(404);
   $response['errorMsg'] .= "A Tárgy mező túl rövid, vagy sok a szóköz! (min. 3 karakter)php<br>" . $subject;
   $response['errorCode'] = "65523";
  }
  if (strlen($content) < 6) {
-  http_response_code(404);
   $response['errorMsg'] .= "Az üzenet túl rövid, vagy sok a szóköz! (min. 5 karakter)php <br>" . $content;
   $response['errorCode'] = "65524";
  }
@@ -81,7 +77,6 @@ if (
  $response['html'] .= "Body:" . $respEmail->body();
 
  if ($respEmail->statusCode() > 299) {
-  http_response_code(404);
   $response['error']     = "true";
   $response['errorMsg']  = "Valami hiba történt. error code: 65524";
   $response['errorCode'] = "65524";
@@ -89,7 +84,6 @@ if (
 } //endof emailRequest
 else {
  //no post
- http_response_code(404);
  $response['error']     = "true";
  $response['errorMsg']  = "Hiba a küldésben, error code: 65520";
  $response['errorCode'] = "65520";

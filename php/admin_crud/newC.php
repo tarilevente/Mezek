@@ -19,21 +19,18 @@ if (
   !$liga ||
   !$Cname
  ) {
-  http_response_code(405);
   $response['error']     = true;
   $response['errorMsg']  = "A megadott érték nem lehet csak szóköz! error code: 76101";
   $response['errorCode'] = 76101;
  }
 
  if ($liga < 0 || $liga > 10) {
-  http_response_code(405);
   $response['error']     = true;
   $response['errorMsg']  = "A liga nem létezik! error code: 76102";
   $response['errorCode'] = 75102;
  }
 
  if (strlen($Cname) < 2 || strlen($Cname) > 100) {
-  http_response_code(405);
   $response['error']     = true;
   $response['errorMsg']  = "Túl rövid, vagy túl hosszú a kategórianév! error code: 76103";
   $response['errorCode'] = 76103;
@@ -50,7 +47,6 @@ if (
 
  if (in_array($Cname, $usedCategories)) {
   //Team already Exists
-  http_response_code(405);
   $response['error']     = true;
   $response['errorMsg']  = "A kategória már létezik! error code: 76104";
   $response['errorCode'] = 76104;
@@ -60,7 +56,6 @@ if (
   $res = $con->query($sql);
   if (!res) {
    //unsuccessful upload
-   http_response_code(405);
    $response['error']     = true;
    $response['errorMsg']  = "Valami hiba történt! error code: 76105";
    $response['errorCode'] = 76105;
@@ -68,7 +63,6 @@ if (
  }
 } else {
  //no post exist
- http_response_code(405);
  $response['error']     = true;
  $response['errorMsg']  = "Valami hiba történt! error code: 76100";
  $response['errorCode'] = 76100;

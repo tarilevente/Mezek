@@ -16,22 +16,20 @@ $(document).ready(function () {
       data: { nemzeti: 1 },
       success: function (response) {
         const resJSON = JSON.parse(response);
-        if (resJSON.error) {
-          $("#nemzetiDiv").html(resJSON.errMsg);
-          console.log(resJSON.errMsg);
-        } else {
+        if (resJSON.error == false) {
           $("#nemzetiDiv").html(resJSON.html);
+        } else {
+          if (resJSON.errorCode == 78691) {
+            console.log("Error code: 78691, no POST ARRIVED");
+          }
+          resJSON.errorCode == 78694
+            ? console.log("Error code: 78694, no data in db table")
+            : "";
+          $("#nemzetiDiv").html(resJSON.errMsg);
         }
       },
       error: function (response) {
-        const resJSON = JSON.parse(response.responseText);
-        if (resJSON.errorCode == 78691) {
-          console.log("Error code: 78691, no POST ARRIVED");
-        }
-        resJSON.errorCode == 78694
-          ? console.log("Error code: 78694, no data in db table")
-          : "";
-        $("#nemzetiDiv").html(resJSON.errMsg);
+        console.log(response.responseText);
       },
     });
   });
@@ -46,13 +44,18 @@ $(document).ready(function () {
       dataType: "JSON",
       data: { nId: nId },
       success: function (response) {
-        $("#nationalTeams").html(response.html);
+        if (response.error == false) {
+          $("#nationalTeams").html(response.html);
+        } else {
+          response.errorCode == 78692
+            ? console.log("Error code: 78692, No post arrived")
+            : "";
+          err.innerHTML = response.errMsg;
+        }
       },
       error: function (response) {
-        response.responseJSON.errorCode == 78692
-          ? console.log("Error code: 78692, No post arrived")
-          : "";
-        err.innerHTML = response.responseJSON.errMsg;
+        console.log(response.responseJSON);
+        err.innerHTML = response.responseJSON;
       },
     });
   }); //endof print selected nation
@@ -65,16 +68,23 @@ $(document).ready(function () {
       dataType: "JSON",
       data: { egyeb: 1 },
       success: function (response) {
-        $("#egyebMezekDiv").html(response.html);
+        if (response.error == false) {
+          $("#egyebMezekDiv").html(response.html);
+        } else {
+          if (response.errorCode == 56456) {
+            console.log("Error code: 56456, no POST ARRIVED");
+          }
+          if (response.errorCode == 56459) {
+            console.log(
+              "Error code: 56459, database no contains properly data"
+            );
+          }
+          $("#egyebMezekDiv").html(response.errMsg);
+        }
       },
       error: function (response) {
-        const resJSON = response.responseJSON;
-        if (resJSON.errorCode == 56456) {
-          console.log("Error code: 56456, no POST ARRIVED");
-        } else if (resJSON.errorCode == 56459) {
-          console.log("Error code: 56459, database no contains properly data");
-        }
-        $("#egyebMezekDiv").html(resJSON.errMsg);
+        console.log(response.responseJson);
+        $("#egyebMezekDiv").html(response.responseJSON);
       },
     });
   });
@@ -91,13 +101,16 @@ $(document).ready(function () {
       success: function (response) {
         if (response.error == false) {
           $("#egyebMezekTeam").html(response.html);
+        } else {
+          response.errorCode == 56457
+            ? console.log("Error code: 56457, No post arrived")
+            : "";
+          err.innerHTML = response.errMsg;
         }
       },
       error: function (response) {
-        response.responseJSON.errorCode == 56457
-          ? console.log("Error code: 56457, No post arrived")
-          : "";
-        err.innerHTML = response.responseJSON.errMsg;
+        console.log(response.responseJSON);
+        err.innerHTML = response.responseJSON;
       },
     });
   }); //endof print selected egyebMezek
@@ -110,16 +123,21 @@ $(document).ready(function () {
       dataType: "JSON",
       data: { eu: 1 },
       success: function (response) {
-        $("#euLigaDiv").html(response.html);
+        if (response.error == false) {
+          $("#euLigaDiv").html(response.html);
+        } else {
+          if (response.errorCode == 26481) {
+            console.log("Error code: 26481, no POST ARRIVED");
+          } else if (response.errorCode == 26484) {
+            console.log(
+              "Error code: 26484, database no contains properly data"
+            );
+          }
+          $("#euLigaDiv").html(response.errMsg);
+        }
       },
       error: function (response) {
-        const resJSON = response.responseJSON;
-        if (resJSON.errorCode == 26481) {
-          console.log("Error code: 26481, no POST ARRIVED");
-        } else if (resJSON.errorCode == 26484) {
-          console.log("Error code: 26484, database no contains properly data");
-        }
-        $("#euLigaDiv").html(resJSON.errMsg);
+        console.log(response.responseJSON);
       },
     });
   });
@@ -134,16 +152,22 @@ $(document).ready(function () {
       dataType: "JSON",
       data: { euId: euId },
       success: function (response) {
-        $("#euLigaTeam").html(response.html);
+        if (response.error == false) {
+          $("#euLigaTeam").html(response.html);
+        } else {
+          if (response.errorCode == 26482) {
+            console.log("Error code: 26482, no POST ARRIVED");
+          } else if (response.errorCode == 26483) {
+            console.log(
+              "Error code: 26483, database no contains properly data"
+            );
+          }
+          err.innerHTML = response.errMsg;
+        }
       },
       error: function (response) {
-        const resErr = response.responseJSON;
-        if (resErr.errorCode == 26482) {
-          console.log("Error code: 26482, no POST ARRIVED");
-        } else if (resErr.errorCode == 26483) {
-          console.log("Error code: 26483, database no contains properly data");
-        }
-        err.innerHTML = resErr.errMsg;
+        console.log(response.responseJSON);
+        err.innerHTML = response.responseJSON;
       },
     });
   }); //endof print selected euLiga
@@ -155,16 +179,21 @@ $(document).ready(function () {
       dataType: "JSON",
       data: { other: 1 },
       success: function (response) {
-        $("#otherLigaDiv").html(response.html);
+        if (response.error == false) {
+          $("#otherLigaDiv").html(response.html);
+        } else {
+          if (response.errorCode == 12674) {
+            console.log("Error code: 12674, no POST ARRIVED");
+          } else if (response.errorCode == 12677) {
+            console.log(
+              "Error code: 12677, database no contains properly data"
+            );
+          }
+          $("#otherLigaDiv").html(response.errMsg);
+        }
       },
       error: function (response) {
-        const resJSON = response.responseJSON;
-        if (resJSON.errorCode == 12674) {
-          console.log("Error code: 12674, no POST ARRIVED");
-        } else if (resJSON.errorCode == 12677) {
-          console.log("Error code: 12677, database no contains properly data");
-        }
-        $("#otherLigaDiv").html(resJSON.errMsg);
+        console.log(response.responseJSON);
       },
     });
   });
@@ -179,16 +208,22 @@ $(document).ready(function () {
       dataType: "JSON",
       data: { otherId: otherId },
       success: function (response) {
-        $("#otherLigaTeam").html(response.html);
+        if (response.error == false) {
+          $("#otherLigaTeam").html(response.html);
+        } else {
+          if (response.errorCode == 12675) {
+            console.log("Error code: 12675, no POST ARRIVED");
+          } else if (response.errorCode == 12676) {
+            console.log(
+              "Error code: 12676, database no contains properly data"
+            );
+          }
+          err.innerHTML = response.errMsg;
+        }
       },
       error: function (response) {
-        const resErr = response.responseJSON;
-        if (resErr.errorCode == 12675) {
-          console.log("Error code: 12675, no POST ARRIVED");
-        } else if (resErr.errorCode == 12676) {
-          console.log("Error code: 12676, database no contains properly data");
-        }
-        err.innerHTML = resErr.errMsg;
+        console.log(response.responseJSON);
+        err.innerHTML = response.responseJSON;
       },
     });
   }); //endof print selected otherLiga
@@ -203,27 +238,30 @@ $(document).ready(function () {
       dataType: "JSON",
       data: { picId: picId },
       success: function (response) {
-        $("#modalContent").html(response.html);
+        if (response.error == false) {
+          $("#modalContent").html(response.html);
+        } else {
+          if (response.errorCode == 87420) {
+            console.log("Error code: 87420, no POST ARRIVED");
+          } else if (response.errorCode == 87421) {
+            console.log(
+              "Error code: 87421, database no contains properly data (MEZ)"
+            );
+          } else if (response.errorCode == 87422) {
+            console.log(
+              "Error code: 87422, database no contains properly data (PIC)"
+            );
+          } else if (response.errorCode == 87423) {
+            console.log(
+              "Error code: 87423, database no contains properly data (Csapat)"
+            );
+          }
+          err.innerHTML = response.errMsg;
+        }
       },
       error: function (response) {
-        const resErr = response.responseJSON;
-        if (resErr.errorCode == 87420) {
-          console.log("Error code: 87420, no POST ARRIVED");
-        } else if (resErr.errorCode == 87421) {
-          console.log(
-            "Error code: 87421, database no contains properly data (MEZ)"
-          );
-        } else if (resErr.errorCode == 87422) {
-          console.log(
-            "Error code: 87422, database no contains properly data (PIC)"
-          );
-        } else if (resErr.errorCode == 87423) {
-          console.log(
-            "Error code: 87423, database no contains properly data (Csapat)"
-          );
-        }
-
-        err.innerHTML = resErr.errMsg;
+        console.log(response.responseJSON);
+        err.innerHTML = response.responseJSON;
       },
     });
   }); //end of show selected pic
@@ -232,17 +270,6 @@ $(document).ready(function () {
   function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
-  }
-
-  function makeid(length) {
-    var result = "";
-    var characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
   }
 
   const err = document.getElementsByClassName("error")[0];
@@ -302,25 +329,30 @@ $(document).ready(function () {
         success: function (res) {
           // console.log("js success " + res);
           const resJSON = JSON.parse(res);
-          console.log(resJSON.html);
-          err.style.display = "none";
-          err.innerHTML = "";
-          succ.innerHTML = "Az email-t sikeresen elküldtem! :)";
-          succ.style.backgroundColor = "green";
-          succ.style.display = "block";
+          if (resJSON.error == false) {
+            err.style.display = "none";
+            err.innerHTML = "";
+            succ.innerHTML = "Az email-t sikeresen elküldtem! :)";
+            succ.style.backgroundColor = "green";
+            succ.style.display = "block";
+          } else {
+            succ.style.display = "none";
+            succ.innerHTML = "";
+            //for developers
+            console.log(
+              "(Error, no post or restricted by sendgrid: " +
+                resJSON.errorCode +
+                " )"
+            );
+            //for users
+            err.innerHTML = resJSON.errorMsg;
+            err.style.backgroundColor = "red";
+            err.style.display = "block";
+          }
         },
         error: function (res) {
-          const resJSON = JSON.parse(res.responseText);
-          succ.style.display = "none";
-          succ.innerHTML = "";
-          //for developers
-          console.log(
-            "(Error, no post or restricted by sendgrid: " +
-              resJSON.errorCode +
-              " )"
-          );
-          //for users
-          err.innerHTML = resJSON.errorMsg;
+          console.log(res.responseText);
+          err.innerHTML = "Valami hiba történt!";
           err.style.backgroundColor = "red";
           err.style.display = "block";
         },
@@ -428,7 +460,7 @@ $(document).ready(function () {
           }
         },
         error: function (res) {
-          console.log(res);
+          console.log(res.responseText);
         },
       });
     } else {
@@ -439,19 +471,4 @@ $(document).ready(function () {
       pwdInput.reportValidity();
     }
   });
-
-  //registration
-
-  // //if you scroll down, back to navbar icon shows, navigate to the top
-  // $(window).scroll(function () {
-  //   var scrollVal = $(window).scrollTop();
-  //   if (scrollVal >= 200) {
-  //     // console.log("show");
-  //     $("#buttonShowHide").fadeIn();
-  //   }
-  //   if (scrollVal < 80) {
-  //     $("#buttonShowHide").fadeOut();
-  //     // console.log("hide");
-  //   }
-  // });
 }); //endof ready()

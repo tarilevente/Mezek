@@ -158,28 +158,24 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
   </div>';
    } else {
     //Missing $res3 -> NO Team FOUND
-    http_response_code(513);
     $response['error'] = true;
     $response['errMsg'] .= PrintModalError('Kép nem található', 87423);
     $response['errorCode'] = 87423;
    }
   } else {
 //Missing $res2 -> NO PIC FOUND
-   http_response_code(513);
    $response['error'] = true;
    $response['errMsg'] .= PrintModalError('Csapat nem található', 87422);
    $response['errorCode'] = 87422;
   }
  } else {
   //Missing $res -> NO MEZ FOUND
-  http_response_code(513);
   $response['error'] = true;
   $response['errMsg'] .= PrintModalError('Mez nem található', 87421);
   $response['errorCode'] = 87421;
  }
 } else {
  //$_post['picId'] is Missing
- http_response_code(513);
  $response['error'] = true;
  $response['errMsg'] .= PrintModalError('Hiba a megjelenítésnél!', 87420);
  $response['errorCode'] = 87420;
