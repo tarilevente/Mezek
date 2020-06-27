@@ -69,10 +69,18 @@ if (
   $response['errorMsg']  = "A csapatnév már létezik! error code: 75205";
   $response['errorCode'] = 75205;
  }
- if (false === $response['error']) {
-  $sql = "INSERT INTO `teamtable` (`idTeam`, `idCategory`, `tName`, `tCity`) VALUES (NULL, '$cat', '$Tname', '$cityName');";
-  $res = $con->query($sql);
 
+ if (false === $response['error']) {
+  $path = 'public/resources/pics/mezek/' . $Tname . '/';
+  $sql  = "INSERT INTO `teamtable` (`idTeam`, `idCategory`, `tName`, `tCity`, `pathDIR`) VALUES (NULL, '$cat', '$Tname', '$cityName', '$path')";
+  $res  = $con->query($sql);
+  if (!$res) {
+   //error to upload
+   http_response_code(405);
+   $response['error']     = true;
+   $response['errorMsg']  = "Valami hiba történt! error code: 75206";
+   $response['errorCode'] = 75206;
+  }
  }
 } else {
  //no post exist

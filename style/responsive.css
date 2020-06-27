@@ -10,18 +10,20 @@
 
 @media screen and (max-width: 400px) {
   * {
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
   *:before,
   *:after {
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
-}
-@media screen and (max-width: 400px) {
+
+  .mainDiv {
+    padding: 0rem, 5rem;
+  }
   .carousel-item > img {
     max-width: 320px !important;
   }
@@ -33,9 +35,7 @@
   .media-center {
     margin: auto !important;
   }
-}
 
-@media screen and (max-width: 400px) {
   .multimedia-gallery-wrapper {
     display: none;
   }
@@ -68,6 +68,11 @@
   .dropdown-menu {
     width: 100% !important;
     /*not realy working, but beller*/
+  }
+
+  .jumbotron,
+  .media {
+    text-align: center;
   }
 }
 

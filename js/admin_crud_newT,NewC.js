@@ -93,6 +93,13 @@ $(document).ready(function () {
             succ.innerHTML = "";
             succ.style.display = "none";
           }
+          if (resJSON.errorCode == 75206) {
+            console.log("not succesful upload, error code: 75206");
+            err.innerHTML = resJSON.errorMsg;
+            err.style.display = "block";
+            succ.innerHTML = "";
+            succ.style.display = "none";
+          }
         },
       });
     } else {
@@ -188,6 +195,13 @@ $(document).ready(function () {
             succ.innerHTML = "";
             succ.style.display = "none";
           }
+          if (resJSON.errorCode == 76105) {
+            console.log("upload is not success, error code: 76105");
+            err.innerHTML = resJSON.errorMsg;
+            err.style.display = "block";
+            succ.innerHTML = "";
+            succ.style.display = "none";
+          }
         },
       });
     } else {
@@ -207,4 +221,4 @@ $(document).ready(function () {
     document.getElementById("newC-Liga-select").value = "2";
     document.getElementById("catName").value = "";
   }); //endof reset
-}); //endof ready()
+}); //endof ready0

@@ -10,7 +10,7 @@ $menu = PrintMenu(); //menu_in.html will appears
 echo $menu;
 ?>
 
-<div class="row">
+<div class="row min-height550">
 <!-- left: csapat létrehozása -->
     <div class="col-lg-6">
       <div class="container">
@@ -190,4 +190,6 @@ if (!$res) {
 
 <?php
 $con->close();
-echo file_get_contents("html/footer.html");
+$footer             = file_get_contents("html/footer.html");
+$js_newTeamCategory = '<script src="js/admin_crud_newT,NewC.js"></script>';
+echo str_replace("::otherjs::", $js_newTeamCategory, $footer);
