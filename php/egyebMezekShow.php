@@ -77,7 +77,6 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
 
  } else {
   //no result - only bg appears
-  http_response_code(513);
   $response['error'] = true;
   $response['errMsg'] .=
    '<h4 class="bg-warning text-danger m-1 p-5 text-center">
@@ -86,7 +85,6 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
   $response['errorCode'] = 56457;
  }
 } else {
- http_response_code(513);
  $response['error'] = true;
  $response['errMsg'] .=
   '<h4 class="bg-danger text-light p-5 text-center">

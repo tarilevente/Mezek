@@ -76,7 +76,6 @@ if (isset($_POST['otherId']) && !empty($_POST['otherId'])) {
   $response['html'] .= PrintModal();
  } else {
   //Not print Anything
-  http_response_code(513);
   $response['error'] = true;
   $response['errMsg'] .=
    '<h4 class="bg-warning text-danger m-1 p-5 text-center">
@@ -85,7 +84,6 @@ if (isset($_POST['otherId']) && !empty($_POST['otherId'])) {
   $response['errorCode'] = 12676;
  }
 } else {
- http_response_code(513);
  $response['error'] = true;
  $response['errMsg'] .=
   '<h4 class="bg-danger text-light p-5 text-center">

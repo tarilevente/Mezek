@@ -82,7 +82,6 @@ if (isset($_POST['nId']) && !empty($_POST['nId'])) {
   //DO Not print Anything, ONLY BG appears
  }
 } else {
- http_response_code(513);
  $response['error'] = true;
  $response['errMsg'] .=
   '<h4 class="bg-danger text-light p-5 text-center">

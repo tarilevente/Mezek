@@ -65,7 +65,6 @@ if (isset($_POST['egyeb']) && 1 == $_POST['egyeb']) {
         <div class="row">'
    . '   <div class="col-2">Nincs adat feltöltve, a tábla üres. </div>'
    . '<div class="col-10 min-height500 bg-picNemzeti2" id="nationalTeams"></div>';
-  http_response_code(513);
   $response['errorCode'] = 56459;
  }
 
@@ -79,7 +78,6 @@ if (isset($_POST['egyeb']) && 1 == $_POST['egyeb']) {
          </div>
          <div class="col-10 min-height500 bg-picNemzeti2" id="nationalTeams"></div>
     </div>'; //for error messages
- http_response_code(512);
  $response['errorCode'] = 56456;
 }
 

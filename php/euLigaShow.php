@@ -76,7 +76,6 @@ if (isset($_POST['euId']) && !empty($_POST['euId'])) {
   $response['html'] .= PrintModal();
  } else {
   //Not print Anything - //ezt nem sikerült errorr-ra beállítani
-  http_response_code(513);
   $response['error'] = true;
   $response['errMsg'] .=
    '<h4 class="bg-warning text-danger m-1 p-5 text-center">
@@ -85,7 +84,6 @@ if (isset($_POST['euId']) && !empty($_POST['euId'])) {
   $response['errorCode'] = 26483;
  }
 } else {
- http_response_code(513);
  $response['error'] = true;
  $response['errMsg'] .=
   '<h4 class="bg-danger text-light p-5 text-center">

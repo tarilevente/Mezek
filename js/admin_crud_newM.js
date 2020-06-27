@@ -157,7 +157,13 @@ $(document).ready(function () {
             err.style.display = "block";
           }
         },
-        error: function (res) {},
+        error: function (res) {
+          console.log(res.responseJSON);
+          succ.innerHTML = "";
+          succ.style.display = "none";
+          err.innerHTML = res.responseJSON;
+          err.style.display = "block";
+        },
       }); //endof AJAX
     } else {
       succ.style.display = "none";
