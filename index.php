@@ -4,6 +4,10 @@ session_start();
 require_once 'config/connect.php'; //database connect
 require_once 'config/functions.php'; //using methods
 
+if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+ header('Location:upload.php');
+}
+
 echo file_get_contents("html/header.html");
 
 $menu      = PrintMenu();
@@ -16,4 +20,5 @@ echo str_replace("::extraForIndex", $extraMenu, $menu);
 require_once 'php/indexContent.php';
 $con->close();
 
-echo file_get_contents("html/footer.html");
+$footer = file_get_contents("html/footer.html");
+echo str_replace("::otherjs::", "", $footer);

@@ -54,7 +54,19 @@
 76104:  - 'a ketegória már az adatbázisban van' - newC.php                              setted
 76105:  - 'upload nem sikerült valamiért' - newC.php                                    setted
 
-
+89900:  - '$_post['type'] nincs, vagy túl nagy, vagy túl kicsi'  -newM.php                
+89901:  - 'Nincs csapat az adatbázisban'  -newM.php      
+89902:  - 'Team-re nem érkezett post'  -newM.php      
+89903:  - 'Az első kép kiválasztása kötelező, nincs rá post $_FILES['#imageResult']' -newM.php      
+89904:  - 'move_uploaded_file -- went wrong' -newM.php
+89905:  - 'a fájl már létezik a mappában.' -newM.php
+89906:  - 'nincs senki bejelentkezve.' -newM.php
+89907:  - 'A megadott csapat nem létezik az adatbázisban' -newM.php
+89908:  - 'Kep1 formátuma nem megfelelő, !in_array()-->true lett' -newM.php
+89909:  - 'Kep2 formátuma nem megfelelő, !in_array()-->true lett' -newM.php
+89910:  - 'Kep3 formátuma nem megfelelő, !in_array()-->true lett' -newM.php
+89911:  - 'Kep2 már létezik az adatbázisban' -newM.php
+89912:  - 'Kep3 már létezik az adatbázisban' -newM.php
 
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
@@ -81,6 +93,12 @@
 //design: bootstrap ideas??
 //hasonlót írja ki: ékezet, különleges karakter, kis-nagybetű. mellé: erre gondoltál? az új csapat felvitelénél
 //átellenőrizni a mezeknél a felvitelnél az errorokat
+//optimalizálás az ajaxra: https://www.tutorialsteacher.com/jquery/jquery-ajax-method tymeout??success: function (data,status,xhr)
+//button nyomásnál uploading..  $.ajax()-kor   uploadButton.innerHTML = 'Uploading...';
+//$('#idea') --> document.getElementById helyett!
+//bevitt képek minőségi ellenőrzése(max felbontás)
+//$con-close, others ->close() check
+//sql optimalizálás, indexelés?
 
 /*
 Felhasznált technológiák

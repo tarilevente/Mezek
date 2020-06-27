@@ -72,15 +72,16 @@ echo $menu;
                     </div>
                 </div>
             </div><!--endof row, endof pic upload-->
-            <div class="border-bottom "></div>
+            <!-- ========================================================================================================== -->
+            <div class="border-bottom my-2"></div>
 
             <!-- start of inputs -->
             <div class="row">
                 <!-- left column -->
-                <div class="col-xl-6 border height250">
+                <div class="col-xl-6 height280">
                     <!-- league select -->
                     <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Liga:</label>
+                        <label class="col-lg-2 col-form-label" for="newM-league-select">Liga:</label>
                         <div class="col-lg-10">
                             <select class="form-control custom-select" id="newM-league-select">
 <?php
@@ -108,18 +109,33 @@ if (!$res1) {
 
                     <!-- category select -->
                     <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Kategória:</label>
-                        <div class="col-lg-10">
-                            <div id="categorySelect">Válassz ligát!</div>
+                        <label class="col-lg-2 col-form-label" for="newM-Cat-select">Kategória:</label>
+                        <div class="col-lg-10" id="categorySelect">
+                        <select class="form-control custom-select" id="newM-Cat-select" required>
+                        </select>
+                        <div class="valid-feedback">
+                            Rendben!
+                        </div>
+                        <div class="invalid-feedback">
+                            Válassz!
+                        </div>
                         </div>
                     </div><!--endof category select-->
 
 
                     <!-- team select -->
                     <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Csapat:</label>
-                        <div class="col-lg-10">
-                            <div id="teamSelect">Válassz kategóriát!</div>
+                        <label class="col-lg-2 col-form-label" for="newM-team-select">Csapat:</label>
+                        <div class="col-lg-10" id="teamSelect">
+                            <select class="form-control custom-select" id="newM-team-select" required>
+
+                            </select>
+                            <div class="valid-feedback">
+                                Rendben!
+                            </div>
+                            <div class="invalid-feedback">
+                                Válassz!
+                            </div>
                         </div>
                     </div><!--endof team select-->
 
@@ -127,7 +143,7 @@ if (!$res1) {
                     <div class="form-group row container">
                         <label class="col-lg-2 col-form-label" for="newM-years">Év:</label>
                         <div class="col-lg-10">
-                            <input type="text" placeholder="Ezekben az években hordták a mezt" class="form-control" name="newM-years" id="years" maxlength="100">
+                            <input type="text" placeholder="Ezekben az években hordták a mezt" class="form-control" name="newM-years" id="newM-years" maxlength="100">
                             <small id="passwordHelpBlock" class="form-text text-muted">
                                 <strong>Nem</strong> kötelező mező
                             </small>
@@ -142,11 +158,10 @@ if (!$res1) {
                 </div><!--endof left column-->
 
                 <!-- right column -->
-
-                <div class="col-xl-6 border height250">
+                <div class="col-xl-6 height280">
                     <!-- type -->
                     <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Típus:</label>
+                        <label class="col-lg-2 col-form-label" for="newM-type-select">Típus:</label>
                         <div class="col-lg-10">
                             <select class="form-control custom-select" id="newM-type-select">
                                 <option value="0">Egyéb típusú mez</option>
@@ -165,9 +180,9 @@ if (!$res1) {
                     </div><!--endof type-->
                     <!-- info -->
                     <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newM-years">Info:</label>
+                        <label class="col-lg-2 col-form-label" for="newM-info">Info:</label>
                         <div class="col-lg-10">
-                            <textarea rows="6" cols="25" class="form-control" name="newM-info" id="info" name="info" maxlength="255"></textarea>
+                            <textarea rows="6" cols="25" class="form-control" name="newM-info" id="newM-info" maxlength="255"></textarea>
                             <small id="passwordHelpBlock" class="form-text text-muted">
                                 <strong>Nem</strong> kötelező mező
                             </small>
@@ -179,12 +194,51 @@ if (!$res1) {
                             </div>
                         </div>
                     </div> <!--endof info-->
+                    <!-- submit, reset -->
+                    <div class="form-group row container">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-10">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="button" class="btn btn-primary form-control" value="Reset" id="resetM">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="submit" name="submitMez" id="submitMez" value="Mez feltöltése" class="btn btn-primary form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--endof submit, reset-->
                 </div><!--endof right column-->
             </div><!--endof row-->
+            <div id="errorVanM" class="bg-danger p-1 text-light"></div>
+            <div id="successVanM" class="bg-success p-1 text-light"></div>
         </form>
     </div><!--endof container-fluid-->
 </div> <!--endof min-height550-->
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+  }, false);
+})();
+</script>
 
 <?php
 $con->close();
-echo file_get_contents("html/footer.html");
+$footer    = file_get_contents("html/footer.html");
+$js_newMez = '<script src="js/admin_crud_newM.js"></script>';
+echo str_replace("::otherjs::", $js_newMez, $footer);

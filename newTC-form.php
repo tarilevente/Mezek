@@ -190,4 +190,6 @@ if (!$res) {
 
 <?php
 $con->close();
-echo file_get_contents("html/footer.html");
+$footer             = file_get_contents("html/footer.html");
+$js_newTeamCategory = '<script src="js/admin_crud_newT,NewC.js"></script>';
+echo str_replace("::otherjs::", $js_newTeamCategory, $footer);

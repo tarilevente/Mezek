@@ -12,4 +12,5 @@ echo $menu;
 echo '<div class="min-height550"></div>';
 
 $con->close();
-echo file_get_contents("html/footer.html");
+$footer = file_get_contents("html/footer.html");
+echo str_replace("::otherjs::", "", $footer);
