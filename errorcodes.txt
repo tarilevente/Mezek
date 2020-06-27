@@ -74,9 +74,6 @@
 //megnézem: modal
 //csapatkereső: filter
 //lehet badge is a collapse-nel
-//rezső: media objects
-//aria-hiddenezés akadálymentesítés
-//kép kiválasztásánál rázoomol
 //megnézem-re hover: cursor:zoomin
 //im not a robot (recaptcha GOOGLE - need a domain)
 //lekérdezéseket átírni param-ra
@@ -99,6 +96,9 @@
 //bevitt képek minőségi ellenőrzése(max felbontás)
 //$con-close, others ->close() check
 //sql optimalizálás, indexelés?
+//db connect ha karcos, akkor mit írjon ki (if->$con: mindenhova? else:lap nem elérhető .php)
+//statisztika: hány mez van fent? hány csapat van fenn? hány látogató volt már?
+//források
 
 /*
 Felhasznált technológiák
@@ -115,4 +115,3 @@ hibakezelés hibakód kiírásával
 responsive design
 
 */
->>>>>>> json

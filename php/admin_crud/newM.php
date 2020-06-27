@@ -17,7 +17,6 @@ if (!isset($_SESSION['user'])) {
  $response['error'] = true;
  $response['errorMsg'] .= 'Be kell jelentkezned: 89906<br>';
  $response['errorCode'][] = '89906';
- http_response_code(404);
 } //endof $user error
 else {
  $user = $_SESSION['user'];
@@ -48,7 +47,6 @@ else {
   $response['error'] = true;
   $response['errorMsg'] .= 'A mez típusának megadása kötelező! error code: 89900<br>';
   $response['errorCode'][] = '89900';
-  http_response_code(404);
  } else {
   //type is ok
   $type = $_POST['type'];
@@ -59,7 +57,6 @@ else {
   $response['error'] = true;
   $response['errorMsg'] .= 'A csapat megadása kötelező: error code: 89902<br>';
   $response['errorCode'][] = '89902';
-  http_response_code(404);
  } else {
   //3: team is in the database?
   $team = $_POST['team'];
@@ -70,7 +67,6 @@ else {
    $response['error'] = true;
    $response['errorMsg'] .= 'Valami hiba történt! error code: 89901<br>';
    $response['errorCode'][] = '89901';
-   http_response_code(404);
   }
   $csapatIDs = array();
   while ($row = mysqli_fetch_row($res)) {
@@ -82,7 +78,6 @@ else {
    $response['error'] = true;
    $response['errorMsg'] .= 'A csapat nem megfelelő: error code: 89907<br>';
    $response['errorCode'][] = '89907';
-   http_response_code(404);
   }
   $sql      = 'SELECT tName from TeamTable WHERE idTeam=' . $team;
   $res      = $con->query($sql);
@@ -101,7 +96,6 @@ else {
   $response['error'] = true;
   $response['errorMsg'] .= 'Az első kép kiválasztása kötelező! error code: 89903<br>';
   $response['errorCode'][] = '89903';
-  http_response_code(404);
  } else {
   //kep1 setted (<input name="#imageResult">)
   $kep1filename  = $_FILES['#imageResult']['name'];
@@ -115,7 +109,6 @@ else {
    $response['error'] = true;
    $response['errorMsg'] .= 'A kép1 formátuma nem megfelelő!: error code: 89908<br>';
    $response['errorCode'][] = '89908';
-   http_response_code(404);
   }
   //pic1
   elseif (fileAlreadyExists($locationAkt1)) {
@@ -123,7 +116,6 @@ else {
    $response['error'] = true;
    $response['errorMsg'] .= 'A kép1 már létezik az adatbázisban! error code: 89905<br>';
    $response['errorCode'][] = '89905';
-   http_response_code(404);
   } else {
    //check kep2
    $kep2exists = false;
@@ -141,12 +133,10 @@ else {
      $response['error'] = true;
      $response['errorMsg'] .= 'A kép2 formátuma nem megfelelő!: error code: 89909<br>';
      $response['errorCode'][] = '89909';
-     http_response_code(404);
     } elseif (fileAlreadyExists($locationAkt2)) {
      $response['error'] = true;
      $response['errorMsg'] .= 'A kép2 már létezik az adatbázisban! error code: 89911<br>';
      $response['errorCode'][] = '89911';
-     http_response_code(404);
     }
    }
    //check kep3
@@ -165,12 +155,10 @@ else {
      $response['error'] = true;
      $response['errorMsg'] .= 'A kép3 formátuma nem megfelelő!: error code: 89910<br>';
      $response['errorCode'][] = '89910';
-     http_response_code(404);
     } elseif (fileAlreadyExists($locationAkt3)) {
      $response['error'] = true;
      $response['errorMsg'] .= 'A kép3 már létezik az adatbázisban! error code: 89912<br>';
      $response['errorCode'][] = '89912';
-     http_response_code(404);
     }
    }
    if (false == $response['error']) {
@@ -225,7 +213,7 @@ else {
      $response['error'] = true;
      $response['errorMsg'] .= 'Valami hiba történt a kép(ek) feltöltésekor! error code: 89904<br>';
      $response['errorCode'][] = '89904';
-     http_response_code(404);
+
     } else {
      //kep1 success
     } //endof kep1
@@ -235,19 +223,16 @@ else {
       $response['error'] = true;
       $response['errorMsg'] .= 'Valami hiba történt a kép(ek) feltöltésekor! error code: 89904<br>';
       $response['errorCode'][] = '89904';
-      http_response_code(404);
      } else {
       //kep2 success
      }
     } //endof kep2
     if ($kep3exists) {
-
      if (!move_uploaded_file($_FILES['#imageResult3']['tmp_name'], $locationAkt3)) {
       //error occurs moving the pic
       $response['error'] = true;
       $response['errorMsg'] .= 'Valami hiba történt a kép(ek) feltöltésekor! error code: 89904<br>';
       $response['errorCode'][] = '89904';
-      http_response_code(404);
      } else {
       //kep3 success
      }

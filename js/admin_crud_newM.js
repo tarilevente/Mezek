@@ -141,25 +141,24 @@ $(document).ready(function () {
         url: "php/admin_crud/newM.php",
         type: "post",
         data: fd,
-        dataType: "text",
+        dataType: "JSON",
         contentType: false,
         processData: false,
-        success: function (response) {
-          alert(response);
-          succ.innerHTML = response;
-          succ.style.display = "block";
+        success: function (res) {
+          if (res.error == false) {
+            err.innerHTML = "";
+            err.style.display = "none";
+            succ.innerHTML = "Sikeres feltöltés!";
+            succ.style.display = "block";
+          } else {
+            succ.innerHTML = "";
+            succ.style.display = "none";
+            err.innerHTML = res.errorMsg;
+            err.style.display = "block";
+          }
         },
-        error: function (res) {
-          err.innerHTML = res.responseText;
-          err.style.display = "block";
-          console.log(res.responseText);
-        },
-      });
-      //   },
-      //   error: function () {
-      //     //the pics not sent at all, because another error occurs
-      //   },
-      // });
+        error: function (res) {},
+      }); //endof AJAX
     } else {
       succ.style.display = "none";
       succ.innerHTML = "";

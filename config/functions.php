@@ -231,10 +231,6 @@ function pwdIsValidRegex($password)
 //create a dir for pics (group by team) if not exists
 function makeDir($path)
 {
-//   if (!file_exists('path/to/directory')) {
- //     mkdir('path/to/directory', 0777, true);
- // }
-
  return is_dir($path) || mkdir($path);
 }
 

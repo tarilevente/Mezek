@@ -221,4 +221,4 @@ $(document).ready(function () {
     document.getElementById("newC-Liga-select").value = "2";
     document.getElementById("catName").value = "";
   }); //endof reset
-}); //endof ready
+}); //endof ready0

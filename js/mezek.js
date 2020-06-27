@@ -407,28 +407,28 @@ $(document).ready(function () {
             console.log("login is successful");
             window.location.replace("upload.php");
             // window.open("upload.php");
+          } else {
+            if (resJSON.errorCode == 65600) {
+              console.log("no post for login.php, error code: 65600");
+            }
+            if (resJSON.errorCode == 65601) {
+              console.log("username is too short, error code: 65601");
+            }
+            if (resJSON.errorCode == 65602) {
+              console.log("password is too short, error code: 65602");
+            }
+            if (resJSON.errorCode == 65603) {
+              console.log("password regex is not valid, error code: 65603");
+            }
+            if (resJSON.errorCode == 65604) {
+              console.log("no result for query, error code: 65604");
+            }
+            unameInput.setCustomValidity(resJSON.errorMsg);
+            unameInput.reportValidity();
           }
         },
         error: function (res) {
-          //http_response_code is setted
-          const resJSON = JSON.parse(res.responseText);
-          if (resJSON.errorCode == 65600) {
-            console.log("no post for login.php, error code: 65600");
-          }
-          if (resJSON.errorCode == 65601) {
-            console.log("username is too short, error code: 65601");
-          }
-          if (resJSON.errorCode == 65602) {
-            console.log("password is too short, error code: 65602");
-          }
-          if (resJSON.errorCode == 65603) {
-            console.log("password regex is not valid, error code: 65603");
-          }
-          if (resJSON.errorCode == 65604) {
-            console.log("no result for query, error code: 65604");
-          }
-          unameInput.setCustomValidity(resJSON.errorMsg);
-          unameInput.reportValidity();
+          console.log(res);
         },
       });
     } else {
