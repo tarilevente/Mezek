@@ -71,6 +71,7 @@ $(function () {
     }, 50);
   }); //endof newM-league-select
 
+  //in case of modify teamSelect, prints out the proper team details
   $(document).on("change", "#modT-Team-select", function () {
     const idTeam = $(this).val();
     $.ajax({
@@ -147,7 +148,7 @@ $(function () {
         },
         error: function (res) {
           console.log(res.responseJSON);
-          err.innerHTML = "Valami hiba történt!(JS) " + res.responseText;
+          err.innerHTML = "Valami hiba történt! " + res.responseText;
           err.style.display = "block";
           succ.innerHTML = "";
           succ.style.display = "none";
@@ -160,4 +161,113 @@ $(function () {
       succ.style.display = "none";
     }
   }); //endof submit #modT-form
+
+  //================================  Category Modify ==============================
+  //league select changed
+  $(document).on("change", "#modC-League-select", function () {
+    const valLeague = $(this).val();
+    const categorySelectC = document.getElementById("categorySelectC");
+    $.post(
+      "php/admin_crud/printCategorySelect_modC.php",
+      { valLeague: valLeague },
+      function (res) {
+        categorySelectC.innerHTML = res;
+      }
+    );
+    //if you change a league, after 50milliseconds, read out the cat's id from select field
+    setTimeout(function () {
+      const idCat = $("#modC-Cat-select").val();
+      $.ajax({
+        url: "php/admin_crud/printAktCategoryDetails.php",
+        method: "post",
+        data: { idCat, idCat },
+        dataType: "JSON",
+        success: function (res) {
+          const inputCatnev = document.getElementById("catName");
+          inputCatnev.value = res.cat;
+        },
+        error: function (res) {
+          console.log(res);
+        },
+      });
+    }, 50);
+  }); //endof newC-league-select
+
+  //print out the categoryname to input:text
+  $(document).on("change", "#modC-Cat-select", function () {
+    const idCat = $(this).val();
+    $.ajax({
+      url: "php/admin_crud/printAktCategoryDetails.php",
+      method: "post",
+      data: { idCat, idCat },
+      dataType: "JSON",
+      success: function (res) {
+        const inputCatnev = document.getElementById("catName");
+        inputCatnev.value = res.cat;
+      },
+      error: function (res) {
+        console.log(res);
+      },
+    });
+  }); //endof print inputValue
+
+  //submit catForm, upload data
+  $(document).on("submit", "#modC-form", function (e) {
+    e.preventDefault();
+    const idCat = $("#modC-Cat-select").val().trim();
+    const newCName = $("#catName").val().trim();
+
+    const err = document.getElementById("errorVanC");
+    const succ = document.getElementById("successVanC");
+    var errorExists = false;
+    var errorMSG = "";
+    if (idCat < 0) {
+      errorMSG += "A megadott kategória nem létezik. <br>";
+      errorExists = true;
+    }
+    if (newCName.length < 2) {
+      errorMSG += "A kategórianév túl rövid! (min. 2 karakter) <br>";
+      errorExists = true;
+    }
+    if (newCName.length > 100) {
+      errorMSG += "A kategórianév túl hosszú! (max. 100 karakter) <br>";
+      errorExists = true;
+    }
+
+    if (errorExists == false) {
+      $.ajax({
+        url: "php/admin_crud/modifyC.php",
+        method: "post",
+        data: { idCat: idCat, newCName: newCName },
+        dataType: "JSON",
+        success: function (res) {
+          if (res.error == false) {
+            succ.innerHTML =
+              "Sikeresen módosítottam az adatokat! :)<br>" + res.successMessage;
+            succ.style.display = "block";
+            err.innerHTML = "";
+            err.style.display = "none";
+          } else {
+            err.innerHTML = res.errorMessage;
+            err.style.display = "block";
+            succ.innerHTML = "";
+            succ.style.display = "none";
+          }
+        },
+        error: function (res) {
+          console.log(res.responseJSON);
+          alert(res.responseText);
+          err.innerHTML = "Valami hiba történt!(js) " + res.responseJSON;
+          err.style.display = "block";
+          succ.innerHTML = "";
+          succ.style.display = "none";
+        },
+      });
+    } else {
+      err.innerHTML = errorMSG;
+      err.style.display = "block";
+      succ.innerHTML = "";
+      succ.style.display = "none";
+    }
+  }); //endof submit #modC-form
 }); //endof ready

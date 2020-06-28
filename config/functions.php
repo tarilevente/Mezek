@@ -257,6 +257,10 @@ function printCatSelectOptions($con, $post, $id)
 
   if (0 == $res->num_rows) {
    $html .= '<option selected value="-">Nincs még kategória! </option>';
+  } elseif (1 == $res->num_rows) {
+   while ($row = mysqli_fetch_row($res)) {
+    $html .= '<option selected value=' . $row[0] . '>' . $row[1] . '</option>';
+   }
   } else {
    $html .= '<option selected value="-">Válassz!</option>';
    while ($row = mysqli_fetch_row($res)) {
@@ -291,7 +295,7 @@ function printTeamSelectOptions($con, $post, $id)
     $html .= '<option value=' . $row[0] . '>' . $row[1] . '</option>';
    }
   } else {
-   $html .= '<option selected value="-">Válassz!</option>';
+   $html .= '<option selected value="-">Válassz</option>';
    while ($row = mysqli_fetch_row($res)) {
     $html .= '<option value=' . $row[0] . '>' . $row[1] . '</option>';
    }

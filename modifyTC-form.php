@@ -20,11 +20,11 @@ echo PrintMenu(); //menu_in.html will appears ?>
                         <div class="col-lg-10">
                             <select class="form-control custom-select" id="modT-League-select">
 <?php
-$sql1 = 'SELECT idLeague, LeagueName FROM LeagueTable ORDER BY LeagueName';
-$res1 = $con->query($sql1);
+$sql = 'SELECT idLeague, LeagueName FROM LeagueTable ORDER BY LeagueName';
+$res = $con->query($sql);
 echo '<option selected value="-">Válassz!</option>';
-while ($row1 = mysqli_fetch_row($res1)) {
- echo '<option value=' . $row1[0] . '>' . $row1[1] . '</option>';
+while ($row = mysqli_fetch_row($res)) {
+ echo '<option value=' . $row[0] . '>' . $row[1] . '</option>';
 }
 ?>
                             </select>
@@ -48,9 +48,9 @@ while ($row1 = mysqli_fetch_row($res1)) {
                             <div class="invalid-feedback">
                               Válassz!
                             </div>
-                          </div>
-                        </div>
-                        <div class="form-group row container">
+                         </div>
+                </div>
+                <div class="form-group row container">
                           <label class="col-lg-2 col-form-label" for="modT-Team-select">Csapat:</label>
                           <div class="col-lg-10" id="teamSelectT">
                             <select class="form-control custom-select" id="modT-Team-select">
@@ -117,26 +117,15 @@ while ($row1 = mysqli_fetch_row($res1)) {
             <div class="bg-warning text-center p-1 mb-1"><h4>Kategória módosítása</h4></div>
             <form id="modC-form" class="needs-validation" novalidate >
                 <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="modC-Liga-select">Liga:</label>
+                        <label class="col-lg-2 col-form-label" for="modC-League-select">Liga:</label>
                         <div class="col-lg-10">
-                            <select class="form-control custom-select" id="modC-Liga-select">
+                            <select class="form-control custom-select" id="modC-League-select">
 <?php
-$sql = 'SELECT LeagueTable.idLeague, LeagueTable.LeagueName FROM LeagueTable ORDER BY LeagueName';
+$sql = 'SELECT idLeague, LeagueName FROM LeagueTable ORDER BY LeagueName';
 $res = $con->query($sql);
-if (!$res) {
- //  $response['errorT']     = true;
- //  $response['errorMsgT']  = "Nincs kategória az adatbázisban. error code: 75110";
- //  $response['errorCodeT'] = "75110";
-} else {
- $first = true;
- while ($row = mysqli_fetch_row($res)) {
-  if (true === $first) {
-   echo '<option selected value=' . $row[0] . '>' . $row[1] . '</option>';
-   $first = false;
-  } else {
-   echo '<option value=' . $row[0] . '>' . $row[1] . '</option>';
-  }
- }
+echo '<option selected value="-">Válassz!</option>';
+while ($row = mysqli_fetch_row($res)) {
+ echo '<option value=' . $row[0] . '>' . $row[1] . '</option>';
 }
 ?>
                             </select>
@@ -148,6 +137,25 @@ if (!$res) {
                             </div>
                         </div>
                 </div>
+
+                <div class="form-group row container">
+                        <label class="col-lg-2 col-form-label" for="modC-Cat-select">Kategória:</label>
+                        <div class="col-lg-10" id="categorySelectC">
+                            <select class="form-control custom-select" id="modC-Cat-select" required>
+                              <!-- ajax fills options -->
+                            </select>
+                            <div class="valid-feedback">
+                              Rendben!
+                            </div>
+                            <div class="invalid-feedback">
+                              Válassz!
+                            </div>
+                         </div>
+                </div>
+
+
+
+
                 <div class="form-group row container">
                         <label class="col-lg-2 col-form-label" for="modC-CatName">Kategórianév:</label>
                         <div class="col-lg-10">
@@ -168,7 +176,7 @@ if (!$res) {
                     <input type="button" class="btn btn-primary form-control" value="Reset" id="resetC">
                   </div>
                   <div class="col">
-                    <input type="submit" class="btn btn-primary form-control" value="Új Kategória: Mehet" id="catSubmit">
+                    <input type="submit" class="btn btn-primary form-control" value="Módosítás mehet!" id="catSubmit">
                   </div>
                 </div>
                 <div class="bg-danger text-light p-1 m-1" id="errorVanC"></div>

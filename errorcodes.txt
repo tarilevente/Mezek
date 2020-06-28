@@ -74,6 +74,15 @@
 90023:  - 'a városnév túl hosszú' - modifyT.php
 90024:  - 'nincs változás, nincs mit menteni' - modifyT.php
 
+90030:  - '$res not setted' - printAktCategoryDetails.php
+
+90031:  - 'no post ' - modifyC.php
+90032:  - '!$res query get old category ' - modifyC.php
+90033:  - 'strlen(új kategórianév) - nem megfelelő ' - modifyC.php
+90034:  - 'nincs változás, nincs mit menteni ' - modifyC.php
+
+
+
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
 //img optim: https://github.com/artisansweb/image-optimizer, resmush.it
 //megnézem: modal
@@ -111,7 +120,7 @@
 //keresés: csapatnévre
 //emoji
 //további törlések, módosítások
-
+//category update - kicsit elkapkodtam, tesztelgetni kell még
 
 /*
 Felhasznált technológiák
