@@ -13,12 +13,16 @@
         <div class="media-body col-sm-7">
             <h2>A honlap célja</h2>
             <h4>Megosztani Veletek a gyűjteményt, böngésszetek kedvetekre! </h4>
-            <p>
+            <p class="">
                 Sziasztok, Kaiser Rezső vagyok. A mezeket nagyon régóta gyűjtöm, a focizás mellett ez az egyik kedvenc elfoglaltságom.<br>
                 .... <br>
-                .... <br>
-                ....
+                Eddigi láltogatóink:&nbsp
+                <a href="https://www.hitwebcounter.com" target="_blank" class="">
+                    <img src="https://hitwebcounter.com/counter/counter.php?page=7532907&style=0002&nbdigits=5&type=page&initCount=0" title="Web Counter" Alt="counter free"   border="0" >
+                </a>
+                <br>
             </p>
+
             <button class="btn btn-secondary pull-left">LIKE</button>
                                 <!-- LÁJKOLJ- adatbázisból kiolvassa, lájkszámláló -->
         </div>
@@ -27,11 +31,14 @@
         </div>
     </div><!--endof #honlapCelja-->
 
+    <div class="row bg-info py-1" >
+        <div class="col-sm-3">
+            <h2>A kedvenc mezeim</h2>
+            <!-- hitwebcounter Code START -->
 
-    <div id="kedvencek"></div><br>
-    <div class="bg-info py-4" >
-        <h2>A kedvenc mezeim</h2>
-                <div id="carouselIndex" class="carousel slide carousel-fade mt-1 indexCarausel" data-ride="carousel">
+        </div>
+        <div class="col-sm-9">
+            <div id="carouselIndex" class="carousel slide carousel-fade mt-1 indexCarausel" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselIndex" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselIndex" data-slide-to="1"></li>
@@ -69,17 +76,17 @@
                 <a class="carousel-control-next" href="#carouselIndex" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
-        </div>
+            </div><!--endof carousel-index-->
+        </div><!--endof col-lg-9-->
     </div><!--endof kedvencek-->
 
 
-    <div id="linkek"></div><br>
-    <div class="bg-grey "  >
+    <div class="bg-grey py-2">
         <H2>Linkek</H2>
         <h4 class="pb-3">Amennyiben érdekel Téged a téma, az alábbi linkeken találsz még mezeket. :)</h4>
         <div class="container">
             <div class="row text-center">
-                <div class="col-sm-4 pb-2" >
+                <div class="col-md-4 pb-2" >
                     <div class="thumbnail bordered">
                         <a href="http://stevensfootballshirts.net/index2.html" target="_blank">
                             <img src="public/resources/pics/links/stevens.jpg" alt="stevensfootballshirts.net"/>
@@ -88,7 +95,7 @@
                         <p>Szuper kis oldal, nekem nagyon tetszik</p>
                     </div>
                 </div><!--endof LINK-->
-                <div class="col-sm-4 pb-2">
+                <div class="col-md-4 pb-2">
                     <div class="thumbnail bordered">
                         <a href="https://www.kummerbube.com/" target="_blank">
                             <img src="public/resources/pics/links/kummerbube_banner.jpg" alt="kummerbube.com"/>
@@ -97,7 +104,7 @@
                         <p>Azért tetszik, mert jól néz ki. </p>
                     </div>
                 </div><!--endof LINK-->
-                <div class="col-sm-4 pb-2">
+                <div class="col-md-4 pb-2">
                     <div class="thumbnail bordered">
                         <a href="http://fcbtrikots.ch/" target="_blank">
                             <img src="public/resources/pics/links/trikots.de.jpg" alt="fcbtrikots.ch"/>
@@ -107,7 +114,9 @@
                     </div>
                 </div><!--endof LINK-->
             </div><!--endof ROW-->
-    </div><!--endof #linkek-->
+        </div><!--endof #linkek-->
+        <H3>Credits: </H3>
+        <h5><span class="">Köszönet a képekért: <span class="tdnone">https://unsplash.com/</span></span></h5>
 
      <div class="container-fluid height650 jumbotron" id="bg-picIndex2" >
     </div>

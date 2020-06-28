@@ -40,12 +40,10 @@ else {
  //2: type-check
  if (
   !isset($_POST["type"]) ||
-  empty($_POST['type']) ||
-  $_POST['type'] < 0 ||
-  $_POST['type'] > 5) {
+  empty($_POST['type'])) {
   //error,the type is not properly setted
   $response['error'] = true;
-  $response['errorMsg'] .= 'A mez típusának megadása kötelező! error code: 89900<br>';
+  $response['errorMsg'] .= 'A mez típusának megadása kötelező! error code: 89900<br>' . $_POST['type'];
   $response['errorCode'][] = '89900';
  } else {
   //type is ok

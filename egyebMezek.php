@@ -1,6 +1,4 @@
 <?php
-//from navbar, <a href="egyebMezek"> navigates here to print out a bg, and a navigation div
-
 require_once 'config/connect.php'; //database connect
 require_once 'config/functions.php'; //using methods
 require_once 'php/Mez.php'; //using Mez Class

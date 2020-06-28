@@ -148,7 +148,7 @@ $(document).ready(function () {
           if (response.error == false) {
             err.innerHTML = "";
             err.style.display = "none";
-            succ.innerHTML = "Sikeres bevitel " + Cname + " !";
+            succ.innerHTML = "Sikeres bevitel: " + Cname + " !";
             succ.style.display = "block";
           } else {
             if (response.errorCode == 76100) {
@@ -176,8 +176,8 @@ $(document).ready(function () {
           }
         },
         error: function (res) {
-          console.log(res.responseJSON);
-          err.innerHTML = res.responseJSON;
+          console.log(res);
+          err.innerHTML = "Valami hiba történt!";
           err.style.display = "block";
           succ.innerHTML = "";
           succ.style.display = "none";

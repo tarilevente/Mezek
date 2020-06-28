@@ -3,7 +3,6 @@ $(document).ready(function () {
 
   //Whern select "nemzeti valogatott" , this code navigates there
   $(document).on("click", "#nemzetiSelect", function () {
-    console.log("itt");
     window.location = "nemzeti.php";
   });
 
@@ -275,11 +274,13 @@ $(document).ready(function () {
   const err = document.getElementsByClassName("error")[0];
   const succ = document.getElementsByClassName("success")[0];
 
-  if (err || succ) {
+  if (err) {
     err.innerHTML = "";
-    succ.innerHTML = "";
     err.style.display = "none";
+  }
+  if (succ) {
     succ.style.display = "none";
+    succ.innerHTML = "";
   }
 
   //email function
@@ -362,6 +363,8 @@ $(document).ready(function () {
       err.style.backgroundColor = "red";
       err.style.display = "block";
       err.innerHTML = errMsg;
+      succ.innerHTML = "";
+      succ.style.display = "block";
     }
   });
 

@@ -54,7 +54,7 @@ if (
  if (false === $response['error']) {
   $sql = "INSERT INTO `CategoryTable` (`idCategory`, `idLeague`, `catName`) VALUES (NULL, '$liga', '$Cname');";
   $res = $con->query($sql);
-  if (!res) {
+  if (!$res) {
    //unsuccessful upload
    $response['error']     = true;
    $response['errorMsg']  = "Valami hiba történt! error code: 76105";

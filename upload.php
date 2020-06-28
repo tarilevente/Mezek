@@ -10,7 +10,7 @@ $menu = PrintMenu(); //menu_in.html will appears
 echo $menu;
 //valamit azért írjunk ki isLogged
 echo '<div class="min-height550 bg_upload_main">
-            <div class="bg-warning text-dark text-center">
+            <div class="text-warning text-center">
                 <h4>Feltöltés</h4>
             </div>
         </div>';

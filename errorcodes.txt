@@ -99,6 +99,14 @@
 //db connect ha karcos, akkor mit írjon ki (if->$con: mindenhova? else:lap nem elérhető .php)
 //statisztika: hány mez van fent? hány csapat van fenn? hány látogató volt már?
 //források
+//üzenet: robot ellen!
+//kattintás a navbar-menün, nem optimális sehol.
+//mez módosítás fontos volna, "jajj, találtam még egy képet"
+//legtöbb képes csapatokból1*4-et mutasson az index.php-n, mint: http://www.soccerstuff.it/
+//keresés: csapatnévre
+//emoji
+//további törlések, módosítások
+
 
 /*
 Felhasznált technológiák

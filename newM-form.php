@@ -166,9 +166,9 @@ if (!$res1) {
                             <select class="form-control custom-select" id="newM-type-select">
                                 <option value="0">Egyéb típusú mez</option>
                                 <option value="1" selected>Hazai mez</option>
-                                <option value="0">Vendég mez</option>
-                                <option value="0">Harmadik számú mez</option>
-                                <option value="0">Kapus mez</option>
+                                <option value="2">Vendég mez</option>
+                                <option value="3">Harmadik számú mez</option>
+                                <option value="4">Kapus mez</option>
                             </select>
                             <div class="valid-feedback">
                                 Rendben!
