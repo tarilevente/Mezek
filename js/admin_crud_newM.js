@@ -64,28 +64,32 @@ $(document).ready(function () {
     const valLeague = $(this).val();
     const categorySelect = document.getElementById("categorySelect");
     $.post(
-      "php/admin_crud/printCategorySelect.php",
+      "php/admin_crud/printCategorySelect_newM.php",
       { valLeague: valLeague },
       function (res) {
         categorySelect.innerHTML = res;
       }
     );
-    $.post("php/admin_crud/printTeamSelect.php", { reset: "reset" }, function (
-      res
-    ) {
-      teamSelect.innerHTML = res;
-    });
+    $.post(
+      "php/admin_crud/printTeamSelect_newM.php",
+      { reset: "reset" },
+      function (res) {
+        teamSelect.innerHTML = res;
+      }
+    );
   }); //endof newM-league-select
 
   //prints out newM-Category-select
   $(document).on("change", "#newM-cat-select", function () {
     const valCat = $(this).val();
     const teamSelect = document.getElementById("teamSelect");
-    $.post("php/admin_crud/printTeamSelect.php", { valCat: valCat }, function (
-      res
-    ) {
-      teamSelect.innerHTML = res;
-    });
+    $.post(
+      "php/admin_crud/printTeamSelect_newM.php",
+      { valCat: valCat },
+      function (res) {
+        teamSelect.innerHTML = res;
+      }
+    );
   }); //endof newM-league-select
 
   //reset the nemMez form

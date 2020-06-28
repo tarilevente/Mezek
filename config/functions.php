@@ -243,3 +243,67 @@ function fileAlreadyExists($location)
   return false;
  }
 }
+
+//print select category options
+function printCatSelectOptions($con, $post, $id)
+{
+ $html = "";
+ $html .= '<select class="form-control custom-select" id="' . $id . '" required>';
+ $sql = 'SELECT CategoryTable.idCategory, CatName FROM CategoryTable WHERE idLeague=' . $post . ' ORDER BY CatName';
+ $res = $con->query($sql);
+ if (!$res) {
+  $html .= '<option selected value="-">Nincs még kategória! </option>';
+ } else {
+
+  if (0 == $res->num_rows) {
+   $html .= '<option selected value="-">Nincs még kategória! </option>';
+  } else {
+   $html .= '<option selected value="-">Válassz!</option>';
+   while ($row = mysqli_fetch_row($res)) {
+    $html .= '<option value=' . $row[0] . '>' . $row[1] . '</option>';
+   }
+
+   $html .= '</select>
+      <div class="valid-feedback">
+      Rendben!
+      </div>
+      <div class="invalid-feedback">
+      Válassz!
+      </div>';
+  }
+ }
+ return $html;
+}
+
+//print select team options
+function printTeamSelectOptions($con, $post, $id)
+{
+ $html = "";
+ $html .= '<select class="form-control custom-select" id="' . $id . '" required>';
+ $sql = 'SELECT TeamTable.idTeam, TeamTable.tName FROM TeamTable WHERE idCategory=' . $post . ' ORDER BY tName';
+ $res = $con->query($sql);
+
+ if (0 == $res->num_rows) {
+  $html .= '<option selected value="-">Nincs még csapat!</option>';
+ } else {
+  if (1 == $res->num_rows) {
+   while ($row = mysqli_fetch_row($res)) {
+    $html .= '<option value=' . $row[0] . '>' . $row[1] . '</option>';
+   }
+  } else {
+   $html .= '<option selected value="-">Válassz!</option>';
+   while ($row = mysqli_fetch_row($res)) {
+    $html .= '<option value=' . $row[0] . '>' . $row[1] . '</option>';
+   }
+  }
+  $html .= '
+        </select>
+        <div class="valid-feedback">
+            Rendben!
+        </div>
+        <div class="invalid-feedback">
+            Válassz!
+        </div>';
+ }
+ return $html;
+}

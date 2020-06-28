@@ -37,8 +37,6 @@
 65603:  - 'pwd regex is not valid' - login.php                                          setted
 65604:  - '$res->sql: helytelen felh,jelsz' - login.php                                 setted
 
-75110:  - 'nincs $res, nincs kategória az ab-ban' - newT-form.php                      NOT setted
-
 75200:  - 'nincs post' - newT.php                                                       setted
 75201:  - 'kategória < 0 || kategória >10' - newT.php                                   setted
 75202:  - 'csapatnév: strlen($Tname) < 2 || strlen($Tname) > 100)' - newT.php           setted
@@ -54,20 +52,27 @@
 76104:  - 'a ketegória már az adatbázisban van' - newC.php                              setted
 76105:  - 'upload nem sikerült valamiért' - newC.php                                    setted
 
-89900:  - '$_post['type'] nincs, vagy túl nagy, vagy túl kicsi'  -newM.php                
-89901:  - 'Nincs csapat az adatbázisban'  -newM.php      
-89902:  - 'Team-re nem érkezett post'  -newM.php      
-89903:  - 'Az első kép kiválasztása kötelező, nincs rá post $_FILES['#imageResult']' -newM.php      
-89904:  - 'move_uploaded_file -- went wrong' -newM.php
-89905:  - 'a fájl már létezik a mappában.' -newM.php
-89906:  - 'nincs senki bejelentkezve.' -newM.php
-89907:  - 'A megadott csapat nem létezik az adatbázisban' -newM.php
-89908:  - 'Kep1 formátuma nem megfelelő, !in_array()-->true lett' -newM.php
-89909:  - 'Kep2 formátuma nem megfelelő, !in_array()-->true lett' -newM.php
-89910:  - 'Kep3 formátuma nem megfelelő, !in_array()-->true lett' -newM.php
-89911:  - 'Kep2 már létezik az adatbázisban' -newM.php
-89912:  - 'Kep3 már létezik az adatbázisban' -newM.php
+89900:  - '$_post['type'] nincs, vagy túl nagy, vagy túl kicsi'  -newM.php              setted  
+89901:  - 'Nincs csapat az adatbázisban'  -newM.php                                     setted
+89902:  - 'Team-re nem érkezett post'  -newM.php                                        setted
+89903:  - 'Az első kép kiválasztása kötelező, nincs rá post $_FILES['#imageResult']' -newM.php      setted
+89904:  - 'move_uploaded_file -- went wrong' -newM.php                                  setted
+89905:  - 'a fájl már létezik a mappában.' -newM.php                                    setted
+89906:  - 'nincs senki bejelentkezve.' -newM.php                                        setted
+89907:  - 'A megadott csapat nem létezik az adatbázisban' -newM.php                     setted
+89908:  - 'Kep1 formátuma nem megfelelő, !in_array()-->true lett' -newM.php             setted
+89909:  - 'Kep2 formátuma nem megfelelő, !in_array()-->true lett' -newM.php             setted
+89910:  - 'Kep3 formátuma nem megfelelő, !in_array()-->true lett' -newM.php             setted
+89911:  - 'Kep2 már létezik az adatbázisban' -newM.php                                  setted
+89912:  - 'Kep3 már létezik az adatbázisban' -newM.php                                  setted
 
+90010:  - 'nincs $res a csapat lékérdezésekor. ' - printAktTeamDetails.php
+
+90020:  - 'no post' - modifyT.php
+90021:  - 'no $res' - modifyT.php
+90022:  - 'a csapatnév túl hosszú vagy túl rövid' - modifyT.php
+90023:  - 'a városnév túl hosszú' - modifyT.php
+90024:  - 'nincs változás, nincs mit menteni' - modifyT.php
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
 //img optim: https://github.com/artisansweb/image-optimizer, resmush.it

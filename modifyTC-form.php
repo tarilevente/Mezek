@@ -6,32 +6,25 @@ if (!isLogged()) {
  header('Location:not_logged_in.php');
 }
 echo file_get_contents("html/header.html");
-$menu = PrintMenu(); //menu_in.html will appears
-echo $menu;
-?>
+echo PrintMenu(); //menu_in.html will appears ?>
 
 <div class="row min-height550">
 <!-- left: csapat létrehozása -->
     <div class="col-lg-6">
       <div class="container">
-        <div class="bg-warning text-center p-1 mb-1"><h4>Új csapat létrehozása</h4></div>
-            <form id="newT-form" class="needs-validation" novalidate >
+        <div class="bg-warning text-center p-1 mb-1"><h4>Csapat módosítása</h4></div>
+            <form id="modT-form" class="needs-validation" novalidate >
+                <!-- league select -->
                 <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Kategória:</label>
+                        <label class="col-lg-2 col-form-label" for="modT-League-select">Liga:</label>
                         <div class="col-lg-10">
-                            <select class="form-control custom-select" id="newT-Cat-select">
+                            <select class="form-control custom-select" id="modT-League-select">
 <?php
-$sql = 'SELECT categorytable.idCategory, categorytable.CatName FROM categorytable ORDER BY categorytable.CatName';
-$res = $con->query($sql);
-
-$first = true;
-while ($row = mysqli_fetch_row($res)) {
- if (true === $first) {
-  echo '<option selected value=' . $row[0] . '>' . $row[1] . '</option>';
-  $first = false;
- } else {
-  echo '<option value=' . $row[0] . '>' . $row[1] . '</option>';
- }
+$sql1 = 'SELECT idLeague, LeagueName FROM LeagueTable ORDER BY LeagueName';
+$res1 = $con->query($sql1);
+echo '<option selected value="-">Válassz!</option>';
+while ($row1 = mysqli_fetch_row($res1)) {
+ echo '<option value=' . $row1[0] . '>' . $row1[1] . '</option>';
 }
 ?>
                             </select>
@@ -42,11 +35,40 @@ while ($row = mysqli_fetch_row($res)) {
                                  Válassz!
                             </div>
                         </div>
+                    </div><!--endof league select-->
+                <div class="form-group row container">
+                        <label class="col-lg-2 col-form-label" for="modT-Cat-select">Kategória:</label>
+                        <div class="col-lg-10" id="categorySelectT">
+                            <select class="form-control custom-select" id="modT-Cat-select" required>
+                              <!-- ajax fills options -->
+                            </select>
+                            <div class="valid-feedback">
+                              Rendben!
+                            </div>
+                            <div class="invalid-feedback">
+                              Válassz!
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row container">
+                          <label class="col-lg-2 col-form-label" for="modT-Team-select">Csapat:</label>
+                          <div class="col-lg-10" id="teamSelectT">
+                            <select class="form-control custom-select" id="modT-Team-select">
+                              <option selected value="-">Nincs még csapat!</option>
+                              <!-- ajax fills options -->
+                            </select>
+                            <div class="valid-feedback">
+                                 Rendben!
+                            </div>
+                            <div class="invalid-feedback">
+                                 Válassz!
+                            </div>
+                        </div>
                 </div>
                 <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newT-teamName">Csapatnév:</label>
+                        <label class="col-lg-2 col-form-label" for="modT-teamName">Csapatnév:</label>
                         <div class="col-lg-10">
-                            <input type="text" placeholder="Csapat neve" class="form-control" name="newT-teamName" id="teamName" required minlength="2" maxlength="100">
+                            <input type="text" placeholder="Csapat neve" class="form-control" name="modT-teamName" id="teamName" required minlength="2" maxlength="100">
                             <small id="passwordHelpBlock" class="form-text text-muted">
                                 <strong>Kötelező</strong> mező
                             </small>
@@ -59,9 +81,9 @@ while ($row = mysqli_fetch_row($res)) {
                         </div>
                 </div>
                 <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newT-cityName">Városnév: </label>
+                        <label class="col-lg-2 col-form-label" for="modT-cityName">Városnév: </label>
                         <div class="col-lg-10">
-                            <input type="text" placeholder="Város neve" class="form-control" name="newT-cityName" id="cityName" maxlength="100">
+                            <input type="text" placeholder="Város neve" class="form-control" name="modT-cityName" id="cityName" maxlength="100">
                               <small id="passwordHelpBlock" class="form-text text-muted">
                                 <strong>Nem</strong> kötelező
                               </small>
@@ -78,7 +100,7 @@ while ($row = mysqli_fetch_row($res)) {
                         <input type="button" class="btn btn-primary form-control" value="Reset" id="resetT">
                   </div>
                   <div class="col">
-                        <input type="submit" class="btn btn-primary form-control" value="Új csapat: Mehet" id="teamSubmit">
+                        <input type="submit" class="btn btn-primary form-control" value="Módosítás mehet!" id="modTeamSubmit">
                   </div>
                 </div>
                 <div class="bg-danger text-light p-1 m-1" id="errorVanT"></div>
@@ -92,12 +114,12 @@ while ($row = mysqli_fetch_row($res)) {
         <!-- //right: kategória létrehozása -->
         <div class="col-lg-6">
           <div class="container">
-            <div class="bg-warning text-center p-1 mb-1"><h4>Új kategória létrehozása</h4></div>
-            <form id="newC-form" class="needs-validation" novalidate >
+            <div class="bg-warning text-center p-1 mb-1"><h4>Kategória módosítása</h4></div>
+            <form id="modC-form" class="needs-validation" novalidate >
                 <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newC-Liga-select">Liga:</label>
+                        <label class="col-lg-2 col-form-label" for="modC-Liga-select">Liga:</label>
                         <div class="col-lg-10">
-                            <select class="form-control custom-select" id="newC-Liga-select">
+                            <select class="form-control custom-select" id="modC-Liga-select">
 <?php
 $sql = 'SELECT LeagueTable.idLeague, LeagueTable.LeagueName FROM LeagueTable ORDER BY LeagueName';
 $res = $con->query($sql);
@@ -127,9 +149,9 @@ if (!$res) {
                         </div>
                 </div>
                 <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newC-CatName">Kategórianév:</label>
+                        <label class="col-lg-2 col-form-label" for="modC-CatName">Kategórianév:</label>
                         <div class="col-lg-10">
-                            <input type="text" placeholder="Kategória neve" class="form-control" name="newC-CatName" id="catName" required minlength="2" maxlength="100">
+                            <input type="text" placeholder="Kategória neve" class="form-control" name="modC-CatName" id="catName" required minlength="2" maxlength="100">
                               <small id="passwordHelpBlock2" class="form-text text-muted">
                                   <strong>Kötelező</strong> mező
                               </small>
@@ -184,6 +206,6 @@ if (!$res) {
 
 <?php
 $con->close();
-$footer             = file_get_contents("html/footer.html");
-$js_newTeamCategory = '<script src="js/admin_crud_newT,NewC.js"></script>';
-echo str_replace("::otherjs::", $js_newTeamCategory, $footer);
+$footer       = file_get_contents("html/footer.html");
+$js_modify_TC = '<script src="js/admin_crud_modify_TC.js"></script>';
+echo str_replace("::otherjs::", $js_modify_TC, $footer);
