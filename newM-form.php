@@ -87,14 +87,9 @@ echo $menu;
 <?php
 $sql1 = 'SELECT idLeague, LeagueName FROM LeagueTable ORDER BY LeagueName';
 $res1 = $con->query($sql1);
-if (!$res1) {
- //something
- //error, nincs adatbázis pl
-} else {
- echo '<option selected value="-">Válassz!</option>';
- while ($row1 = mysqli_fetch_row($res1)) {
-  echo '<option value=' . $row1[0] . '>' . $row1[1] . '</option>';
- }
+echo '<option selected value="-">Válassz!</option>';
+while ($row1 = mysqli_fetch_row($res1)) {
+ echo '<option value=' . $row1[0] . '>' . $row1[1] . '</option>';
 }
 ?>
                             </select>
@@ -105,30 +100,14 @@ if (!$res1) {
                                  Válassz!
                             </div>
                         </div>
-                    </div><!--endof category select-->
+                    </div><!--endof league select-->
 
                     <!-- category select -->
                     <div class="form-group row container">
                         <label class="col-lg-2 col-form-label" for="newM-Cat-select">Kategória:</label>
                         <div class="col-lg-10" id="categorySelect">
-                        <select class="form-control custom-select" id="newM-Cat-select" required>
-                        </select>
-                        <div class="valid-feedback">
-                            Rendben!
-                        </div>
-                        <div class="invalid-feedback">
-                            Válassz!
-                        </div>
-                        </div>
-                    </div><!--endof category select-->
-
-
-                    <!-- team select -->
-                    <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newM-team-select">Csapat:</label>
-                        <div class="col-lg-10" id="teamSelect">
-                            <select class="form-control custom-select" id="newM-team-select" required>
-
+                            <select class="form-control custom-select" id="newM-Cat-select" required>
+                                <!-- ajax fills options funtions.php via printCategorySelect_newM.php-->
                             </select>
                             <div class="valid-feedback">
                                 Rendben!
@@ -137,7 +116,24 @@ if (!$res1) {
                                 Válassz!
                             </div>
                         </div>
-                    </div><!--endof team select-->
+                    </div><!--endof category select-->
+
+
+                <!-- team select -->
+                <div class="form-group row container">
+                    <label class="col-lg-2 col-form-label" for="newM-team-select">Csapat:</label>
+                    <div class="col-lg-10" id="teamSelect">
+                        <select class="form-control custom-select" id="newM-team-select" required>
+                        <!-- ajax fills options funtions.php via printTeamSelect_newM.php-->
+                        </select>
+                        <div class="valid-feedback">
+                            Rendben!
+                        </div>
+                        <div class="invalid-feedback">
+                            Válassz!
+                        </div>
+                    </div>
+                </div><!--endof team select-->
 
                     <!-- years -->
                     <div class="form-group row container">

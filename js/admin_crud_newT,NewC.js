@@ -199,6 +199,5 @@ $(document).ready(function () {
     succ.style.display = "none";
     document.getElementById("newC-Liga-select").value = "2";
     document.getElementById("catName").value = "";
-    s;
   }); //endof reset
 }); //endof ready0
