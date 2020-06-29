@@ -35,7 +35,7 @@ function GeneratePicCard(
  $aktInfo,
  $aktPicID
 ) {
- $html = '<div class="card bg-light m-1" style="max-width:270px; min-width:270px;">'
+ $html = '<div class="card shadow bg-light m-1" style="max-width:270px; min-width:270px;">'
  . '<div class="card-header csapat">
         <div>' . $teamName . '</div>
       </div>'
@@ -247,24 +247,23 @@ function fileAlreadyExists($location)
 //print select category options
 function printCatSelectOptions($con, $post, $id)
 {
- $html = "";
- $html .= '<select class="form-control custom-select" id="' . $id . '" required>';
- $sql = 'SELECT CategoryTable.idCategory, CatName FROM CategoryTable WHERE idLeague=' . $post . ' ORDER BY CatName';
- $res = $con->query($sql);
+ $html = '<select class="form-control custom-select" id="' . $id . '" required>';
+ $sql  = 'SELECT CategoryTable.idCategory, CatName FROM CategoryTable WHERE idLeague=' . $post . ' ORDER BY CatName';
+ $res  = $con->query($sql);
  if (!$res) {
-  $html .= '<option selected value="-">Nincs még kategória! </option>';
+  $html .= '<option selected value="-1">Nincs még kategória! </option>';
  } else {
 
   if (0 == $res->num_rows) {
-   $html .= '<option selected value="-">Nincs még kategória! </option>';
+   $html .= '<option selected value="-1">Nincs még kategória! </option>';
   } elseif (1 == $res->num_rows) {
    while ($row = mysqli_fetch_row($res)) {
-    $html .= '<option selected value=' . $row[0] . '>' . $row[1] . '</option>';
+    $html .= '<option selected value="' . $row[0] . '">' . $row[1] . '</option>';
    }
   } else {
-   $html .= '<option selected value="-">Válassz!</option>';
+   $html .= '<option selected value="-1">Válassz!</option>';
    while ($row = mysqli_fetch_row($res)) {
-    $html .= '<option value=' . $row[0] . '>' . $row[1] . '</option>';
+    $html .= '<option value="' . $row[0] . '">' . $row[1] . '</option>';
    }
 
    $html .= '</select>
@@ -288,14 +287,14 @@ function printTeamSelectOptions($con, $post, $id)
  $res = $con->query($sql);
 
  if (0 == $res->num_rows) {
-  $html .= '<option selected value="-">Nincs még csapat!</option>';
+  $html .= '<option selected value="-1">Nincs még csapat!</option>';
  } else {
   if (1 == $res->num_rows) {
    while ($row = mysqli_fetch_row($res)) {
     $html .= '<option value=' . $row[0] . '>' . $row[1] . '</option>';
    }
   } else {
-   $html .= '<option selected value="-">Válassz</option>';
+   $html .= '<option selected value="-1">Válassz</option>';
    while ($row = mysqli_fetch_row($res)) {
     $html .= '<option value=' . $row[0] . '>' . $row[1] . '</option>';
    }

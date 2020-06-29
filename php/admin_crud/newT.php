@@ -66,9 +66,8 @@ if (
  }
 
  if (false === $response['error']) {
-  $path = 'public/resources/pics/mezek/' . $Tname . '/';
-  $sql  = "INSERT INTO `teamtable` (`idTeam`, `idCategory`, `tName`, `tCity`, `pathDIR`) VALUES (NULL, '$cat', '$Tname', '$cityName', '$path')";
-  $res  = $con->query($sql);
+  $sql = "INSERT INTO `teamtable` (`idTeam`, `idCategory`, `tName`, `tCity`) VALUES (NULL, '$cat', '$Tname', '$cityName')";
+  $res = $con->query($sql);
   if (!$res) {
    //error to upload
    $response['error']     = true;

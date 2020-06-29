@@ -336,13 +336,18 @@ footer > .flex-container {
 #errorVanC,
 #successVanC,
 #errorVanM,
-#successVanM {
+#successVanM,
+#errorVanMM,
+#successVanMM {
   display: none;
 }
 
 #upload,
 #upload2,
-#upload3 {
+#upload3,
+#uploadMod,
+#uploadMod2,
+#uploadMod3 {
   opacity: 0;
 }
 
@@ -391,4 +396,28 @@ footer > .flex-container {
 
 .tdnone {
   text-decoration: none;
+}
+
+.MezCard {
+  display: block;
+  max-height: 400px;
+  min-height: 400px;
+  max-width: 300px;
+}
+
+.MezCardImg {
+  /* min-width: 320px; */
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.MezCard > .card-body {
+  padding: 0px;
+  padding-top: 0.75rem;
+}
+
+/*Set the cards to standard outfit*/
+.height70PC {
+  min-height: 250px;
+  max-height: 250px;
 }

@@ -1,34 +1,83 @@
 <?php
-session_start();
 require_once 'config/connect.php'; //database connect
 require_once 'config/functions.php'; //using methods
-if (!isLogged()) {
- header('Location:not_logged_in.php');
+if (!isset($_GET['idMez'])) {die('Valami hiba történt! :(');}
+//read out the current datas from database
+$idMez = $_GET['idMez'];
+$sql   = 'SELECT * FROM MezTable, PicsTable WHERE MezTable.idPic=PicsTable.idPic AND MezTable.idMez=' . $idMez;
+$res   = $con->query($sql);
+if (!$res) {
+ die('Valami hiba történt! :(:(');
+} else {
+ $idTeam = null;
+ $type   = null;
+ $years  = null;
+ $info   = null;
+ $idPic  = null;
+ $kep1   = null;
+ $Path1  = null;
+ $kep2   = null;
+ $Path2  = null;
+ $kep3   = null;
+ $Path3  = null;
+ while ($row = mysqli_fetch_assoc($res)) {
+  $idTeam = $row['idTeam'];
+  $type   = $row['Type'];
+  $years  = $row['Years'];
+  $info   = $row['Info'];
+  $idPic  = $row['idPic'];
+  $kep1   = $row['1'];
+  $Path1  = $row['Path1'];
+  $kep2   = $row['2'];
+  $Path2  = $row['Path2'];
+  $kep3   = $row['weared'];
+  $Path3  = $row['PathWeared'];
+
+  $typeString = '';
+  switch ($type) {
+   case '0':
+    $typeString = 'Egyéb típusú mez';
+    break;
+   case '1':
+    $typeString = 'Hazai mez';
+    break;
+   case '2':
+    $typeString = 'Vendég mez';
+    break;
+   case '3':
+    $typeString = 'Harmadik számú mez';
+    break;
+   case '4':
+    $typeString = 'Kapus mez';
+    break;
+
+   default:
+    $typeString = '?';
+    break;
+  } //endof $type String
+ } //endof while
 }
-echo file_get_contents("html/header.html");
-$menu = PrintMenu(); //menu_in.html will appears
-echo $menu;
-?>
+; //endof $res ?>
 
 <div class="min-height550 container-fluid">
     <div class="bg-warning text-center p-1 mb-1">
-        <h4>Új Mez létrehozása</h4>
+        <h4>Módosítás: [<?php echo $idMez; ?>]-as mez</h4>
     </div>
     <div class="container-fluid">
         <div class="row height250">
             <div class="col-lg-4">
                 <div class="image-area height250 border">
-                    <img id="imageResult" src="#" alt="" class="img-fluid rounded mx-auto d-block align-self-center" >
+                    <img id="imageResult" src="<?php if (isset($kep1)) {echo $Path1 . $kep1;} else {echo '#';} ?>" alt="kep1" class="img-fluid rounded mx-auto d-block align-self-center" >
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="image-area height250 border">
-                    <img id="imageResult2" src="#" alt="" class="img-fluid rounded mx-auto d-block align-self-center" >
+                    <img id="imageResult2" src="<?php if (isset($kep2)) {echo $Path2 . $kep2;} else {echo '#';} ?>" alt="" class="img-fluid rounded mx-auto d-block align-self-center" >
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="image-area height250 border">
-                    <img id="imageResult3" src="#" alt="" class="img-fluid rounded mx-auto d-block align-self-center">
+                    <img id="imageResult3" src="<?php if (isset($kep3)) {echo $Path3 . $kep3;} else {echo '#';} ?>" alt="" class="img-fluid rounded mx-auto d-block align-self-center">
                 </div>
             </div>
         </div>
@@ -37,8 +86,8 @@ echo $menu;
             <div class="row">
                 <div class="col-lg-4">
                     <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
-                        <input id="upload" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult">
-                        <label id="upload-label" for="upload" class="font-weight-light text-muted">Kép1 - kötelező</label>
+                        <input id="uploadMod" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult">
+                        <label id="upload-label" for="uploadMod" class="font-weight-light text-muted">Kép1 - kötelező</label>
                         <div class="input-group-append">
                             <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
                                 <i class="fa fa-cloud-upload mr-2 text-muted"></i>
@@ -49,8 +98,8 @@ echo $menu;
                 </div>
                 <div class="col-lg-4">
                     <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
-                        <input id="upload2" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult2">
-                        <label id="upload-label2" for="upload2" class="font-weight-light text-muted">Kép2 - nem kötelező</label>
+                        <input id="uploadMod2" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult2">
+                        <label id="upload-label2" for="uploadMod2" class="font-weight-light text-muted">Kép2 - nem kötelező</label>
                         <div class="input-group-append">
                             <label for="upload2" class="btn btn-light m-0 rounded-pill px-4">
                                 <i class="fa fa-cloud-upload mr-2 text-muted"></i>
@@ -61,8 +110,8 @@ echo $menu;
                 </div>
                 <div class="col-lg-4">
                     <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
-                        <input id="upload3" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult3">
-                        <label id="upload-label3" for="upload3" class="font-weight-light text-muted">Kép3 - nem kötelező</label>
+                        <input id="uploadMod3" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult3">
+                        <label id="upload-label3" for="uploadMod3" class="font-weight-light text-muted">Kép3 - nem kötelező</label>
                         <div class="input-group-append">
                             <label for="upload3" class="btn btn-light m-0 rounded-pill px-4">
                                 <i class="fa fa-cloud-upload mr-2 text-muted"></i>
@@ -73,73 +122,17 @@ echo $menu;
                 </div>
             </div><!--endof row, endof pic upload-->
             <!-- ========================================================================================================== -->
-            <div class="border-bottom my-2"></div>
+            <div class="border-bottom my-3"></div>
 
             <!-- start of inputs -->
             <div class="row">
                 <!-- left column -->
                 <div class="col-xl-6 height280">
-                    <!-- league select -->
-                    <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newM-league-select">Liga:</label>
-                        <div class="col-lg-10">
-                            <select class="form-control custom-select" id="newM-league-select">
-<?php
-$sql1 = 'SELECT idLeague, LeagueName FROM LeagueTable ORDER BY LeagueName';
-$res1 = $con->query($sql1);
-echo '<option selected value="-">Válassz!</option>';
-while ($row1 = mysqli_fetch_row($res1)) {
- echo '<option value=' . $row1[0] . '>' . $row1[1] . '</option>';
-}
-?>
-                            </select>
-                            <div class="valid-feedback">
-                                 Rendben!
-                            </div>
-                            <div class="invalid-feedback">
-                                 Válassz!
-                            </div>
-                        </div>
-                    </div><!--endof league select-->
-
-                    <!-- category select -->
-                    <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newM-Cat-select">Kategória:</label>
-                        <div class="col-lg-10" id="categorySelect">
-                            <select class="form-control custom-select" id="newM-Cat-select" required>
-                                <!-- ajax fills options funtions.php via printCategorySelect_newM.php-->
-                            </select>
-                            <div class="valid-feedback">
-                                Rendben!
-                            </div>
-                            <div class="invalid-feedback">
-                                Válassz!
-                            </div>
-                        </div>
-                    </div><!--endof category select-->
-
-
-                <!-- team select -->
-                <div class="form-group row container">
-                    <label class="col-lg-2 col-form-label" for="newM-team-select">Csapat:</label>
-                    <div class="col-lg-10" id="teamSelect">
-                        <select class="form-control custom-select" id="newM-team-select" required>
-                        <!-- ajax fills options funtions.php via printTeamSelect_newM.php-->
-                        </select>
-                        <div class="valid-feedback">
-                            Rendben!
-                        </div>
-                        <div class="invalid-feedback">
-                            Válassz!
-                        </div>
-                    </div>
-                </div><!--endof team select-->
-
                     <!-- years -->
                     <div class="form-group row container">
                         <label class="col-lg-2 col-form-label" for="newM-years">Év:</label>
                         <div class="col-lg-10">
-                            <input type="text" placeholder="Ezekben az években hordták a mezt" class="form-control" name="newM-years" id="newM-years" maxlength="100">
+                            <input type="text" placeholder="Ezekben az években hordták a mezt" class="form-control" name="newM-years" id="modM-years" maxlength="100" value="<?php if (isset($years)) {echo $years;} ?>">
                             <small id="passwordHelpBlock" class="form-text text-muted">
                                 <strong>Nem</strong> kötelező mező
                             </small>
@@ -151,20 +144,30 @@ while ($row1 = mysqli_fetch_row($res1)) {
                             </div>
                         </div>
                     </div> <!--endof years-->
-                </div><!--endof left column-->
-
-                <!-- right column -->
-                <div class="col-xl-6 height280">
                     <!-- type -->
                     <div class="form-group row container">
                         <label class="col-lg-2 col-form-label" for="newM-type-select">Típus:</label>
                         <div class="col-lg-10">
-                            <select class="form-control custom-select" id="newM-type-select">
-                                <option value="0">Egyéb típusú mez</option>
-                                <option value="1" selected>Hazai mez</option>
-                                <option value="2">Vendég mez</option>
-                                <option value="3">Harmadik számú mez</option>
-                                <option value="4">Kapus mez</option>
+                            <select class="form-control custom-select" id="modM-type-select">
+                                <option value="<?php echo $type; ?>"><?php echo $typeString; ?></option>
+                                <?php
+
+if (0 != $type) {
+ echo '<option value="0">Egyéb típusú mez</option>';
+}
+if (1 != $type) {
+ echo '<option value="1" selected>Hazai mez</option>';
+}
+if (2 != $type) {
+ echo '<option value="2">Vendég mez</option>';
+}
+if (3 != $type) {
+ echo '<option value="3">Harmadik számú mez</option>';
+}
+if (4 != $type) {
+ echo '<option value="4">Kapus mez</option>';
+}
+?>
                             </select>
                             <div class="valid-feedback">
                                 Rendben!
@@ -174,11 +177,15 @@ while ($row1 = mysqli_fetch_row($res1)) {
                             </div>
                         </div>
                     </div><!--endof type-->
+                </div><!--endof left column-->
+
+                <!-- right column -->
+                <div class="col-xl-6 height280">
                     <!-- info -->
                     <div class="form-group row container">
                         <label class="col-lg-2 col-form-label" for="newM-info">Info:</label>
                         <div class="col-lg-10">
-                            <textarea rows="6" cols="25" class="form-control" name="newM-info" id="newM-info" maxlength="255"></textarea>
+                            <textarea rows="6" cols="25" class="form-control" name="newM-info" id="modM-info" maxlength="255"><?php if (isset($info)) {echo $info;} ?></textarea>
                             <small id="passwordHelpBlock" class="form-text text-muted">
                                 <strong>Nem</strong> kötelező mező
                             </small>
@@ -196,10 +203,10 @@ while ($row1 = mysqli_fetch_row($res1)) {
                             <div class="col-lg-10">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <input type="button" class="btn btn-primary form-control" value="Reset" id="resetM">
+                                        <input type="button" class="btn btn-primary form-control" value="Reset" id="resetMM">
                                     </div>
                                     <div class="col-lg-6">
-                                        <input type="submit" name="submitMez" id="submitMez" value="Mez feltöltése" class="btn btn-primary form-control">
+                                        <input type="submit" name="submitMez" id="submitMezMod" value="Mez módosítása" class="btn btn-primary form-control">
                                     </div>
                                 </div>
                             </div>
@@ -207,14 +214,10 @@ while ($row1 = mysqli_fetch_row($res1)) {
                     </div><!--endof submit, reset-->
                 </div><!--endof right column-->
             </div><!--endof row-->
-            <div id="errorVanM" class="bg-danger p-1 text-light"></div>
-            <div id="successVanM" class="bg-success p-1 text-light"></div>
+            <div id="errorVanMM" class="bg-danger p-1 text-light"></div>
+            <div id="successVanMM" class="bg-success p-1 text-light"></div>
         </form>
     </div><!--endof container-fluid-->
 </div> <!--endof min-height550-->
 
-<?php
-$con->close();
-$footer    = file_get_contents("html/footer.html");
-$js_newMez = '<script src="js/admin_crud_newM.js"></script>';
-echo str_replace("::otherjs::", $js_newMez, $footer);
+

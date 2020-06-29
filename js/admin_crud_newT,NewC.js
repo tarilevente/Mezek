@@ -4,6 +4,19 @@ $(document).ready(function () {
     console.log($(this).val());
   });
 
+  //prints out modT-league-select
+  $(document).on("change", "#newT-League-select", function () {
+    const valLeague = $(this).val();
+    const categorySelectT = document.getElementById("newT-Cat-select");
+    $.post(
+      "php/admin_crud/printCategorySelect_modT.php",
+      { valLeague: valLeague },
+      function (res) {
+        categorySelectT.innerHTML = res;
+      }
+    );
+  }); //endof newM-league-select
+
   //submit event on new team (post to newT.php)
   $(document).on("submit", "#newT-form", function (event) {
     event.preventDefault();
@@ -200,4 +213,21 @@ $(document).ready(function () {
     document.getElementById("newC-Liga-select").value = "2";
     document.getElementById("catName").value = "";
   }); //endof reset
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.getElementsByClassName("needs-validation");
+  // Loop over them and prevent submission
+  var validation = Array.prototype.filter.call(forms, function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  }); //endof validate form bootstrap
 }); //endof ready0

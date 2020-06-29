@@ -81,6 +81,7 @@
 90033:  - 'strlen(új kategórianév) - nem megfelelő ' - modifyC.php
 90034:  - 'nincs változás, nincs mit menteni ' - modifyC.php
 
+91000:  - '' - printTeamCards.php
 
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
@@ -90,7 +91,7 @@
 //lehet badge is a collapse-nel
 //megnézem-re hover: cursor:zoomin
 //im not a robot (recaptcha GOOGLE - need a domain)
-//lekérdezéseket átírni param-ra
+//lekérdezéseket átírni param-ra!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //átellenőrizni a működést, vannak bajok. pl megnézem: basicKep.jpg, responsive emailform
 //loading counter az index.php-n
 //euligashow.php-nál az error valamiért hibát észlel, nem működik, pedig ua., mint a többi
@@ -121,6 +122,9 @@
 //emoji
 //további törlések, módosítások
 //category update - kicsit elkapkodtam, tesztelgetni kell még
+//$con-close() mindenhol: check
+//updateMez form-cards: image settings not correct, but ok.
+
 
 /*
 Felhasznált technológiák

@@ -16,22 +16,17 @@ echo $menu;
       <div class="container">
         <div class="bg-warning text-center p-1 mb-1"><h4>Új csapat létrehozása</h4></div>
             <form id="newT-form" class="needs-validation" novalidate >
-                <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Kategória:</label>
+            <!-- league select -->
+                    <div class="form-group row container">
+                        <label class="col-lg-2 col-form-label" for="newT-League-select">Liga:</label>
                         <div class="col-lg-10">
-                            <select class="form-control custom-select" id="newT-Cat-select">
+                            <select class="form-control custom-select" id="newT-League-select">
 <?php
-$sql = 'SELECT categorytable.idCategory, categorytable.CatName FROM categorytable ORDER BY categorytable.CatName';
+$sql = 'SELECT idLeague, LeagueName FROM LeagueTable ORDER BY LeagueName';
 $res = $con->query($sql);
-
-$first = true;
+echo '<option selected value="-">Válassz!</option>';
 while ($row = mysqli_fetch_row($res)) {
- if (true === $first) {
-  echo '<option selected value=' . $row[0] . '>' . $row[1] . '</option>';
-  $first = false;
- } else {
-  echo '<option value=' . $row[0] . '>' . $row[1] . '</option>';
- }
+ echo '<option value=' . $row[0] . '>' . $row[1] . '</option>';
 }
 ?>
                             </select>
@@ -42,7 +37,22 @@ while ($row = mysqli_fetch_row($res)) {
                                  Válassz!
                             </div>
                         </div>
-                </div>
+                    </div><!--endof league select-->
+                <!-- category select -->
+                <div class="form-group row container" >
+                        <label class="col-lg-2 col-form-label" for="newT-Cat-select">Kategória:</label>
+                        <div class="col-lg-10"  id="categorySelectT">
+                            <select class="form-control custom-select" id="newT-Cat-select">
+                                <!-- ajax fills options -->
+                            </select>
+                            <div class="valid-feedback">
+                                 Rendben!
+                            </div>
+                            <div class="invalid-feedback">
+                                 Válassz!
+                            </div>
+                        </div>
+                </div><!--endof category select-->
                 <div class="form-group row container">
                         <label class="col-lg-2 col-form-label" for="newT-teamName">Csapatnév:</label>
                         <div class="col-lg-10">
@@ -160,28 +170,6 @@ if (!$res) {
         </div>
          <!-- //endof col-lg-6 -->
 </div>
-
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>
-
 <?php
 $con->close();
 $footer             = file_get_contents("html/footer.html");
