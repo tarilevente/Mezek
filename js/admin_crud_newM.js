@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  //https://jsfiddle.net/bootstrapious/8w7a50n2/
   //display pics in form newM-form.fa-php
   var input = document.getElementById("upload");
   var infoArea = document.getElementById("upload-label");
@@ -162,10 +161,10 @@ $(document).ready(function () {
           }
         },
         error: function (res) {
-          console.log(res.responseJSON);
+          console.log(res.responseText);
           succ.innerHTML = "";
           succ.style.display = "none";
-          err.innerHTML = res.responseJSON;
+          err.innerHTML = res.responseText;
           err.style.display = "block";
         },
       }); //endof AJAX

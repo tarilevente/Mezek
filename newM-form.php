@@ -18,17 +18,17 @@ echo $menu;
         <div class="row height250">
             <div class="col-lg-4">
                 <div class="image-area height250 border">
-                    <img id="imageResult" src="#" alt="" class="img-fluid rounded mx-auto d-block align-self-center" >
+                    <img id="imageResult" src="#" alt="kep1" class="img-fluid rounded mx-auto d-block align-self-center" >
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="image-area height250 border">
-                    <img id="imageResult2" src="#" alt="" class="img-fluid rounded mx-auto d-block align-self-center" >
+                    <img id="imageResult2" src="#" alt="kep2" class="img-fluid rounded mx-auto d-block align-self-center" >
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="image-area height250 border">
-                    <img id="imageResult3" src="#" alt="" class="img-fluid rounded mx-auto d-block align-self-center">
+                    <img id="imageResult3" src="#" alt="kep3" class="img-fluid rounded mx-auto d-block align-self-center">
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@ echo $menu;
             <div class="row">
                 <div class="col-lg-4">
                     <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
-                        <input id="upload" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult">
+                        <input id="upload" type="file" accept="image/*"   class="form-control border-0 kepFeltoltes" name="#imageResult">
                         <label id="upload-label" for="upload" class="font-weight-light text-muted">Kép1 - kötelező</label>
                         <div class="input-group-append">
                             <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
@@ -49,7 +49,7 @@ echo $menu;
                 </div>
                 <div class="col-lg-4">
                     <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
-                        <input id="upload2" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult2">
+                        <input id="upload2" type="file" accept="image/*"   class="form-control border-0 kepFeltoltes" name="#imageResult2">
                         <label id="upload-label2" for="upload2" class="font-weight-light text-muted">Kép2 - nem kötelező</label>
                         <div class="input-group-append">
                             <label for="upload2" class="btn btn-light m-0 rounded-pill px-4">
@@ -61,7 +61,7 @@ echo $menu;
                 </div>
                 <div class="col-lg-4">
                     <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
-                        <input id="upload3" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult3">
+                        <input id="upload3" type="file" accept="image/*"   class="form-control border-0 kepFeltoltes" name="#imageResult3">
                         <label id="upload-label3" for="upload3" class="font-weight-light text-muted">Kép3 - nem kötelező</label>
                         <div class="input-group-append">
                             <label for="upload3" class="btn btn-light m-0 rounded-pill px-4">

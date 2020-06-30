@@ -81,15 +81,15 @@ if (!$res) {
                 </div>
             </div>
         </div>
-        <form id="newM-form" class="needs-validation" novalidate>
+        <form id="modM-form" class="needs-validation" novalidate>
             <!-- upload pics -->
             <div class="row">
                 <div class="col-lg-4">
                     <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
-                        <input id="uploadMod" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult">
-                        <label id="upload-label" for="uploadMod" class="font-weight-light text-muted">Kép1 - kötelező</label>
+                        <input id="uploadMod" type="file" accept="image/*"   class="form-control border-0 kepFeltoltes" name="#imageResult">
+                        <label id="upload-labelMod" for="uploadMod" class="font-weight-light text-muted">Kép1 - kötelező</label>
                         <div class="input-group-append">
-                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
+                            <label for="uploadMod" class="btn btn-light m-0 rounded-pill px-4">
                                 <i class="fa fa-cloud-upload mr-2 text-muted"></i>
                                 <small class="text-uppercase font-weight-bold text-muted">Kép1</small>
                             </label>
@@ -98,24 +98,36 @@ if (!$res) {
                 </div>
                 <div class="col-lg-4">
                     <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
-                        <input id="uploadMod2" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult2">
-                        <label id="upload-label2" for="uploadMod2" class="font-weight-light text-muted">Kép2 - nem kötelező</label>
+                        <input id="uploadMod2" type="file" accept="image/*"   class="form-control border-0 kepFeltoltes" name="#imageResult2">
+                        <label id="upload-labelMod2" for="uploadMod2" class="font-weight-light text-muted">Kép2 - nem kötelező</label>
                         <div class="input-group-append">
-                            <label for="upload2" class="btn btn-light m-0 rounded-pill px-4">
+                            <label for="uploadMod2" class="btn btn-light m-0 rounded-pill px-4">
                                 <i class="fa fa-cloud-upload mr-2 text-muted"></i>
                                 <small class="text-uppercase font-weight-bold text-muted">Kép2</small>
+                            </label>
+                        </div>
+                        <div class="input-group-append">
+                            <label  class="btn btn-light m-0 rounded-pill px-4 deletePicKep2">
+                                <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+                                <small class="text-uppercase font-weight-bold text-muted">Töröl</small>
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="input-group mb-3 p-2 rounded-pill bg-white shadow-sm">
-                        <input id="uploadMod3" type="file" class="form-control border-0 kepFeltoltes" name="#imageResult3">
-                        <label id="upload-label3" for="uploadMod3" class="font-weight-light text-muted">Kép3 - nem kötelező</label>
+                        <input id="uploadMod3" type="file" accept="image/*"   class="form-control border-0 kepFeltoltes" name="#imageResult3">
+                        <label id="upload-labelMod3" for="uploadMod3" class="font-weight-light text-muted">Kép3 - nem kötelező</label>
                         <div class="input-group-append">
-                            <label for="upload3" class="btn btn-light m-0 rounded-pill px-4">
+                            <label for="uploadMod3" class="btn btn-light m-0 rounded-pill px-4">
                                 <i class="fa fa-cloud-upload mr-2 text-muted"></i>
                                 <small class="text-uppercase font-weight-bold text-muted">Kép3</small>
+                            </label>
+                        </div>
+                        <div class="input-group-append">
+                            <label  class="btn btn-light m-0 rounded-pill px-4 deletePicKep3">
+                                <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+                                <small class="text-uppercase font-weight-bold text-muted">Töröl</small>
                             </label>
                         </div>
                     </div>
@@ -130,9 +142,9 @@ if (!$res) {
                 <div class="col-xl-6 height280">
                     <!-- years -->
                     <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newM-years">Év:</label>
+                        <label class="col-lg-2 col-form-label" for="modM-Years">Év:</label>
                         <div class="col-lg-10">
-                            <input type="text" placeholder="Ezekben az években hordták a mezt" class="form-control" name="newM-years" id="modM-years" maxlength="100" value="<?php if (isset($years)) {echo $years;} ?>">
+                            <input type="text" placeholder="Ezekben az években hordták a mezt" class="form-control" name="modM-Years" id="modM-Years" maxlength="100" value="<?php if (isset($years)) {echo $years;} ?>">
                             <small id="passwordHelpBlock" class="form-text text-muted">
                                 <strong>Nem</strong> kötelező mező
                             </small>
@@ -146,9 +158,9 @@ if (!$res) {
                     </div> <!--endof years-->
                     <!-- type -->
                     <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newM-type-select">Típus:</label>
+                        <label class="col-lg-2 col-form-label" for="modM-Type-select">Típus:</label>
                         <div class="col-lg-10">
-                            <select class="form-control custom-select" id="modM-type-select">
+                            <select class="form-control custom-select" id="modM-Type-select">
                                 <option value="<?php echo $type; ?>"><?php echo $typeString; ?></option>
                                 <?php
 
@@ -156,7 +168,7 @@ if (0 != $type) {
  echo '<option value="0">Egyéb típusú mez</option>';
 }
 if (1 != $type) {
- echo '<option value="1" selected>Hazai mez</option>';
+ echo '<option value="1">Hazai mez</option>';
 }
 if (2 != $type) {
  echo '<option value="2">Vendég mez</option>';
@@ -183,9 +195,9 @@ if (4 != $type) {
                 <div class="col-xl-6 height280">
                     <!-- info -->
                     <div class="form-group row container">
-                        <label class="col-lg-2 col-form-label" for="newM-info">Info:</label>
+                        <label class="col-lg-2 col-form-label" for="modM-Info">Info:</label>
                         <div class="col-lg-10">
-                            <textarea rows="6" cols="25" class="form-control" name="newM-info" id="modM-info" maxlength="255"><?php if (isset($info)) {echo $info;} ?></textarea>
+                            <textarea rows="6" cols="25" class="form-control" name="modM-Info" id="modM-Info" maxlength="255"><?php if (isset($info)) {echo $info;} ?></textarea>
                             <small id="passwordHelpBlock" class="form-text text-muted">
                                 <strong>Nem</strong> kötelező mező
                             </small>
@@ -219,5 +231,7 @@ if (4 != $type) {
         </form>
     </div><!--endof container-fluid-->
 </div> <!--endof min-height550-->
+
+
 
 

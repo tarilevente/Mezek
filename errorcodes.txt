@@ -83,6 +83,13 @@
 
 91000:  - '' - printTeamCards.php
 
+90100:  - 'no post' - modM.php
+90101:  - 'no user logged in' - modM.php
+90102:  - 'ilyen típus nincs az adatbázisban' - modM.php
+90103:  - 'ilyen mez nincs az adatbázisban' - modM.php
+90104:  - 'nincs $res a mezid-k lekérdezésnél' - modM.php
+90105:  - 'nincs $res a régi adatok lekérdezésénél' - modM.php
+
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
 //img optim: https://github.com/artisansweb/image-optimizer, resmush.it
@@ -124,6 +131,12 @@
 //category update - kicsit elkapkodtam, tesztelgetni kell még
 //$con-close() mindenhol: check
 //updateMez form-cards: image settings not correct, but ok.
+// ha nincs mysql, akkor mi jelenjen meg?
+//info: max255
+//képek tárolása: idMez alapján?
+//kód tömbösítése, rövid if-ek átírása
+//fájlkezelés: lsd: $_SERVER["DOCUMENT_ROOT"] , vagy Olinál
+//egyszerre végrehajtás??? probléma: képfeltöltésnél, ahol csak utólag tudod, hogy sikerült-e
 
 
 /*

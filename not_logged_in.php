@@ -10,4 +10,5 @@ echo file_get_contents("html/header.html");
 </div>
 
 <?php
-echo file_get_contents("html/footer.html");
+$footer = file_get_contents("html/footer.html");
+echo str_replace("::otherjs::", "", $footer);

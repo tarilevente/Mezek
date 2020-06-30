@@ -38,9 +38,7 @@ else {
  //set info if exists
  if (isset($_POST['newM-info']) && !empty($_POST['newM-info'])) {$info = $_POST['newM-info'];} else {}
  //2: type-check
- if (
-  !isset($_POST["type"]) ||
-  empty($_POST['type'])) {
+ if (!isset($_POST["type"])) {
   //error,the type is not properly setted
   $response['error'] = true;
   $response['errorMsg'] .= 'A mez típusának megadása kötelező! error code: 89900<br>' . $_POST['type'];

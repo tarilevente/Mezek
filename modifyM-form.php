@@ -15,7 +15,7 @@ echo $menu;
     <div class="bg-warning text-center p-1 mb-1">
         <h4>Mez módosítása</h4>
     </div>
-        <form id="newM-form" class="needs-validation" novalidate>
+        <!-- <form id="newM-form" class="needs-validation" novalidate> -->
             <div class="container text-center">
                     <!-- league select -->
                     <div class="form-group row container">
@@ -76,7 +76,7 @@ while ($row1 = mysqli_fetch_row($res1)) {
         <!-- team cards to choose Mez -->
         <div id="teamCards" class="text-center">
         </div>
-        <div class="" id="ModifyMezID">
+        <div id="ModifyMezID">
 
         </div><!--endof ModifyMezID-->
             <div id="errorVanM" class="bg-danger p-1 text-light">

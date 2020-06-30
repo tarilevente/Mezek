@@ -353,7 +353,10 @@ footer > .flex-container {
 
 #upload-label,
 #upload-label2,
-#upload-label3 {
+#upload-label3,
+#upload-labelMod,
+#upload-labelMod2,
+#upload-labelMod3 {
   position: absolute;
   top: 50%;
   left: 1rem;
