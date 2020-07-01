@@ -114,6 +114,7 @@ if (!isset($_SESSION['user'])) {
        $response['errorMsg'] .= "Hiba a kép2 törlésénél! ";
       } else {
        $kep2DELETED = true;
+       $response['successMsg'] .= 'Kép 2 törölve!<br>';
       }
      }
     }
@@ -133,6 +134,7 @@ if (!isset($_SESSION['user'])) {
        $response['errorMsg'] .= "Hiba a kép3 törlésénél! ";
       } else {
        $kep3DELETED = true;
+       $response['successMsg'] .= 'Kép 3 törölve!<br>';
       }
      }
     }
@@ -158,7 +160,9 @@ if (!isset($_SESSION['user'])) {
     false == $Kep3Changed &&
     false == $TypeChanged &&
     false == $InfoChanged &&
-    false == $YearsChanged) {
+    false == $YearsChanged &&
+    false == $kep2DELETED &&
+    false == $kep3DELETED) {
     $response['error']    = true;
     $response['errorMsg'] = 'Nincs változás, nincs mit menteni.';
    }
@@ -203,9 +207,16 @@ if (!isset($_SESSION['user'])) {
     $sql = "UPDATE `meztable`
     SET `Type` = '::type::', `Years` = '::years::', `Info` = '::info::'
     WHERE `meztable`.`idMez` = $idMez ";
-    if ($TypeChanged) {$sql = str_replace('::type::', $type, $sql);} else { $sql = str_replace('::type::', $typeOLD, $sql);}
-    if ($InfoChanged) {$sql = str_replace('::info::', $info, $sql);} else { $sql = str_replace('::info::', $infoOLD, $sql);}
-    if ($YearsChanged) {$sql = str_replace('::years::', $years, $sql);} else { $sql = str_replace('::years::', $yearsOLD, $sql);}
+    if ($TypeChanged) {
+     $newTypeString = getTypeString($type);
+     $sql           = str_replace('::type::', $type, $sql);
+     $response['successMsg'] .= 'Típus változott: ' . $newTypeString . '<br>';} else { $sql = str_replace('::type::', $typeOLD, $sql);}
+    if ($InfoChanged) {
+     $sql = str_replace('::info::', $info, $sql);
+     $response['successMsg'] .= 'Info változott: ' . $info . '<br>';} else { $sql = str_replace('::info::', $infoOLD, $sql);}
+    if ($YearsChanged) {
+     $sql = str_replace('::years::', $years, $sql);
+     $response['successMsg'] .= 'Évek változott: ' . $years . '<br>';} else { $sql = str_replace('::years::', $yearsOLD, $sql);}
     $con->query($sql);
 
     //pic1,Path1, pic2,Path2, pic3,Path3,
@@ -218,6 +229,7 @@ if (!isset($_SESSION['user'])) {
     if ($Kep1Changed) {
      $sql2 = str_replace('::1::', $kep1Filename, $sql2);
      $sql2 = str_replace('::Path1::', $kep1FilePathOLD, $sql2);
+     $response['successMsg'] .= "Kép1 változott: " . $kep1Filename . '<br>';
     } else {
      $sql2 = str_replace('::1::', $kep1FilenameOLD, $sql2);
      $sql2 = str_replace('::Path1::', $kep1FilePathOLD, $sql2);
@@ -226,6 +238,7 @@ if (!isset($_SESSION['user'])) {
     if ($Kep2Changed) {
      $sql2 = str_replace('::2::', $kep2Filename, $sql2);
      $sql2 = str_replace('::Path2::', $kep1FilePathOLD, $sql2);
+     $response['successMsg'] .= "Kép2 változott: " . $kep2Filename . '<br>';
     } else {
      $sql2 = str_replace('::2::', $kep2FilenameOLD, $sql2);
      $sql2 = str_replace('::Path2::', $kep2FilePathOLD, $sql2);
@@ -233,6 +246,7 @@ if (!isset($_SESSION['user'])) {
     if ($Kep3Changed) {
      $sql2 = str_replace('::weared::', $kep3Filename, $sql2);
      $sql2 = str_replace('::PathWeared::', $kep1FilePathOLD, $sql2);
+     $response['successMsg'] .= "Kép3 változott: " . $kep3Filename . '<br>';
     } else {
      $sql2 = str_replace('::weared::', $kep3FilenameOLD, $sql2);
      $sql2 = str_replace('::PathWeared::', $kep3FilePathOLD, $sql2);

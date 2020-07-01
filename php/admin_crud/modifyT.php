@@ -92,10 +92,12 @@ if (
    }
   } else {
    if ($modifyName) {
-    //modifyName only changed
-    $sql = "UPDATE `teamtable` SET `tName` = '$newTName' WHERE `teamtable`.`idTeam` =  $idTeam ;";
-    $con->query($sql);
-    $response['successMessage'] = "Új csapatnév: " . $newTName;
+       if(){
+           //modifyName only changed
+           $sql = "UPDATE `teamtable` SET `tName` = '$newTName' WHERE `teamtable`.`idTeam` =  $idTeam ;";
+           $con->query($sql);
+           $response['successMessage'] = "Új csapatnév: " . $newTName;
+       }
    }
   }
  } //endof $res: ok

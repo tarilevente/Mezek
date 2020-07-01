@@ -33,28 +33,7 @@ if (!$res) {
   $kep3   = $row['weared'];
   $Path3  = $row['PathWeared'];
 
-  $typeString = '';
-  switch ($type) {
-   case '0':
-    $typeString = 'Egyéb típusú mez';
-    break;
-   case '1':
-    $typeString = 'Hazai mez';
-    break;
-   case '2':
-    $typeString = 'Vendég mez';
-    break;
-   case '3':
-    $typeString = 'Harmadik számú mez';
-    break;
-   case '4':
-    $typeString = 'Kapus mez';
-    break;
-
-   default:
-    $typeString = '?';
-    break;
-  } //endof $type String
+  $typeString = getTypeString($type);
  } //endof while
 }
 ; //endof $res ?>
@@ -215,7 +194,7 @@ if (4 != $type) {
                             <div class="col-lg-10">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <input type="button" class="btn btn-primary form-control" value="Reset" id="resetMM">
+                                        <input type="button" class="btn btn-primary form-control" value="Vissza" id="resetMM">
                                     </div>
                                     <div class="col-lg-6">
                                         <input type="submit" name="submitMez" id="submitMezMod" value="Mez módosítása" class="btn btn-primary form-control">

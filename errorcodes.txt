@@ -137,6 +137,9 @@
 //kód tömbösítése, rövid if-ek átírása
 //fájlkezelés: lsd: $_SERVER["DOCUMENT_ROOT"] , vagy Olinál
 //egyszerre végrehajtás??? probléma: képfeltöltésnél, ahol csak utólag tudod, hogy sikerült-e
+//végigkattintgatni, reszponzívban is
+//picZoomednál az sql leegyszerűsítése? kétszer fut le?
+//ha a csapatnév változik, akkor a csapatban lévő mezek adatai is változzanak meg, és a könyvtár is.
 
 
 /*

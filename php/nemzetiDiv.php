@@ -14,7 +14,8 @@ $response['errorCode'] = "";
 $response['errMsg']    = '';
 if (isset($_POST['nemzeti']) && 1 == $_POST['nemzeti']) {
 //post is arrived
- $response['html'] = '<div class="row">' //The row is for position with the Mez (nemzetiTeamsShow.php writes out)
+ $response['html'] = '
+     <div class="row">' //The row is for position with the Mez (nemzetiTeamsShow.php writes out)
   . '<div class="col-lg-2">'; //Simple sidebar for nations where pics exist
  //query for select Categories, WHERE exists Any Mez
  $sql = "SELECT CategoryTable.idCategory, CategoryTable.CatName AS valogatott

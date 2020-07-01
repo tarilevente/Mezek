@@ -43,7 +43,6 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
     while ($row3 = mysqli_fetch_assoc($res3)) {
      $aktPic = GetPicFromRow($con, $row3);
     }
-
     $pic1 = $aktPic->getPath1() . $aktPic->getP1();
     $pic2 = null;
     if ($aktPic->getP2() == "basicMez.jpg") {
@@ -76,12 +75,12 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
                 <div class="m-1">
                     <img src="' . $pic1 . '" alt="mez_1" >
                 </div>';
-    if (null !== $pic2) {
+    if (null != $pic2) {
      $response['html'] .= '<div class="m-1">
                     <img src="' . $pic2 . '" alt="mez_2" >
                 </div>';
     }
-    if (null !== $picWeared) {
+    if (null != $picWeared) {
      $response['html'] .= '<div class="m-1">
                     <img src="' . $picWeared . '" alt="mez_weared" >
                 </div>';
@@ -97,10 +96,10 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
                     <!-- Indicators -->
                 <ul class="carousel-indicators">
                     <li data-target="#carouselZoom" data-slide-to="0" class="active"></li>';
-    if (null !== $pic2) {
+    if (null != $pic2) {
      $response['html'] .= '<li data-target="#carouselZoom" data-slide-to="1"></li>';
     }
-    if (null !== $picWeared) {
+    if (null != $picWeared) {
      $response['html'] .= '<li data-target="#carouselZoom" data-slide-to="2"></li>';
     }
     $response['html'] .= '
@@ -111,13 +110,13 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
                         <div class="carousel-item active">
                                 <img src="' . $pic1 . '" alt="mez_1">
                         </div>';
-    if (null !== $pic2) {
+    if (null != $pic2) {
      $response['html'] .= '
                         <div class="carousel-item">
                                 <img src="' . $pic2 . '" alt="mez_2">
                         </div>';
     }
-    if (null !== $picWeared) {
+    if (null != $picWeared) {
      $response['html'] .= '
                         <div class="carousel-item">
                                 <img src="' . $picWeared . '" alt="mez_weared">

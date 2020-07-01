@@ -32,7 +32,7 @@ $(function () {
           console.log("error " + res.responseText);
         },
       });
-    }, 50);
+    }, 100);
 
     //print the team, or remove the last selection
     setTimeout(function () {
@@ -56,7 +56,7 @@ $(function () {
           console.log(res);
         },
       });
-    }, 150);
+    }, 300);
 
     //hide the modifyForm
     $("#ModifyMezID")[0].innerHTML = "";
@@ -149,13 +149,8 @@ $(function () {
   //reset to the actual datas
   $(document).on("click", "#resetMM", function () {
     //hide the modifyForm
-    const formHtml = $("#ModifyMezID")[0];
-    formHtml.innerHTML = "";
-    $.get("printModifyForm.php", { idMez: aktLoaded }, function (data) {
-      formHtml.innerHTML = data;
-    });
+    location.reload();
   });
-
   //submit
 
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -306,9 +301,9 @@ $(function () {
         if ($("#imageResult3").attr("src") == "#del") {
           fd.append("kep3Deleted", true);
         }
-        // for (var value of fd.values()) {
-        //   console.log(value);
-        // }
+        for (var value of fd.values()) {
+          console.log(value);
+        }
 
         $.ajax({
           url: "php/admin_crud/modifyM.php",
