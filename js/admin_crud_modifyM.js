@@ -250,6 +250,7 @@ $(function () {
       const imgRes = document.getElementById("imageResult2");
       $(imgRes).attr("src", "#del");
       $("#uploadMod2").val("");
+      infoArea2.textContent = "Kép2 - nem kötelező";
     }); //endof deletePic2
     $(document).on("click", ".deletePicKep3", function () {
       //just make a sign
@@ -257,6 +258,7 @@ $(function () {
       const imgRes = document.getElementById("imageResult3");
       $(imgRes).attr("src", "#del");
       $("#uploadMod3").val("");
+      infoArea3.textContent = "Kép3 - nem kötelező";
     }); //endof deletePic2
 
     //update Mez
@@ -301,9 +303,9 @@ $(function () {
         if ($("#imageResult3").attr("src") == "#del") {
           fd.append("kep3Deleted", true);
         }
-        for (var value of fd.values()) {
-          console.log(value);
-        }
+        // for (var value of fd.values()) {
+        // console.log(value);
+        // }
 
         $.ajax({
           url: "php/admin_crud/modifyM.php",

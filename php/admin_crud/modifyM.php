@@ -33,6 +33,8 @@ if (!isset($_SESSION['user'])) {
  $InfoChanged  = false;
  $YearsChanged = false;
 
+ $base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
+
  if (
   !isset($_POST['idMez']) || empty($_POST['idMez'] ||
    !isset($_POST['type']) || empty($_POST['type']))
@@ -101,10 +103,7 @@ if (!isset($_SESSION['user'])) {
    //5/A: First, we will delete the pics, what are no more necessary
    if (isset($_POST['kep2Deleted']) && true == $_POST['kep2Deleted']) {
     if (strlen($kep2FilenameOLD) > 2) {
-     $file_name    = $kep2FilenameOLD;
-     $base_dir     = realpath($_SERVER["DOCUMENT_ROOT"]);
-     $file_delete  = "/mezek/mezek/" . $kep2FilePathOLD;
-     $file_delete2 = str_replace('\\', '/', $base_dir) . "$file_delete$file_name";
+     $file_delete2 = str_replace('\\', '/', $base_dir) . "/mezek/mezek/" . $kep2FilePathOLD . $kep2FilenameOLD;
      if (!file_exists($file_delete2)) {
       $response['error'] = true;
       $response['errorMsg'] .= 'Hiba, nem találom a kép2-t : ' . $file_delete2;
@@ -121,10 +120,7 @@ if (!isset($_SESSION['user'])) {
    } //endof kep2 delete the .jpg from server
    if (isset($_POST['kep3Deleted']) && true == $_POST['kep3Deleted']) {
     if (strlen($kep3FilenameOLD) > 2) {
-     $file_name    = $kep3FilenameOLD;
-     $base_dir     = realpath($_SERVER["DOCUMENT_ROOT"]);
-     $file_delete  = "/mezek/mezek/" . $kep3FilePathOLD;
-     $file_delete2 = str_replace('\\', '/', $base_dir) . "$file_delete$file_name";
+     $file_delete2 = str_replace('\\', '/', $base_dir) . "/mezek/mezek/" . $kep3FilePathOLD . $kep3FilenameOLD;
      if (!file_exists($file_delete2)) {
       $response['error'] = true;
       $response['errorMsg'] .= 'Hiba, nem találom a kép3-at : ' . $file_delete2;
@@ -145,15 +141,10 @@ if (!isset($_SESSION['user'])) {
     if ($kep1Filename != $kep1FilenameOLD) {
      // file is changed
      $Kep1Changed = true;
-     //változtatni, ha már van ilyen a mappában?? mondjuk más mezé? - akkor ne változtas
     }
    }
-   if (isset($kep2Filename) && $kep2Filename != $kep2FilenameOLD) {
-    $Kep2Changed = true;
-   }
-   if (isset($kep3Filename) && $kep3Filename != $kep3FilenameOLD) {
-    $Kep3Changed = true;
-   }
+   if (isset($kep2Filename) && $kep2Filename != $kep2FilenameOLD) {$Kep2Changed = true;}
+   if (isset($kep3Filename) && $kep3Filename != $kep3FilenameOLD) {$Kep3Changed = true;}
    if (
     false == $Kep1Changed &&
     false == $Kep2Changed &&
@@ -167,7 +158,6 @@ if (!isset($_SESSION['user'])) {
     $response['errorMsg'] = 'Nincs változás, nincs mit menteni.';
    }
    //5/C: new pics move to the destionation folder ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://////!!
-   $base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
    if ($Kep1Changed) {
     $file_upload  = "/mezek/mezek/" . $kep1FilePathOLD;
     $file_upload2 = str_replace('\\', '/', $base_dir) . $file_upload;
@@ -176,7 +166,20 @@ if (!isset($_SESSION['user'])) {
      $response['error'] = true;
      $response['errorMsg'] .= 'Valami hiba történt a kép1 feltöltésekor!';
     } else {
-     //kep1 success
+     //kep1 successfully moved to the destionation folder,
+     //we have to remove the last one
+     $file_delete2 = str_replace('\\', '/', $base_dir) . "/mezek/mezek/" . $kep1FilePathOLD . $kep1FilenameOLD;
+     if (!file_exists($file_delete2)) {
+      $response['error'] = true;
+      $response['errorMsg'] .= 'Hiba, nem találom a kép1-et : ' . $file_delete2;
+     } else {
+      if (!unlink($file_delete2)) {
+       $response['error'] = true;
+       $response['errorMsg'] .= "Hiba a kép1 törlésénél! ";
+      } else {
+       //kep1 deleted
+      }
+     }
     } //endof kep1
    }
    if ($Kep2Changed && false == $kep2DELETED && false == $response['error']) {
@@ -187,7 +190,22 @@ if (!isset($_SESSION['user'])) {
      $response['error'] = true;
      $response['errorMsg'] .= 'Valami hiba történt a kép2 feltöltésekor!';
     } else {
-     //kep2 success
+     //kep2 successfully uploaded
+     if ($kep2FilenameOLD && $kep2FilenameOLD) {
+      //we have to remove the last one
+      $file_delete2 = str_replace('\\', '/', $base_dir) . "/mezek/mezek/" . $kep2FilePathOLD . $kep2FilenameOLD;
+      if (!file_exists($file_delete2)) {
+       $response['error'] = true;
+       $response['errorMsg'] .= 'Hiba, nem találom a kép2-t : ' . $file_delete2;
+      } else {
+       if (!unlink($file_delete2)) {
+        $response['error'] = true;
+        $response['errorMsg'] .= "Hiba a kép2 törlésénél! ";
+       } else {
+        //kep1 deleted
+       }
+      }
+     }
     } //endof kep2
    }
    if ($Kep3Changed && false == $kep3DELETED && false == $response['error']) {
@@ -198,15 +216,30 @@ if (!isset($_SESSION['user'])) {
      $response['error'] = true;
      $response['errorMsg'] .= 'Valami hiba történt a kép3 feltöltésekor!';
     } else {
-     //kep3 success
+     //kep3 successfully uploaded
+     if ($kep3FilenameOLD && $kep3FilenameOLD) {
+      //we have to remove the last one
+      $file_delete2 = str_replace('\\', '/', $base_dir) . "/mezek/mezek/" . $kep3FilePathOLD . $kep3FilenameOLD;
+      if (!file_exists($file_delete2)) {
+       $response['error'] = true;
+       $response['errorMsg'] .= 'Hiba, nem találom a kép3-at : ' . $file_delete2;
+      } else {
+       if (!unlink($file_delete2)) {
+        $response['error'] = true;
+        $response['errorMsg'] .= "Hiba a kép3 törlésénél! ";
+       } else {
+        //kep1 deleted
+       }
+      }
+     }
     } //endof kep3
    }
    if (false == $response['error']) {
     //write the sql file
     //info, years, type changes
     $sql = "UPDATE `meztable`
-    SET `Type` = '::type::', `Years` = '::years::', `Info` = '::info::'
-    WHERE `meztable`.`idMez` = $idMez ";
+            SET `Type` = '::type::', `Years` = '::years::', `Info` = '::info::'
+            WHERE `meztable`.`idMez` = $idMez ";
     if ($TypeChanged) {
      $newTypeString = getTypeString($type);
      $sql           = str_replace('::type::', $type, $sql);
@@ -220,38 +253,44 @@ if (!isset($_SESSION['user'])) {
     $con->query($sql);
 
     //pic1,Path1, pic2,Path2, pic3,Path3,
-    $sql2 = "UPDATE `picstable`
-    SET
-        `1` = '::1::', `Path1` = '::Path1::',
-        `2` = '::2::', `Path2` = '::Path2::',
-        `weared` = '::weared::', `PathWeared` = '::PathWeared::'
-    WHERE `picstable`.`idPic` = " . $idPic;
+    $sqlUPD = " UPDATE `picstable`
+              SET
+                `1` = '::1::', `Path1` = '::Path1::',
+                `2` = '::2::', `Path2` = '::Path2::',
+                `weared` = '::weared::', `PathWeared` = '::PathWeared::'
+              WHERE `picstable`.`idPic` = " . $idPic;
     if ($Kep1Changed) {
-     $sql2 = str_replace('::1::', $kep1Filename, $sql2);
-     $sql2 = str_replace('::Path1::', $kep1FilePathOLD, $sql2);
-     $response['successMsg'] .= "Kép1 változott: " . $kep1Filename . '<br>';
+     $sqlUPD = str_replace('::1::', $kep1Filename, $sqlUPD);
+     $sqlUPD = str_replace('::Path1::', $kep1FilePathOLD, $sqlUPD);
+     $response['successMsg'] .= "Kép1 megváltozott: " . $kep1Filename . '<br>';
     } else {
-     $sql2 = str_replace('::1::', $kep1FilenameOLD, $sql2);
-     $sql2 = str_replace('::Path1::', $kep1FilePathOLD, $sql2);
+     $sqlUPD = str_replace('::1::', $kep1FilenameOLD, $sqlUPD);
+     $sqlUPD = str_replace('::Path1::', $kep1FilePathOLD, $sqlUPD);
     }
-    ;
     if ($Kep2Changed) {
-     $sql2 = str_replace('::2::', $kep2Filename, $sql2);
-     $sql2 = str_replace('::Path2::', $kep1FilePathOLD, $sql2);
-     $response['successMsg'] .= "Kép2 változott: " . $kep2Filename . '<br>';
+     $sqlUPD = str_replace('::2::', $kep2Filename, $sqlUPD);
+     $sqlUPD = str_replace('::Path2::', $kep1FilePathOLD, $sqlUPD);
+     $response['successMsg'] .= "Kép2 megváltozott: " . $kep2Filename . '<br>';
+    } elseif ($kep2DELETED) {
+     $sqlUPD = str_replace('::2::', "", $sqlUPD);
+     $sqlUPD = str_replace('::Path2::', "", $sqlUPD);
     } else {
-     $sql2 = str_replace('::2::', $kep2FilenameOLD, $sql2);
-     $sql2 = str_replace('::Path2::', $kep2FilePathOLD, $sql2);
+     $sqlUPD = str_replace('::2::', $kep2FilenameOLD, $sqlUPD);
+     $sqlUPD = str_replace('::Path2::', $kep2FilePathOLD, $sqlUPD);
     }
+
     if ($Kep3Changed) {
-     $sql2 = str_replace('::weared::', $kep3Filename, $sql2);
-     $sql2 = str_replace('::PathWeared::', $kep1FilePathOLD, $sql2);
-     $response['successMsg'] .= "Kép3 változott: " . $kep3Filename . '<br>';
+     $sqlUPD = str_replace('::weared::', $kep3Filename, $sqlUPD);
+     $sqlUPD = str_replace('::PathWeared::', $kep1FilePathOLD, $sqlUPD);
+     $response['successMsg'] .= "Kép3 megváltozott: " . $kep3Filename . '<br>';
+    } elseif ($kep3DELETED) {
+     $sqlUPD = str_replace('::weared::', "", $sqlUPD);
+     $sqlUPD = str_replace('::PathWeared::', "", $sqlUPD);
     } else {
-     $sql2 = str_replace('::weared::', $kep3FilenameOLD, $sql2);
-     $sql2 = str_replace('::PathWeared::', $kep3FilePathOLD, $sql2);
+     $sqlUPD = str_replace('::weared::', $kep3FilenameOLD, $sqlUPD);
+     $sqlUPD = str_replace('::PathWeared::', $kep3FilePathOLD, $sqlUPD);
     }
-    $con->query($sql2);
+    $con->query($sqlUPD);
    } //endof $response['error']==false
   } //endof $response==false
  } //endof isset $_post

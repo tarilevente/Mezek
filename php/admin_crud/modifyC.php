@@ -40,13 +40,8 @@ if (
     $response['error'] = true;
     $response['errorMessage'] .= "A kategórianév hossza nem megfelelő! error code: 90033<br>";
     $response['errorCode'] = 90033;
-   } else {
-    //the change is valid
-    //to be modified
-    $modifyName = true;
-   }
+   } else { $modifyName = true;}
   } //endof tName changed
-
   //============================================= MODIFY ===================================================7
   //nothing is changed
   if (!$modifyName) {

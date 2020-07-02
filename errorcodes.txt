@@ -66,13 +66,14 @@
 89911:  - 'Kep2 már létezik az adatbázisban' -newM.php                                  setted
 89912:  - 'Kep3 már létezik az adatbázisban' -newM.php                                  setted
 
-90010:  - 'nincs $res a csapat lékérdezésekor. ' - printAktTeamDetails.php
+90010:  - 'nincs $res a csapat lékérdezésekor. ' - printAktTeamDetails.php              setted
 
-90020:  - 'no post' - modifyT.php
-90021:  - 'no $res' - modifyT.php
-90022:  - 'a csapatnév túl hosszú vagy túl rövid' - modifyT.php
-90023:  - 'a városnév túl hosszú' - modifyT.php
-90024:  - 'nincs változás, nincs mit menteni' - modifyT.php
+90020:  - 'no post' - modifyT.php                                                       setted
+90021:  - 'no $res' - modifyT.php                                                       setted
+90022:  - 'a csapatnév túl hosszú vagy túl rövid' - modifyT.php                         setted
+90023:  - 'a városnév túl hosszú' - modifyT.php                                         setted
+90024:  - 'nincs változás, nincs mit menteni' - modifyT.php                             setted
+90025:  - 'új csapatnévhez tartozó könyvtár átnevezése nem sikerült' - modifyT.php      setted
 
 90030:  - '$res not setted' - printAktCategoryDetails.php
 
@@ -83,12 +84,12 @@
 
 91000:  - '' - printTeamCards.php
 
-90100:  - 'no post' - modM.php
-90101:  - 'no user logged in' - modM.php
-90102:  - 'ilyen típus nincs az adatbázisban' - modM.php
-90103:  - 'ilyen mez nincs az adatbázisban' - modM.php
-90104:  - 'nincs $res a mezid-k lekérdezésnél' - modM.php
-90105:  - 'nincs $res a régi adatok lekérdezésénél' - modM.php
+90100:  - 'no post' - modM.php                                      setted
+90101:  - 'no user logged in' - modM.php                            setted
+90102:  - 'ilyen típus nincs az adatbázisban' - modM.php            setted
+90103:  - 'ilyen mez nincs az adatbázisban' - modM.php              setted
+90104:  - 'nincs $res a mezid-k lekérdezésnél' - modM.php           setted
+90105:  - 'nincs $res a régi adatok lekérdezésénél' - modM.php      setted
 
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one

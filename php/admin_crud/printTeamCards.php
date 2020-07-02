@@ -10,9 +10,7 @@ $response['errMsg']    = '';
 
 if (isset($_POST['idTeam']) && !empty($_POST['idTeam'])) {
  $idTeam = $_POST['idTeam'];
- if ($idTeam < 0) {
-  $response['html'] = 'Válassz egy csapatot! ';
- } else {
+ if ($idTeam < 0) {$response['html'] = 'Válassz egy csapatot! ';} else {
   $sql = 'SELECT * FROM MezTable, PicsTable WHERE idTeam=' . $idTeam . ' AND MezTable.idPic=PicsTable.idPic';
   $res = $con->query($sql);
   if (!$res || 0 == $res->num_rows) {

@@ -15,10 +15,7 @@ if (
  $liga  = testInput($_POST['liga']);
  $Cname = testInput($_POST['Cname']);
 
- if (
-  !$liga ||
-  !$Cname
- ) {
+ if (!$liga || !$Cname) {
   $response['error']     = true;
   $response['errorMsg']  = "A megadott érték nem lehet csak szóköz! error code: 76101";
   $response['errorCode'] = 76101;
@@ -51,6 +48,7 @@ if (
   $response['errorMsg']  = "A kategória már létezik! error code: 76104";
   $response['errorCode'] = 76104;
  }
+
  if (false === $response['error']) {
   $sql = "INSERT INTO `CategoryTable` (`idCategory`, `idLeague`, `catName`) VALUES (NULL, '$liga', '$Cname');";
   $res = $con->query($sql);
