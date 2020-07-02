@@ -74,25 +74,20 @@ if (!isset($_SESSION['user'])) {
   if (strlen($_FILES['#imageResult3']['name']) > 2) {$kep3Filename = $_FILES['#imageResult3']['name'];}
 
 //4. ===========================get the current datas from db===============================
-  $sql = "SELECT * FROM MezTable, PicsTable WHERE MezTable.idPic=PicsTable.idPic AND idMez= " . $idMez;
-  $res = $con->query($sql);
-  if (!$res || 1 != $res->num_rows) {
+  $stmt = $con->prepare('SELECT mezTable.idPic, mezTable.Info, mezTable.Years, mezTable.Type,
+                                picsTable.1, picsTable.Path1, picsTable.2, picsTable.Path2, picsTable.weared, picsTable.PathWeared
+                        FROM MezTable, PicsTable
+                        WHERE MezTable.idPic=PicsTable.idPic
+                        AND idMez= ?');
+  $stmt->bind_param('i', $idMez);
+  if (!$stmt->execute()) {
    $response['error'] = true;
    $response['errorMsg'] .= "Valami hiba történt! error code: 90105<br>";
   } else {
-   while ($row = mysqli_fetch_assoc($res)) {
-    $idPic    = $row['idPic'];
-    $infoOLD  = $row['Info'];
-    $yearsOLD = $row['Years'];
-    $typeOLD  = $row['Type'];
-
-    $kep1FilenameOLD = $row['1'];
-    $kep1FilePathOLD = $row['Path1'];
-    $kep2FilenameOLD = $row['2'];
-    $kep2FilePathOLD = $row['Path2'];
-    $kep3FilenameOLD = $row['weared'];
-    $kep3FilePathOLD = $row['PathWeared'];
-   }
+   $stmt->store_result();
+   $stmt->bind_result($idPic, $infoOLD, $yearsOLD, $typeOLD,
+    $kep1FilenameOLD, $kep1FilePathOLD, $kep2FilenameOLD, $kep2FilePathOLD, $kep3FilenameOLD, $kep3FilePathOLD);
+   $stmt->fetch();
   } //endof db to variables
   //5. compare the datas
   if (isset($years) && $years != $yearsOLD) {$YearsChanged = true;}

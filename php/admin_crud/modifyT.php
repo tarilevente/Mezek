@@ -34,7 +34,6 @@ if (
    $oldTName = trim($row['tName']);
    $oldTcity = $row['tCity'];
   }
-  ;
   if (isset($_POST['newTCity'])) {$newTCity = $_POST['newTCity'];}
 
   //================================ COMPARISONS, WHAT IS CHANGED OR NOT ===============================
@@ -92,16 +91,19 @@ if (
     $response['errorMessage'] .= "Valami hiba történt, Error code: 90025";
    } else {
     //we have to change the paths in picstable too
-    $sqlSelect = "SELECT meztable.idPic
-                FROM meztable,teamtable
-                WHERE meztable.idTeam=teamtable.idTeam
-                AND teamtable.idTeam=" . $idTeam;
-    $picIDs    = array();
-    $resSelect = $con->query($sqlSelect);
-    if ($resSelect) {
-     while ($row = mysqli_fetch_row($resSelect)) {
-      $picIDs[] = $row[0];
+    $picIDs = array();
+    $stmt   = $con->prepare('SELECT meztable.idPic
+                        FROM meztable,teamtable
+                        WHERE meztable.idTeam = teamtable.idTeam
+                        AND teamtable.idTeam = ?');
+    $stmt->bind_param('i', $idTeam);
+    if ($stmt->execute()) {
+     $stmt->store_result();
+     $stmt->bind_result($row);
+     while ($stmt->fetch()) {
+      $picIDs[] = $row;
      }
+     $stmt->close();
      foreach ($picIDs as $item) {
       $kep1setted = '';
       $kep2setted = '';
@@ -113,6 +115,13 @@ if (
       $resPaths = $con->query($sqlPaths);
       if ($resPaths) {
        //find the paths setted or not
+       $stmt = $con->prepare('  UPDATE `picstable`
+                                SET
+                                        `Path1` = ?,
+                                        `Path2` = ?,
+                                        `PathWeared` = ?
+                                WHERE `picstable`.`idPic` = ?');
+       $stmt->bind_param('sssi', $kep1setted, $kep2setted, $kep3setted, $item);
        while ($row2 = mysqli_fetch_array($resPaths)) {
         if (strlen($row2[0]) > 3) {
          $kep1setted = str_replace($oldTName, $newTName, $row2[0]);}
@@ -122,14 +131,9 @@ if (
         if (isset($row2[2])) {
          if (strlen($row2[2]) > 3) {
           $kep3setted = str_replace($oldTName, $newTName, $row2[2]);}}
+        $stmt->execute();
        }
-       $sqlOvervrite = "UPDATE `picstable`
-                        SET
-                                `Path1` = '$kep1setted',
-                                `Path2` = '$kep2setted',
-                                `PathWeared` = '$kep3setted'
-                        WHERE `picstable`.`idPic` = $item";
-       $con->query($sqlOvervrite);
+       $stmt->close();
       } //endof $resPaths
      } //endof foreach
     } //endof $resSelect
@@ -138,7 +142,6 @@ if (
     $con->query($sqlMOD);
     $response['successMessage'] = "Új csapatnév: " . $newTName;
    } //endof rename Tname
-
   } //endof TnameModify
  } //endof $res: ok
 } //endof post exists

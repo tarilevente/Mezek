@@ -20,7 +20,6 @@ if (!isset($_SESSION['user'])) {
 } //endof $user error
 else {
  $user = $_SESSION['user'];
-
  date_default_timezone_set("Europe/Budapest");
 
  //new Mez object init
@@ -55,44 +54,43 @@ else {
   $response['errorCode'][] = '89902';
  } else {
   //3: team is in the database?
-  $team = $_POST['team'];
-  $sql  = "SELECT idTeam FROM TeamTable";
-  $res  = $con->query($sql);
-  if (!$res) {
-   //error,the type is not properly setted
+  $idTeam = $_POST['team'];
+  $stmt   = $con->prepare('SELECT idTeam FROM TeamTable');
+  if (!$stmt->execute()) {
    $response['error'] = true;
    $response['errorMsg'] .= 'Valami hiba történt! error code: 89901<br>';
    $response['errorCode'][] = '89901';
   }
+  $stmt->store_result();
+  $stmt->bind_result($row);
   $csapatIDs = array();
-  while ($row = mysqli_fetch_row($res)) {
-   $csapatIDs[] = $row[0];
+  while ($stmt->fetch()) {
+   $csapatIDs[] = $row;
   }
-  ;
-  if (!in_array($team, $csapatIDs)) {
+  $stmt->close();
+  if (!in_array($idTeam, $csapatIDs)) {
    //error, the team not exists
    $response['error'] = true;
    $response['errorMsg'] .= 'A csapat nem megfelelő: error code: 89907<br>';
    $response['errorCode'][] = '89907';
   }
-  $sql      = 'SELECT tName from TeamTable WHERE idTeam=' . $team;
-  $res      = $con->query($sql);
-  $teamName = "";
-  if ($res) {
-   while ($row = mysqli_fetch_row($res)) {
-    $teamName = $row[0];
-   }
-   ;
+  $stmt = $con->prepare("SELECT tName from TeamTable WHERE idTeam = ? ");
+  $stmt->bind_param('i', $idTeam);
+  if ($stmt->execute()) {
+   $stmt->store_result();
+   $stmt->bind_result($teamName);
+   $stmt->fetch();
+   $stmt->close();
   }
  } //endof team Check
  //4: upload pics - ajax sends data from admin_crud.js
- $sqlLAST = "SELECT idMez FROM MezTable ORDER BY idMez DESC LIMIT 1";
- $resLAST = $con->query($sqlLAST);
- $LAST    = '';
- while ($row = mysqli_fetch_row($resLAST)) {
-  $LAST = $row[0] + 1;
- }
- ;
+ $stmt = $con->prepare('SELECT idMez FROM MezTable ORDER BY idMez DESC LIMIT 1');
+ $stmt->execute();
+ $stmt->store_result();
+ $stmt->bind_result($LAST);
+ $stmt->fetch();
+ $stmt->close();
+ $LAST++;
  $locationCommon = "../../public/resources/pics/mezek/" . $teamName . "/" . $LAST . "/";
  if (strlen($_FILES['#imageResult']['name']) < 2) {
   //kep1 must be setted
@@ -183,32 +181,40 @@ else {
      $PathWeared = 'public/resources/pics/mezek/' . $teamName . '/' . $LAST . "/";
     }
     $aktPic = new Pic($idPic, $p1, $Path1, $p2, $Path2, $weared, $PathWeared);
-    $sql    = "INSERT INTO `picstable` (`idPic`, `1`, `Path1`, `2`, `Path2`, `weared`, `PathWeared`) VALUES ($idPic, '$p1', '$Path1', '$p2', '$Path2', '$weared', '$PathWeared');";
-    $con->query($sql);
-    $sql      = 'SELECT idPic FROM PicsTable ORDER BY idPic DESC LIMIT 1';
-    $res      = $con->query($sql);
-    $newPicID = "as";
-    if ($res) {
-     while ($row = mysqli_fetch_row($res)) {
-      $newPicID = $row[0];
-     }
-     ;
+    $stmt   = $con->prepare('INSERT INTO `picstable` (`idPic`, `1`, `Path1`, `2`, `Path2`, `weared`, `PathWeared`)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)');
+    $stmt->bind_param('issssss', $idPic, $p1, $Path1, $p2, $Path2, $weared, $PathWeared);
+    $stmt->execute();
+
+    // $sql    = "INSERT INTO `picstable` (`idPic`, `1`, `Path1`, `2`, `Path2`, `weared`, `PathWeared`)
+    //VALUES ($idPic, '$p1', '$Path1', '$p2', '$Path2', '$weared', '$PathWeared');";
+    // $con->query($sql);
+    $stmt->close();
+
+    $stmt = $con->prepare('SELECT idPic FROM PicsTable ORDER BY idPic DESC LIMIT 1');
+    if ($stmt->execute()) {
+     $stmt->store_result();
+     $stmt->bind_result($newPicID);
+     $stmt->fetch();
+     $stmt->close();
     }
     //3/B Mez upload to DB
-    $aktMez = new Mez($idMez, $newPicID, $team, $type, $uploadUser, $uploadDate, $years, $info);
-    $sql    = "INSERT INTO `meztable`
-    (`idMez`, `idPic`, `idTeam`, `Type`, `UploadUser`, `UploadDate`, `Years`, `Info`)
-    VALUES
-    (NULL,
-    '" . $aktMez->getIdpic() . "',
-    '" . $aktMez->getIdteam() . "',
-    '" . $aktMez->getType() . "',
-    '" . $aktMez->getUploaduser() . "',
-    '" . $aktMez->getUploaddate() . "',
-    '" . $aktMez->getYears() . "',
-    '" . $aktMez->getInfo() . "'
-    );";
-    $con->query($sql);
+    $aktMez = new Mez($idMez, $newPicID, $idTeam, $type, $uploadUser, $uploadDate, $years, $info);
+    $stmt   = $con->prepare('INSERT INTO `meztable`
+                        (`idMez`, `idPic`, `idTeam`, `Type`, `UploadUser`, `UploadDate`, `Years`, `Info`)
+                        VALUES
+                        (NULL, ?, ?, ?, ?, ?, ?, ? );');
+    $g1 = $aktMez->getIdpic();
+    $g2 = $aktMez->getIdteam();
+    $g3 = $aktMez->getType();
+    $g4 = $aktMez->getUploaduser();
+    $g5 = $aktMez->getUploaddate();
+    $g6 = $aktMez->getYears();
+    $g7 = $aktMez->getInfo();
+
+    $stmt->bind_param('iiiisss', $g1, $g2, $g3, $g4, $g5, $g6, $g7);
+    $stmt->execute();
+    $stmt->close();
     //4: section of uploads
     makeDir($locationCommon);
     if (!move_uploaded_file($_FILES['#imageResult']['tmp_name'], $locationAkt1)) {

@@ -12,19 +12,18 @@ if (isset($_POST['reset']) && 'reset' === $_POST['reset']) {
 } else {
  if (isset($_POST['idTeam']) && !empty($_POST['idTeam'])) {
   $idTeam = $_POST['idTeam'];
-  $sql    = "SELECT * FROM teamtable WHERE idTeam = " . $idTeam;
-  $res    = $con->query($sql);
-  if (!$res) {
+  $stmt   = $con->prepare('SELECT tName, tCity FROM teamtable WHERE idTeam = ?');
+  $stmt->bind_param('i', $idTeam);
+  if (!$stmt->execute()) {
    $response['error']     = true;
    $response['errorCode'] = 90010;
    $response['csapat']    = "-";
    $response['varos']     = "-";
   } else {
-   while ($row = mysqli_fetch_assoc($res)) {
-    $response['csapat'] = $row['tName'];
-    $response['varos']  = $row['tCity'];
-   }
-   ;
+   $stmt->store_result();
+   $stmt->bind_result($response['csapat'], $response['varos']);
+   $stmt->fetch();
+   $stmt->close();
   }
  }
 }

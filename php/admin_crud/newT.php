@@ -67,10 +67,11 @@ if (
    $response['errorMsg']  = "Valami hiba történt! error code: 75207";
    $response['errorCode'] = 75207;
   } else {
-   $sql = "INSERT INTO `teamtable` (`idTeam`, `idCategory`, `tName`, `tCity`) VALUES (NULL, '$cat', '$Tname', '$cityName')";
-   $con->query($sql);
+   $stmt = $con->prepare('INSERT INTO `teamtable` (`idTeam`, `idCategory`, `tName`, `tCity`) VALUES (NULL, ? , ? , ? )');
+   $stmt->bind_param('iss', $cat, $Tname, $cityName);
+   $stmt->execute();
+   $stmt->close();
   }
-
  }
 } else {
  //no post exist

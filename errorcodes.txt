@@ -142,8 +142,8 @@
 //végigkattintgatni, reszponzívban is
 //picZoomednál az sql leegyszerűsítése? kétszer fut le?
 //ha a csapatnév változik, akkor a csapatban lévő mezek adatai is változzanak meg, és a könyvtár is.
-
-
+//alertek kiiktatása, ha maradt(js-ből)
+//speciális karaktereket nem javasolom, ahol könyvtárnév is érintett
 /*
 Felhasznált technológiák
 php
