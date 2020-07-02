@@ -60,14 +60,17 @@ if (
  }
 
  if (false === $response['error']) {
-  $sql = "INSERT INTO `teamtable` (`idTeam`, `idCategory`, `tName`, `tCity`) VALUES (NULL, '$cat', '$Tname', '$cityName')";
-  $res = $con->query($sql);
-  if (!$res) {
-   //error to upload
+  $base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
+  $path     = str_replace('\\', '/', $base_dir) . "/mezek/mezek/public/resources/pics/mezek/$Tname/";
+  if (!makeDir($path)) {
    $response['error']     = true;
-   $response['errorMsg']  = "Valami hiba történt! error code: 75206";
-   $response['errorCode'] = 75206;
+   $response['errorMsg']  = "Valami hiba történt! error code: 75207";
+   $response['errorCode'] = 75207;
+  } else {
+   $sql = "INSERT INTO `teamtable` (`idTeam`, `idCategory`, `tName`, `tCity`) VALUES (NULL, '$cat', '$Tname', '$cityName')";
+   $con->query($sql);
   }
+
  }
 } else {
  //no post exist

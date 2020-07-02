@@ -115,13 +115,13 @@ if (
        //find the paths setted or not
        while ($row2 = mysqli_fetch_array($resPaths)) {
         if (strlen($row2[0]) > 3) {
-         $kep1setted = "public/resources/pics/mezek/$newTName/";}
+         $kep1setted = str_replace($oldTName, $newTName, $row2[0]);}
         if (isset($row2[1])) {
          if (strlen($row2[1]) > 3) {
-          $kep2setted = "public/resources/pics/mezek/$newTName/";}}
+          $kep2setted = str_replace($oldTName, $newTName, $row2[1]);}}
         if (isset($row2[2])) {
          if (strlen($row2[2]) > 3) {
-          $kep3setted = "public/resources/pics/mezek/$newTName/";}}
+          $kep3setted = str_replace($oldTName, $newTName, $row2[2]);}}
        }
        $sqlOvervrite = "UPDATE `picstable`
                         SET

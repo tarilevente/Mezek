@@ -44,6 +44,7 @@
 75204:  - 'városnév túl hosszú' - newT.php                                              setted
 75205:  - 'a csapatnév már létezik' - newT.php                                          setted
 75206:  - 'upload nem sikerült valamiért' - newT.php                                    setted
+75207:  - 'könyvtárat nem sikerült létrehozni' - newT.php                                    setted
 
 76100:  - 'no post' - newC.php                                                          setted
 76101:  - 'valamelyik érték nem létezik' - newC.php                                     setted

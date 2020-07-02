@@ -86,7 +86,14 @@ else {
   }
  } //endof team Check
  //4: upload pics - ajax sends data from admin_crud.js
- $locationCommon = "../../public/resources/pics/mezek/" . $teamName . "/";
+ $sqlLAST = "SELECT idMez FROM MezTable ORDER BY idMez DESC LIMIT 1";
+ $resLAST = $con->query($sqlLAST);
+ $LAST    = '';
+ while ($row = mysqli_fetch_row($resLAST)) {
+  $LAST = $row[0] + 1;
+ }
+ ;
+ $locationCommon = "../../public/resources/pics/mezek/" . $teamName . "/" . $LAST . "/";
  if (strlen($_FILES['#imageResult']['name']) < 2) {
   //kep1 must be setted
   $response['error'] = true;
@@ -162,18 +169,18 @@ else {
     //3/A: pic upload to DB
     $idPic = 'null';
     $p1    = $_FILES['#imageResult']['name'];
-    $Path1 = 'public/resources/pics/mezek/' . $teamName . '/';
+    $Path1 = 'public/resources/pics/mezek/' . $teamName . '/' . $LAST . "/";
     $p2    = "";
     $Path2 = "";
     if ($kep2exists) {
      $p2    = $_FILES['#imageResult2']['name'];
-     $Path2 = 'public/resources/pics/mezek/' . $teamName . '/';
+     $Path2 = 'public/resources/pics/mezek/' . $teamName . '/' . $LAST . "/";
     }
     $weared     = "";
     $PathWeared = "";
     if ($kep3exists) {
      $weared     = $_FILES['#imageResult3']['name'];
-     $PathWeared = 'public/resources/pics/mezek/' . $teamName . '/';
+     $PathWeared = 'public/resources/pics/mezek/' . $teamName . '/' . $LAST . "/";
     }
     $aktPic = new Pic($idPic, $p1, $Path1, $p2, $Path2, $weared, $PathWeared);
     $sql    = "INSERT INTO `picstable` (`idPic`, `1`, `Path1`, `2`, `Path2`, `weared`, `PathWeared`) VALUES ($idPic, '$p1', '$Path1', '$p2', '$Path2', '$weared', '$PathWeared');";
