@@ -123,35 +123,9 @@ function GetMezFromRow($con, $row)
   $user = $u[1] . ' ' . $u[0];
  }
  ;
- if (!$user) {
-  // http_response_code(404); //ezmi??
-  // die('<h4 class="bg-danger text-light p-5 text-center">Hiba a megjelenítésnél! error code:  89660</h4>');
- }
-
-//the type of the MEZ
-
- $tipus = "";
- switch ($row['Type']) {
-  case '0':
-   $tipus = "Egyéb";
-   break;
-  case '1':
-   $tipus = "Hazai";
-   break;
-  case '2':
-   $tipus = "Vendég";
-   break;
-  case '3':
-   $tipus = "Third";
-   break;
-  case '4':
-   $tipus = "Kapus";
-   break;
-  default:
-   $tipus = "?";
-   break;
- }
+ $tipus  = getTypeString($row['Type']);
  $aktMez = new Mez($row['idMez'], $row['idPic'], $row['idTeam'], $tipus, $user, $uploadDate, $years, $info);
+
  return $aktMez;
 }
 
@@ -309,4 +283,31 @@ function printTeamSelectOptions($con, $post, $id)
         </div>';
  }
  return $html;
+}
+
+function getTypeString($type)
+{
+ $typeString = '';
+ switch ($type) {
+  case '0':
+   $typeString = 'Egyéb típusú mez';
+   break;
+  case '1':
+   $typeString = 'Hazai mez';
+   break;
+  case '2':
+   $typeString = 'Vendég mez';
+   break;
+  case '3':
+   $typeString = 'Harmadik számú mez';
+   break;
+  case '4':
+   $typeString = 'Kapus mez';
+   break;
+
+  default:
+   $typeString = '?';
+   break;
+ } //endof $type String
+ return $typeString;
 }

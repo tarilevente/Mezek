@@ -16,15 +16,9 @@ if (
  $Tname = testInput($_POST['Tname']);
 
  if (isset($_POST['cityName']) && !empty($_POST['cityName'])) {
-  $cityName = testInput($_POST['cityName']);
- } else {
-  $cityName = "";
- }
+  $cityName = testInput($_POST['cityName']);} else { $cityName = "";}
 
- if (
-  !$cat ||
-  !$Tname
- ) {
+ if (!$cat || !$Tname) {
   $response['error']     = true;
   $response['errorMsg']  = "A megadott érték nem lehet csak szóköz! error code: 75203";
   $response['errorCode'] = 75203;

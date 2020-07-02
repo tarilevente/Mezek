@@ -1,9 +1,18 @@
 $(document).ready(function () {
   //index.php loading counter
 
-  //Whern select "nemzeti valogatott" , this code navigates there
-  $(document).on("click", "#nemzetiSelect", function () {
+  //Navigations to files
+  $(document).on("click", "#euLiga", function () {
+    window.location = "euLiga.php";
+  });
+  $(document).on("click", "#egyebLiga", function () {
+    window.location = "egyebLiga.php";
+  });
+  $(document).on("click", "#nemzeti", function () {
     window.location = "nemzeti.php";
+  });
+  $(document).on("click", "#egyebMezek", function () {
+    window.location = "egyebMezek.php";
   });
 
   //fills #nemzetiDiv with content by post

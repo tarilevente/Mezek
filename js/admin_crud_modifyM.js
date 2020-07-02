@@ -32,7 +32,7 @@ $(function () {
           console.log("error " + res.responseText);
         },
       });
-    }, 50);
+    }, 100);
 
     //print the team, or remove the last selection
     setTimeout(function () {
@@ -56,7 +56,7 @@ $(function () {
           console.log(res);
         },
       });
-    }, 150);
+    }, 300);
 
     //hide the modifyForm
     $("#ModifyMezID")[0].innerHTML = "";
@@ -149,13 +149,8 @@ $(function () {
   //reset to the actual datas
   $(document).on("click", "#resetMM", function () {
     //hide the modifyForm
-    const formHtml = $("#ModifyMezID")[0];
-    formHtml.innerHTML = "";
-    $.get("printModifyForm.php", { idMez: aktLoaded }, function (data) {
-      formHtml.innerHTML = data;
-    });
+    location.reload();
   });
-
   //submit
 
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -255,6 +250,7 @@ $(function () {
       const imgRes = document.getElementById("imageResult2");
       $(imgRes).attr("src", "#del");
       $("#uploadMod2").val("");
+      infoArea2.textContent = "Kép2 - nem kötelező";
     }); //endof deletePic2
     $(document).on("click", ".deletePicKep3", function () {
       //just make a sign
@@ -262,6 +258,7 @@ $(function () {
       const imgRes = document.getElementById("imageResult3");
       $(imgRes).attr("src", "#del");
       $("#uploadMod3").val("");
+      infoArea3.textContent = "Kép3 - nem kötelező";
     }); //endof deletePic2
 
     //update Mez
@@ -307,7 +304,7 @@ $(function () {
           fd.append("kep3Deleted", true);
         }
         // for (var value of fd.values()) {
-        //   console.log(value);
+        // console.log(value);
         // }
 
         $.ajax({

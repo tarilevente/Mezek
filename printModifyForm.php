@@ -6,9 +6,7 @@ if (!isset($_GET['idMez'])) {die('Valami hiba történt! :(');}
 $idMez = $_GET['idMez'];
 $sql   = 'SELECT * FROM MezTable, PicsTable WHERE MezTable.idPic=PicsTable.idPic AND MezTable.idMez=' . $idMez;
 $res   = $con->query($sql);
-if (!$res) {
- die('Valami hiba történt! :(:(');
-} else {
+if (!$res) {die('Valami hiba történt! :(:(');} else {
  $idTeam = null;
  $type   = null;
  $years  = null;
@@ -33,32 +31,10 @@ if (!$res) {
   $kep3   = $row['weared'];
   $Path3  = $row['PathWeared'];
 
-  $typeString = '';
-  switch ($type) {
-   case '0':
-    $typeString = 'Egyéb típusú mez';
-    break;
-   case '1':
-    $typeString = 'Hazai mez';
-    break;
-   case '2':
-    $typeString = 'Vendég mez';
-    break;
-   case '3':
-    $typeString = 'Harmadik számú mez';
-    break;
-   case '4':
-    $typeString = 'Kapus mez';
-    break;
-
-   default:
-    $typeString = '?';
-    break;
-  } //endof $type String
+  $typeString = getTypeString($type);
  } //endof while
 }
 ; //endof $res ?>
-
 <div class="min-height550 container-fluid">
     <div class="bg-warning text-center p-1 mb-1">
         <h4>Módosítás: [<?php echo $idMez; ?>]-as mez</h4>
@@ -162,23 +138,12 @@ if (!$res) {
                         <div class="col-lg-10">
                             <select class="form-control custom-select" id="modM-Type-select">
                                 <option value="<?php echo $type; ?>"><?php echo $typeString; ?></option>
-                                <?php
-
-if (0 != $type) {
- echo '<option value="0">Egyéb típusú mez</option>';
-}
-if (1 != $type) {
- echo '<option value="1">Hazai mez</option>';
-}
-if (2 != $type) {
- echo '<option value="2">Vendég mez</option>';
-}
-if (3 != $type) {
- echo '<option value="3">Harmadik számú mez</option>';
-}
-if (4 != $type) {
- echo '<option value="4">Kapus mez</option>';
-}
+<?php
+if (0 != $type) {echo '<option value="0">Egyéb típusú mez</option>';}
+if (1 != $type) {echo '<option value="1">Hazai mez</option>';}
+if (2 != $type) {echo '<option value="2">Vendég mez</option>';}
+if (3 != $type) {echo '<option value="3">Harmadik számú mez</option>';}
+if (4 != $type) {echo '<option value="4">Kapus mez</option>';}
 ?>
                             </select>
                             <div class="valid-feedback">
@@ -215,7 +180,7 @@ if (4 != $type) {
                             <div class="col-lg-10">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <input type="button" class="btn btn-primary form-control" value="Reset" id="resetMM">
+                                        <input type="button" class="btn btn-primary form-control" value="Vissza" id="resetMM">
                                     </div>
                                     <div class="col-lg-6">
                                         <input type="submit" name="submitMez" id="submitMezMod" value="Mez módosítása" class="btn btn-primary form-control">

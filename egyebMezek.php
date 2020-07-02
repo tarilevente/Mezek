@@ -25,4 +25,5 @@ echo '<div class="height650" id="bg-picEgyeb1" >
 echo '<div class="" id="egyebMezekDiv"></div> '; //js fills this div bynemzetiDiv.php
 echo '<div class="p2"><h4 class="error text-danger"></h4></div>'; //for error messages
 // printing footer
-echo file_get_contents("html/footer.html");
+$footer = file_get_contents("html/footer.html");
+echo str_replace("::otherjs::", "", $footer);

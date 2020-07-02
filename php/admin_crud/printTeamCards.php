@@ -10,9 +10,7 @@ $response['errMsg']    = '';
 
 if (isset($_POST['idTeam']) && !empty($_POST['idTeam'])) {
  $idTeam = $_POST['idTeam'];
- if ($idTeam < 0) {
-  $response['html'] = 'Válassz egy csapatot! ';
- } else {
+ if ($idTeam < 0) {$response['html'] = 'Válassz egy csapatot! ';} else {
   $sql = 'SELECT * FROM MezTable, PicsTable WHERE idTeam=' . $idTeam . ' AND MezTable.idPic=PicsTable.idPic';
   $res = $con->query($sql);
   if (!$res || 0 == $res->num_rows) {
@@ -32,28 +30,8 @@ if (isset($_POST['idTeam']) && !empty($_POST['idTeam'])) {
     $type       = $row['Type'];
     $idPic      = $row['idPic'];
     $uploadDate = $row['UploadDate'];
-    $typeString = '';
-    switch ($type) {
-     case '0':
-      $typeString = 'Egyéb típusú mez';
-      break;
-     case '1':
-      $typeString = 'Hazai mez';
-      break;
-     case '2':
-      $typeString = 'Vendég mez';
-      break;
-     case '3':
-      $typeString = 'Harmadik számú mez';
-      break;
-     case '4':
-      $typeString = 'Kapus mez';
-      break;
+    $typeString = getTypeString($type);
 
-     default:
-      $typeString = '?';
-      break;
-    }
     $response['html'] .= '
         <div class="col-lg-3 p-1">
             <div class="card shadow MezCard p-2">

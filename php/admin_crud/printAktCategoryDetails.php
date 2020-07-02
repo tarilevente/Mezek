@@ -5,9 +5,7 @@ require '../../config/functions.php';
 $response['error'] = false;
 $response['cat']   = "";
 
-if (isset($_POST['reset']) && 'reset' === $_POST['reset']) {
- $response['cat'] = "-";
-} else {
+if (isset($_POST['reset']) && 'reset' === $_POST['reset']) {$response['cat'] = "-";} else {
  if (isset($_POST['idCat']) && !empty($_POST['idCat'])) {
   $idCat = $_POST['idCat'];
   $sql   = "SELECT * FROM categorytable WHERE idCategory = " . $idCat;
