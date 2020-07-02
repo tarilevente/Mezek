@@ -31,7 +31,6 @@ if (
   while ($row = mysqli_fetch_assoc($res)) {
    $oldCname = $row['CatName'];
   }
-  ;
   //================================ COMPARISONS, WHAT IS CHANGED ===============================77
   //tname changed??
   if ($oldCname != $newCName) {
