@@ -44,6 +44,7 @@
 75204:  - 'városnév túl hosszú' - newT.php                                              setted
 75205:  - 'a csapatnév már létezik' - newT.php                                          setted
 75206:  - 'upload nem sikerült valamiért' - newT.php                                    setted
+75207:  - 'könyvtárat nem sikerült létrehozni' - newT.php                                    setted
 
 76100:  - 'no post' - newC.php                                                          setted
 76101:  - 'valamelyik érték nem létezik' - newC.php                                     setted
@@ -94,25 +95,17 @@
 
 //img low first: https://stackoverflow.com/questions/27934548/load-a-low-res-background-image-first-then-a-high-res-one
 //img optim: https://github.com/artisansweb/image-optimizer, resmush.it
-//megnézem: modal
 //csapatkereső: filter
 //lehet badge is a collapse-nel
 //megnézem-re hover: cursor:zoomin
 //im not a robot (recaptcha GOOGLE - need a domain)
-//lekérdezéseket átírni param-ra!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//átellenőrizni a működést, vannak bajok. pl megnézem: basicKep.jpg, responsive emailform
-//loading counter az index.php-n
-//euligashow.php-nál az error valamiért hibát észlel, nem működik, pedig ua., mint a többi
 //message formázása
 //reszponzivitás javítása/design
 //felvitelnél segítségek (pl: mez<-team<-cat<-liga)
 //px-eket rem-re átírni
 //like funkció az indexContent-en?
-//scriptes szarságot átrakni newTC-form.php-ról
-//shadow-hozzáadás // rounded-pill
 //design: bootstrap ideas??
 //hasonlót írja ki: ékezet, különleges karakter, kis-nagybetű. mellé: erre gondoltál? az új csapat felvitelénél
-//átellenőrizni a mezeknél a felvitelnél az errorokat
 //optimalizálás az ajaxra: https://www.tutorialsteacher.com/jquery/jquery-ajax-method tymeout??success: function (data,status,xhr)
 //button nyomásnál uploading..  $.ajax()-kor   uploadButton.innerHTML = 'Uploading...';
 //$('#idea') --> document.getElementById helyett!
@@ -141,6 +134,10 @@
 //végigkattintgatni, reszponzívban is
 //picZoomednál az sql leegyszerűsítése? kétszer fut le?
 //ha a csapatnév változik, akkor a csapatban lévő mezek adatai is változzanak meg, és a könyvtár is.
+//alertek kiiktatása, ha maradt(js-ből)
+//speciális karaktereket nem javasolom, ahol könyvtárnév is érintett
+//Rezsőnek úgy odaadni, hogy csak liga és kategória legyen benne
+
 
 
 /*

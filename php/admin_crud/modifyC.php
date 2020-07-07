@@ -20,18 +20,18 @@ if (
  //post arrived
  $idCat    = testInput($_POST['idCat']);
  $newCName = testInput($_POST['newCName']);
- $sql      = "SELECT * FROM categorytable WHERE idCategory = " . $idCat;
- $res      = $con->query($sql);
- if (!$res) {
+
+ $stmt = $con->prepare('SELECT categorytable.catName FROM categorytable WHERE idCategory = ?');
+ $stmt->bind_param('i', $idCat);
+ if (!$stmt->execute()) {
   $response['error'] = true;
   $response['errorMessage'] .= "Valami hiba történt! error code: 90032<br>";
   $response['errorCode'] = 90032;
  } else {
-  $oldCname = "";
-  while ($row = mysqli_fetch_assoc($res)) {
-   $oldCname = $row['CatName'];
-  }
-  ;
+  $stmt->store_result();
+  $stmt->bind_result($oldCname);
+  $stmt->fetch();
+  $stmt->close();
   //================================ COMPARISONS, WHAT IS CHANGED ===============================77
   //tname changed??
   if ($oldCname != $newCName) {
@@ -51,10 +51,12 @@ if (
   } else {
    //modify
    $response['successMessage'] = "Új kategórianév: " . $newCName;
-   $sql                        = "UPDATE `categorytable` SET `CatName` = '$newCName' WHERE `categorytable`.`idCategory` = $idCat;";
-   $con->query($sql);
+   $stmt                       = $con->prepare('UPDATE `categorytable` SET `CatName` = ? WHERE `categorytable`.`idCategory` = ?;');
+   $stmt->bind_param('si', $newCName, $idCat);
+   $stmt->execute();
+   $stmt->close();
   }
- } //endof $res: ok
+ } //endof execute(): ok
 } //endof post exists
 
 echo json_encode($response, JSON_UNESCAPED_UNICODE);

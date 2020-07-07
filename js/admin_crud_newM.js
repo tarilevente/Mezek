@@ -136,9 +136,9 @@ $(document).ready(function () {
       var fd = new FormData(this);
       fd.append("type", $("#newM-type-select").val());
       fd.append("team", $("#newM-team-select").val());
-      for (var value of fd.values()) {
-        console.log(value);
-      }
+      // for (var value of fd.values()) {
+      //   console.log(value);
+      // }
       //Allpic send to upload
       $.ajax({
         url: "php/admin_crud/newM.php",

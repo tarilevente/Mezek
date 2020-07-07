@@ -93,14 +93,18 @@ $(document).ready(function () {
               console.log("not succesful upload, error code: 75206");
               err.innerHTML = response.errorMsg;
             }
+            if (response.errorCode == 75207) {
+              console.log("makeDir() is error, error code: 75207");
+              err.innerHTML = response.errorMsg;
+            }
             err.style.display = "block";
             succ.innerHTML = "";
             succ.style.display = "none";
           }
         },
         error: function (res) {
-          console.log(res.responseJSON);
-          err.innerHTML = res.responseJSON;
+          console.log(res.responseText);
+          err.innerHTML = res.responseText;
           err.style.display = "block";
           succ.innerHTML = "";
           succ.style.display = "none";

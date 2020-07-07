@@ -11,25 +11,18 @@ $response['errMsg']    = '';
 if (isset($_POST['idTeam']) && !empty($_POST['idTeam'])) {
  $idTeam = $_POST['idTeam'];
  if ($idTeam < 0) {$response['html'] = 'Válassz egy csapatot! ';} else {
-  $sql = 'SELECT * FROM MezTable, PicsTable WHERE idTeam=' . $idTeam . ' AND MezTable.idPic=PicsTable.idPic';
-  $res = $con->query($sql);
-  if (!$res || 0 == $res->num_rows) {
+  $stmt = $con->prepare('SELECT MezTable.idMez, PicsTable.Path1, PicsTable.1, MezTable.Type, MezTable.idPic, MezTable.UploadDate
+                        FROM MezTable, PicsTable
+                        WHERE idTeam= ?
+                        AND MezTable.idPic=PicsTable.idPic');
+  $stmt->bind_param('i', $idTeam);
+  if (!$stmt->execute()) {
    $response['html'] .= 'Nincs megjeleníthető mez! Először fel kell töltened egy képet. ';
   } else {
    $response['html'] .= '<div class="container-fluid text-center row">';
-   $idPic      = '';
-   $idMez      = '';
-   $type       = '';
-   $kep1       = '';
-   $uploadDate = '';
-   $Path1      = '';
-   while ($row = mysqli_fetch_assoc($res)) {
-    $idMez      = $row['idMez'];
-    $Path1      = $row['Path1'];
-    $kep1       = $row['1'];
-    $type       = $row['Type'];
-    $idPic      = $row['idPic'];
-    $uploadDate = $row['UploadDate'];
+   $stmt->store_result();
+   $stmt->bind_result($idMez, $Path1, $kep1, $type, $idPic, $uploadDate);
+   while ($stmt->fetch()) {
     $typeString = getTypeString($type);
 
     $response['html'] .= '

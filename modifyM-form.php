@@ -23,12 +23,15 @@ echo $menu;
                         <div class="col-lg-10">
                             <select class="form-control custom-select" id="modifyM-League-select">
 <?php
-$sql1 = 'SELECT idLeague, LeagueName FROM LeagueTable ORDER BY LeagueName';
-$res1 = $con->query($sql1);
+$stmt = $con->prepare('SELECT idLeague, LeagueName FROM LeagueTable ORDER BY LeagueName');
+$stmt->execute();
+$stmt->store_result();
+$stmt->bind_result($idL, $L);
 echo '<option selected value="-">Válassz!</option>';
-while ($row1 = mysqli_fetch_row($res1)) {
- echo '<option value=' . $row1[0] . '>' . $row1[1] . '</option>';
+while ($stmt->fetch()) {
+ echo '<option value=' . $idL . '>' . $L . '</option>';
 }
+$stmt->close();
 ?>
                             </select>
                             <div class="valid-feedback">

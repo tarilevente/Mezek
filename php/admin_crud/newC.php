@@ -34,13 +34,14 @@ if (
  }
 
  $usedCategories = array();
- $sql2           = "SELECT CatName FROM CategoryTable";
- $res2           = $con->query($sql2);
- if ($res2) {
-  while ($row = mysqli_fetch_row($res2)) {
-   $usedCategories[] = $row[0];
-  }
+ $stmt           = $con->prepare('SELECT CatName FROM CategoryTable');
+ $stmt->execute();
+ $stmt->store_result();
+ $stmt->bind_result($row);
+ while ($stmt->fetch()) {
+  $usedCategories[] = $row;
  }
+ $stmt->close();
 
  if (in_array($Cname, $usedCategories)) {
   //Team already Exists
