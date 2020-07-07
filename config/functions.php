@@ -259,7 +259,6 @@ function printTeamSelectOptions($con, $post, $id)
  $html .= '<select class="form-control custom-select" id="' . $id . '" required>';
  $sql = 'SELECT TeamTable.idTeam, TeamTable.tName FROM TeamTable WHERE idCategory=' . $post . ' ORDER BY tName';
  $res = $con->query($sql);
-
  if (0 == $res->num_rows) {
   $html .= '<option selected value="-1">Nincs még csapat!</option>';
  } else {

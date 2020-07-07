@@ -2,8 +2,8 @@ $(function () {
   //prints out modT-league-select
   $(document).on("change", "#modT-League-select", function () {
     const valLeague = $(this).val();
-    const categorySelectT = document.getElementById("categorySelectT");
-    const teamSelectT = document.getElementById("teamSelectT");
+    const categorySelectT = $("#categorySelectT")[0];
+    const teamSelectT = $("#teamSelectT")[0];
     $.post(
       "php/admin_crud/printCategorySelect_modT.php",
       { valLeague: valLeague },
@@ -26,10 +26,10 @@ $(function () {
         data: { reset: "reset" },
         dataType: "JSON",
         success: function (res) {
-          const inputCsapatnev = document.getElementById("teamName");
-          const inputCsapatvaros = document.getElementById("cityName");
-          inputCsapatnev.value = res.csapat;
-          inputCsapatvaros.value = res.varos;
+          const inputCsapatnev = $("#teamName");
+          const inputCsapatvaros = $("#cityName");
+          inputCsapatnev.val(res.csapat);
+          inputCsapatvaros.val(res.varos);
         },
         error: function (res) {
           console.log(res);
@@ -41,7 +41,7 @@ $(function () {
   //prints out newM-Category-select
   $(document).on("change", "#modT-Cat-select", function () {
     const valCat = $(this).val();
-    const teamSelectT = document.getElementById("teamSelectT");
+    const teamSelectT = $("#teamSelectT")[0];
 
     $.post(
       "php/admin_crud/printTeamSelect_modT.php",
@@ -59,10 +59,10 @@ $(function () {
         data: { idTeam, idTeam },
         dataType: "JSON",
         success: function (res) {
-          const inputCsapatnev = document.getElementById("teamName");
-          const inputCsapatvaros = document.getElementById("cityName");
-          inputCsapatnev.value = res.csapat;
-          inputCsapatvaros.value = res.varos;
+          const inputCsapatnev = $("#teamName");
+          const inputCsapatvaros = $("#cityName");
+          inputCsapatnev.val(res.csapat);
+          inputCsapatvaros.val(res.varos);
         },
         error: function (res) {
           console.log(res);
@@ -80,10 +80,10 @@ $(function () {
       data: { idTeam, idTeam },
       dataType: "JSON",
       success: function (res) {
-        const inputCsapatnev = document.getElementById("teamName");
-        const inputCsapatvaros = document.getElementById("cityName");
-        inputCsapatnev.value = res.csapat;
-        inputCsapatvaros.value = res.varos;
+        const inputCsapatnev = $("#teamName");
+        const inputCsapatvaros = $("#cityName");
+        inputCsapatnev.val(res.csapat);
+        inputCsapatvaros.val(res.varos);
       },
       error: function (res) {
         console.log(res);
@@ -105,8 +105,8 @@ $(function () {
     const newTName = $("#teamName").val().trim();
     const newTCity = $("#cityName").val().trim();
 
-    const err = document.getElementById("errorVanT");
-    const succ = document.getElementById("successVanT");
+    const err = $("#errorVanT")[0];
+    const succ = $("#successVanT")[0];
     var errorExists = false;
     var errorMSG = "";
     if (idTeam < 0) {
@@ -166,7 +166,7 @@ $(function () {
   //league select changed
   $(document).on("change", "#modC-League-select", function () {
     const valLeague = $(this).val();
-    const categorySelectC = document.getElementById("categorySelectC");
+    const categorySelectC = $("#categorySelectC")[0];
     $.post(
       "php/admin_crud/printCategorySelect_modC.php",
       { valLeague: valLeague },
@@ -183,8 +183,8 @@ $(function () {
         data: { idCat, idCat },
         dataType: "JSON",
         success: function (res) {
-          const inputCatnev = document.getElementById("catName");
-          inputCatnev.value = res.cat;
+          const inputCatnev = $("#catName");
+          inputCatnev.val(res.cat);
         },
         error: function (res) {
           console.log(res);
@@ -202,8 +202,8 @@ $(function () {
       data: { idCat, idCat },
       dataType: "JSON",
       success: function (res) {
-        const inputCatnev = document.getElementById("catName");
-        inputCatnev.value = res.cat;
+        const inputCatnev = $("#catName");
+        inputCatnev.val(res.cat);
       },
       error: function (res) {
         console.log(res);
@@ -217,8 +217,8 @@ $(function () {
     const idCat = $("#modC-Cat-select").val().trim();
     const newCName = $("#catName").val().trim();
 
-    const err = document.getElementById("errorVanC");
-    const succ = document.getElementById("successVanC");
+    const err = $("#errorVanC")[0];
+    const succ = $("#successVanC")[0];
     var errorExists = false;
     var errorMSG = "";
     if (idCat < 0) {

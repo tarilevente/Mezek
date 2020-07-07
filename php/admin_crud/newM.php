@@ -90,7 +90,7 @@ else {
  $stmt->bind_result($LAST);
  $stmt->fetch();
  $stmt->close();
- $LAST++;
+ $LAST + 1;
  $locationCommon = "../../public/resources/pics/mezek/" . $teamName . "/" . $LAST . "/";
  if (strlen($_FILES['#imageResult']['name']) < 2) {
   //kep1 must be setted

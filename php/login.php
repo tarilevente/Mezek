@@ -7,7 +7,6 @@ $response              = array();
 $response['error']     = false;
 $response['errorMsg']  = "";
 $response['errorCode'] = 0;
-$response['test']      = "";
 
 if (
  isset($_POST['uname']) &&
@@ -21,36 +20,42 @@ if (
  if (mb_strlen($uname) < 5) {
   //too short the uname
   $response['error']     = true;
-  $response['errorMsg']  = "Helytelen adatok! A belépés sikertelen! 65601";
+  $response['errorMsg']  = "Helytelen adatok! A belépés sikertelen! ";
   $response['errorCode'] = 65601;
  }
  if (mb_strlen($pwd) < 8) {
   //too short the pwd
   $response['error']     = true;
-  $response['errorMsg']  = "Helytelen adatok! A belépés sikertelen! 65602";
+  $response['errorMsg']  = "Helytelen adatok! A belépés sikertelen! ";
   $response['errorCode'] = 65602;
  }
  if (!pwdIsValidRegex($pwd)) {
   //pwd formaly is not permitted
   $response['error']     = true;
-  $response['errorMsg']  = "Helytelen adatok! A belépés sikertelen! 65603";
+  $response['errorMsg']  = "Helytelen adatok! A belépés sikertelen! ";
   $response['errorCode'] = 65603;
  }
- $sql = 'SELECT * FROM UserTable WHERE Email="' . $uname . '" AND Password="' . $pwd . '" AND Active=1 ';
-//  $response['test'] = $sql;
- $res = $con->query($sql);
- if ($res && 1 == $res->num_rows) {
-  while ($row = mysqli_fetch_assoc($res)) {
-   $user = $row;
+ $stmt = $con->prepare('SELECT idUser FROM UserTable WHERE Email= ? AND Password = ? AND Active = 1');
+ $stmt->bind_param('ss', $uname, $pwd);
+ $stmt->execute();
+ $stmt->store_result();
+ $stmt->bind_result($userID);
+ if (1 == $stmt->num_rows) {
+  //only 1 user appears
+  if ($stmt->fetch()) {
+   $_SESSION['user'] = $userID;
+  } else {
+   $response['error']     = true;
+   $response['errorMsg']  = "A felhasználónév-jelszó páros helytelen adatokat tartalmaz! A belépés sikertelen!";
+   $response['errorCode'] = 65604;
   }
-
-  $_SESSION['user'] = $user;
  } else {
-  //$res: something is went wrong
+  //numrows!==1 (0 is usual) -- something is went wrong
   $response['error']     = true;
   $response['errorMsg']  = "A felhasználónév-jelszó páros helytelen adatokat tartalmaz! A belépés sikertelen!";
   $response['errorCode'] = 65604;
  }
+
 } else {
  //post not arrived properly
  $response['error']     = true;

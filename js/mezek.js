@@ -45,7 +45,7 @@ $(document).ready(function () {
   //print selected national data by nemzetiDiv.php
   $(document).on("click", ".data-national", function () {
     const nId = $(this).attr("data-nationalID");
-    const err = document.getElementById("nationalTeams");
+    const natTeamsDiv = $("#nationalTeams");
     $.ajax({
       url: "php/nemzetiTeamsShow.php",
       method: "POST",
@@ -53,17 +53,17 @@ $(document).ready(function () {
       data: { nId: nId },
       success: function (response) {
         if (response.error == false) {
-          $("#nationalTeams").html(response.html);
+          natTeamsDiv.html(response.html);
         } else {
           response.errorCode == 78692
             ? console.log("Error code: 78692, No post arrived")
             : "";
-          err.innerHTML = response.errMsg;
+          natTeamsDiv.innerHTML = response.errMsg;
         }
       },
       error: function (response) {
-        console.log(response.responseJSON);
-        err.innerHTML = response.responseJSON;
+        console.log(response.responseJSON.errMsg);
+        natTeamsDiv.innerHTML = response.responseJSON.errMsg;
       },
     });
   }); //endof print selected nation
@@ -100,7 +100,7 @@ $(document).ready(function () {
   //print selected egyebMEzek data by egyebMezekDiv.php
   $(document).on("click", ".data-egyebMezek", function () {
     const eId = $(this).attr("data-EgyebMezekID");
-    const err = document.getElementById("egyebMezekTeam");
+    const egyebMezekTeam = $("#egyebMezekTeam");
     $.ajax({
       url: "php/egyebMezekShow.php",
       method: "POST",
@@ -108,17 +108,17 @@ $(document).ready(function () {
       data: { eId: eId },
       success: function (response) {
         if (response.error == false) {
-          $("#egyebMezekTeam").html(response.html);
+          egyebMezekTeam.html(response.html);
         } else {
           response.errorCode == 56457
             ? console.log("Error code: 56457, No post arrived")
             : "";
-          err.innerHTML = response.errMsg;
+          egyebMezekTeam.innerHTML = response.errMsg;
         }
       },
       error: function (response) {
-        console.log(response.responseJSON);
-        err.innerHTML = response.responseJSON;
+        console.log(response.responseText);
+        err.innerHTML = response.responseText;
       },
     });
   }); //endof print selected egyebMezek
@@ -153,7 +153,7 @@ $(document).ready(function () {
   //print selected euLigaMEzek data by euLigaDiv.php
   $(document).on("click", ".data-euLigaMezek", function () {
     const euId = $(this).attr("data-euLigaMezekID");
-    const err = document.getElementById("euLigaTeam");
+    const euLiga = $("#euLigaTeam");
     $.ajax({
       url: "php/euLigaShow.php",
       method: "POST",
@@ -161,7 +161,7 @@ $(document).ready(function () {
       data: { euId: euId },
       success: function (response) {
         if (response.error == false) {
-          $("#euLigaTeam").html(response.html);
+          euLiga.html(response.html);
         } else {
           if (response.errorCode == 26482) {
             console.log("Error code: 26482, no POST ARRIVED");
@@ -170,12 +170,12 @@ $(document).ready(function () {
               "Error code: 26483, database no contains properly data"
             );
           }
-          err.innerHTML = response.errMsg;
+          euLiga.innerHTML = response.errMsg;
         }
       },
       error: function (response) {
         console.log(response.responseJSON);
-        err.innerHTML = response.responseJSON;
+        euLiga.innerHTML = response.responseJSON;
       },
     });
   }); //endof print selected euLiga
@@ -209,7 +209,7 @@ $(document).ready(function () {
   //print selected otherLigaMEzek data by euLigaDiv.php
   $(document).on("click", ".data-otherLigaMezek", function () {
     const otherId = $(this).attr("data-otherLigaMezekID");
-    const err = document.getElementById("otherLigaTeam");
+    const otherTeam = $("#otherLigaTeam");
     $.ajax({
       url: "php/otherLigaShow.php",
       method: "POST",
@@ -217,7 +217,7 @@ $(document).ready(function () {
       data: { otherId: otherId },
       success: function (response) {
         if (response.error == false) {
-          $("#otherLigaTeam").html(response.html);
+          otherTeam.html(response.html);
         } else {
           if (response.errorCode == 12675) {
             console.log("Error code: 12675, no POST ARRIVED");
@@ -226,12 +226,12 @@ $(document).ready(function () {
               "Error code: 12676, database no contains properly data"
             );
           }
-          err.innerHTML = response.errMsg;
+          otherTeam.innerHTML = response.errMsg;
         }
       },
       error: function (response) {
         console.log(response.responseJSON);
-        err.innerHTML = response.responseJSON;
+        otherTeam.innerHTML = response.responseJSON;
       },
     });
   }); //endof print selected otherLiga
@@ -239,7 +239,7 @@ $(document).ready(function () {
   //this method will show the selected pic in bootstrap "modal" //
   $(document).on("click", ".picToShow", function () {
     const picId = $(this).attr("data-picid");
-    const err = document.getElementById("modalContent");
+    const modCont = $("#modalContent");
     $.ajax({
       url: "php/picZoomed.php",
       method: "POST",
@@ -247,7 +247,7 @@ $(document).ready(function () {
       data: { picId: picId },
       success: function (response) {
         if (response.error == false) {
-          $("#modalContent").html(response.html);
+          modCont.html(response.html);
         } else {
           if (response.errorCode == 87420) {
             console.log("Error code: 87420, no POST ARRIVED");
@@ -264,12 +264,12 @@ $(document).ready(function () {
               "Error code: 87423, database no contains properly data (Csapat)"
             );
           }
-          err.innerHTML = response.errMsg;
+          modCont.innerHTML = response.errMsg;
         }
       },
       error: function (response) {
         console.log(response.responseJSON);
-        err.innerHTML = response.responseJSON;
+        modCont.innerHTML = response.responseJSON;
       },
     });
   }); //end of show selected pic
@@ -280,8 +280,8 @@ $(document).ready(function () {
     return re.test(email);
   }
 
-  const err = document.getElementsByClassName("error")[0];
-  const succ = document.getElementsByClassName("success")[0];
+  const err = $(".error")[0];
+  const succ = $(".success")[0];
 
   if (err) {
     err.innerHTML = "";
@@ -296,13 +296,12 @@ $(document).ready(function () {
   $(document).on("submit", "#emailForm", function (e) {
     e.preventDefault();
     //js gets the data from platform //egyelőre nem.
-    const fromName = document.getElementById("name").value.trim();
-    const fromEmail = document.getElementById("email").value.trim();
-    const subject = document.getElementById("subject").value.trim();
-    const content = document.getElementById("content").value.trim();
+    const fromName = $("#name").val().trim();
+    const fromEmail = $("#email").val().trim();
+    const subject = $("#subject").val().trim();
+    const content = $("#content").val().trim();
 
     var errMsg = "";
-    var succMsg = "";
 
     var mehet = true;
     //validation of data
@@ -384,14 +383,14 @@ $(document).ready(function () {
     err.style.display = "none";
     succ.style.display = "none";
 
-    const fromName = document.getElementById("name");
-    const fromEmail = document.getElementById("email");
-    const subject = document.getElementById("subject");
-    const content = document.getElementById("content");
-    fromName.value = "";
-    fromEmail.value = "";
-    subject.value = "";
-    content.value = "";
+    const fromName = $("#name");
+    const fromEmail = $("#email");
+    const subject = $("#subject");
+    const content = $("#content");
+    fromName.val() = "";
+    fromEmail.val() = "";
+    subject.val() = "";
+    content.val() = "";
   }); //endof deleting the content of the email form
 
   //you have to click to the pic, after the user icon on footer, to log in
@@ -416,25 +415,26 @@ $(document).ready(function () {
   // (?=.{8,})	The string must be eight characters or longer
 
   //login
+  const unameInput = $("#felhNev")[0];
+  const pwdInput = $("#jelszo")[0];
+
   $(document).on("click", "#belepes", function (e) {
     e.preventDefault();
 
-    const unameInput = document.getElementById("felhNev");
-    var uname = document.getElementById("felhNev").value.trim();
-    const pwdInput = document.getElementById("jelszo");
-    var pwd = document.getElementById("jelszo").value.trim();
-    var errorMsgUname = "";
-    var errorMsgPwd = "";
+    var uname = $("#felhNev").val().trim();
+    var pwd = $("#jelszo").val().trim();
+    var errorMsgUname = null;
+    var errorMsgPwd = null;
     var errorExists = false;
     if (uname.length < 5) {
-      errorMsgUname += "A felhasználónév nem megfelelő!";
+      errorMsgUname = "A felhasználónév nem megfelelő!";
       errorExists = true;
     }
     if (pwd.length < 8) {
-      errorMsgPwd += "A jelszó nem megfelelő! ";
+      errorMsgPwd = "A jelszó nem megfelelő! ";
       errorExists = true;
     } else if (!pwdREGEX.test(pwd)) {
-      errorMsgPwd += "A jelszó nem megfelelő!";
+      errorMsgPwd = "A jelszó nem megfelelő!";
       errorExists = true;
     }
     if (!errorExists) {
@@ -447,11 +447,11 @@ $(document).ready(function () {
         success: function (res) {
           const resJSON = JSON.parse(res);
           if (resJSON.error == false) {
+            console.log(res);
             //login is successful
-            console.log("login is successful");
             window.location.replace("upload.php");
-            // window.open("upload.php");
           } else {
+            console.log(res);
             if (resJSON.errorCode == 65600) {
               console.log("no post for login.php, error code: 65600");
             }
@@ -469,6 +469,7 @@ $(document).ready(function () {
             }
             unameInput.setCustomValidity(resJSON.errorMsg);
             unameInput.reportValidity();
+            console.log(resJSON.errorMsg + "succ azéer");
           }
         },
         error: function (res) {
@@ -477,10 +478,15 @@ $(document).ready(function () {
       });
     } else {
       //set the pre-validation to errorMessage
-      unameInput.setCustomValidity(errorMsgUname);
-      unameInput.reportValidity();
-      pwdInput.setCustomValidity(errorMsgPwd);
-      pwdInput.reportValidity();
+      unameInput.setCustomValidity("");
+      pwdInput.setCustomValidity("");
+      if (errorMsgUname) {
+        unameInput.setCustomValidity(errorMsgUname);
+        unameInput.reportValidity();
+      } else if (errorMsgPwd) {
+        pwdInput.setCustomValidity(errorMsgPwd);
+        pwdInput.reportValidity();
+      }
     }
-  });
+  });//endof login
 }); //endof ready()

@@ -39,14 +39,10 @@ if (isset($_POST['egyeb']) && 1 == $_POST['egyeb']) {
                             )
             )
             ORDER BY csapat";
-//  $res  = mysqli_query($con, $sql);
- $stmt = $con->prepare($sql);
- if ($stmt->execute()) {
+ $res = mysqli_query($con, $sql);
+ if ($res) {
 //Team exists
-  $stmt->store_result();
-  $row = array();
-  $stmt->bind_result($row[0], $row[1]);
-  while ($stmt->fetch()) {
+  while ($row = mysqli_fetch_row($res)) {
    $response['html'] .= '
             <div class="card">
                 <div class="card-header">

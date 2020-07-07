@@ -13,7 +13,6 @@ $response['html']      = '';
 $response['error']     = false;
 $response['errorCode'] = '';
 $response['errMsg']    = '';
-
 if (isset($_POST['eId']) && !empty($_POST['eId'])) {
  $eid = $_POST['eId']; //id of team (in egyebMezek League)
  //query
