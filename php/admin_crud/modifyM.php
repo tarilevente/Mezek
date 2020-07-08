@@ -288,6 +288,6 @@ if (!isset($_SESSION['user'])) {
     $con->query($sqlUPD);
    } //endof $response['error']==false
   } //endof $response==false
- } //endof isset $_post
+ } //endof isset $_POST
 } //endof $_session['user'] CHECK
 echo json_encode($response, JSON_UNESCAPED_UNICODE);
