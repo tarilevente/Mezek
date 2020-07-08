@@ -7,7 +7,7 @@
 56456:  - 'Nincs post az egyebMezekDiv.php-ra'   - php/egyebMezekDiv.php                setted
 56459:  - 'Az adatbázis üres, nincs megjelenítendő adat' - php/egyebMezekDiv.php        setted
 56457:  - 'Nincs post az egyebMezekShow.php-ra   - php/egyebMezekShow.php               setted
-
+56458:  - 'Nincs megjelenítendő adat, $res probléma'                                    setted
 89660:  - 'Nincs user a MEZhez a egyebMezekShow.php-n' - php/functions.php         not setted
 
 26481:  - 'Nincs post az euLigaDiv.php-ra'   - php/euLigaDiv.php                        setted

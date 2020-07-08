@@ -1,9 +1,4 @@
 $(document).ready(function () {
-  //for test
-  $(document).on("change", "#newT-Cat-select", function () {
-    console.log($(this).val());
-  });
-
   //prints out modT-league-select
   $(document).on("change", "#newT-League-select", function () {
     const valLeague = $(this).val();

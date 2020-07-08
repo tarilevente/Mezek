@@ -54,6 +54,7 @@ $(document).ready(function () {
       success: function (response) {
         if (response.error == false) {
           natTeamsDiv.html(response.html);
+          console.log(response.html);
         } else {
           response.errorCode == 78692
             ? console.log("Error code: 78692, No post arrived")
@@ -104,9 +105,11 @@ $(document).ready(function () {
     $.ajax({
       url: "php/egyebMezekShow.php",
       method: "POST",
-      dataType: "JSON",
+      dataType: "text",
       data: { eId: eId },
-      success: function (response) {
+      success: function (resp) {
+        console.log(resp);
+        var response = JSON.parse(resp);
         if (response.error == false) {
           egyebMezekTeam.html(response.html);
         } else {
@@ -118,7 +121,7 @@ $(document).ready(function () {
       },
       error: function (response) {
         console.log(response.responseText);
-        err.innerHTML = response.responseText;
+        egyebMezekTeam.innerHTML = response.responseText;
       },
     });
   }); //endof print selected egyebMezek
@@ -488,5 +491,5 @@ $(document).ready(function () {
         pwdInput.reportValidity();
       }
     }
-  });//endof login
+  }); //endof login
 }); //endof ready()

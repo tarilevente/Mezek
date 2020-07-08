@@ -26,10 +26,11 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
                 meztable.Info
         FROM    meztable, teamtable
         WHERE   teamtable.idTeam=meztable.idTeam AND
-                teamtable.idteam=3
+                teamtable.idteam=$eid
         ";
  $res = $con->query($sql);
- if ($res) {
+ if ($res->num_rows > 0) {
+//   dd($res->num_rows);
   $response['html'] .=
    '<div>
         <div class="row p-1">';
@@ -67,8 +68,10 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
     $aktMez->getInfo(),
     $aktPic->getIdpic()
    );
+
    $counter++;
   }
+  ;
   $response['html'] .=
   '     </div>' //endof row
    . '</div>'; //endof wrapper
@@ -81,7 +84,7 @@ if (isset($_POST['eId']) && !empty($_POST['eId'])) {
    '<h4 class="bg-warning text-danger m-1 p-5 text-center">
       Nincs megjelenítendő adat.
    </h4>';
-  $response['errorCode'] = 56457;
+  $response['errorCode'] = 56458;
  }
 } else {
  $response['error'] = true;
