@@ -108,7 +108,6 @@ $(document).ready(function () {
       dataType: "text",
       data: { eId: eId },
       success: function (resp) {
-        console.log(resp);
         var response = JSON.parse(resp);
         if (response.error == false) {
           egyebMezekTeam.html(response.html);
