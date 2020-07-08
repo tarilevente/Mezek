@@ -25,7 +25,7 @@ if (isset($_POST['nemzeti']) && 1 == $_POST['nemzeti']) {
                     CategoryTable.idCategory
                         IN(
                           SELECT TeamTable.idCategory
-                          from TeamTable, CategoryTable,MezTable
+                          FROM TeamTable, CategoryTable,MezTable
                           WHERE TeamTable.idCategory = CategoryTable.idCategory AND
                               TeamTable.idTeam = MezTable.idTeam AND
                               TeamTable.idTeam IN(

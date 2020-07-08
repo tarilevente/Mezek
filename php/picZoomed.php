@@ -53,7 +53,6 @@ if (isset($_POST['picId']) && !empty($_POST['picId'])) {
     }
     $picWeared = null;
     if ($aktPic->getWeared() == null) {
-     //pic exists
      $picWeared = null;
     } else {
      $picWeared = $aktPic->getPathWeared() . $aktPic->getWeared();

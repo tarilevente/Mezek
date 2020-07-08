@@ -27,7 +27,7 @@ else {
  $idPic      = "not_exist_yet";
  $idTeam     = "not_exist_yet";
  $type       = "not_exist_yet";
- $uploadUser = $user['idUser'];
+ $uploadUser = $user;
  $uploadDate = date('Y-m-d H:i:s');
  $years      = "";
  $info       = "";
@@ -90,7 +90,7 @@ else {
  $stmt->bind_result($LAST);
  $stmt->fetch();
  $stmt->close();
- $LAST + 1;
+ $LAST           = $LAST + 1;
  $locationCommon = "../../public/resources/pics/mezek/" . $teamName . "/" . $LAST . "/";
  if (strlen($_FILES['#imageResult']['name']) < 2) {
   //kep1 must be setted
@@ -213,7 +213,14 @@ else {
     $g7 = $aktMez->getInfo();
 
     $stmt->bind_param('iiiisss', $g1, $g2, $g3, $g4, $g5, $g6, $g7);
-    $stmt->execute();
+    if (!$stmt->execute()) {
+     $response['error'] = true;
+     $sql               = "INSERT INTO `meztable`
+        (`idMez`, `idPic`, `idTeam`, `Type`, `UploadUser`, `UploadDate`, `Years`, `Info`)
+        VALUES
+        (NULL, $g1, $g2, $g3, $g4, '$g5', '$g6', '$g7' );";
+     $response['errorMsg'] .= ('HIBA' . $sql);
+    }
     $stmt->close();
     //4: section of uploads
     makeDir($locationCommon);
